@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula Virtual · Folio Digital</title>
+<meta name="description" content="Aula Virtual de Folio Digital: 18 módulos de gestión documental en tres niveles, con material, evaluaciones en línea y certificado.">
+<meta name="theme-color" content="#0F2A44">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{ --navy:#0F2A44; --blue:#2A72C4; --blue2:#54A0EE; --sky:#E7ECF9; --sky2:#F4F7FD;
+         --yellow:#F2C14E; --wine:#8E1B2E; --ink:#1D1D1F; --muted:#5F5F63; --line:#E3E7F0;
+         --shadow:0 10px 30px rgba(15,42,68,.10); --shadow2:0 18px 40px rgba(15,42,68,.16); }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--sky2);color:var(--ink);font-family:"Plus Jakarta Sans","Segoe UI",system-ui,Arial,sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,p{margin:0}
+  a{color:inherit}
+  svg{display:block;max-width:100%}
+  .wrap{max-width:1020px;margin:0 auto;padding-inline:18px}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;font-weight:700;
+       border-radius:999px;padding:13px 20px;font-size:15.5px;line-height:1.1;transition:transform .2s,box-shadow .2s;white-space:nowrap;border:0;cursor:pointer;font-family:inherit}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-yellow{background:var(--yellow);color:var(--navy);box-shadow:0 8px 22px rgba(242,193,78,.45)}
+  .btn-blue{background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;box-shadow:0 8px 22px rgba(42,114,196,.35)}
+  .btn-line{background:#fff;color:var(--navy);border:2px solid var(--line)}
+  .btn-glass{background:rgba(255,255,255,.10);color:#fff;border:1.5px solid rgba(255,255,255,.35)}
+
+  .top{position:sticky;top:0;z-index:40;background:rgba(15,42,68,.92);backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid rgba(255,255,255,.08)}
+  .top .wrap{display:flex;align-items:center;gap:14px;height:64px}
+  .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;flex:1;min-width:0}
+  .logo b{font-size:19px;font-weight:800;letter-spacing:-.4px;white-space:nowrap}
+  .logo b span{color:var(--yellow)}
+  .top a.volver{color:#D5E1F2;text-decoration:none;font-weight:600;font-size:14.5px}
+  .top .btn{padding:10px 16px;font-size:14px;margin-left:14px}
+  .entrada-barra{border-color:rgba(255,255,255,.55)}
+  .entrada-barra:hover{background:rgba(255,255,255,.22)}
+  /* Misma corrección que en la página principal: el logo dejaba de caber
+     y empujaba el botón fuera de la pantalla. */
+  @media (max-width:620px){
+    .top a.volver{display:none}
+    .top .wrap{gap:10px}
+    .logo{flex:0 1 auto;min-width:0;overflow:hidden}
+    .logo b{font-size:17px;overflow:hidden;text-overflow:ellipsis}
+    .entrada-barra{flex:0 0 auto;padding:9px 13px;font-size:13.5px;gap:7px;margin-left:auto}
+    .entrada-barra span{display:none}
+    .entrada-barra::after{content:"Aula";font-weight:700}
+  }
+  @media (max-width:380px){
+    .logo b{display:none}
+  }
+
+  .hero{background:radial-gradient(800px 420px at 85% -10%,rgba(84,160,238,.45),transparent 60%),linear-gradient(160deg,#0F2A44,#1E4B7A);color:#fff;padding-block:46px 40px}
+  .chip{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
+        color:#E7ECF9;font-weight:700;font-size:13px;border-radius:999px;padding:6px 14px;letter-spacing:1.2px}
+  .hero h1{font-size:clamp(30px,6vw,46px);line-height:1.08;font-weight:800;letter-spacing:-1.2px;margin-top:16px}
+  .hero h1 em{font-style:normal;color:var(--yellow)}
+  .hero p{color:#C9D6EA;margin-top:14px;font-size:17px;max-width:640px}
+  .pasos{display:grid;grid-template-columns:1fr;gap:12px;margin-top:24px}
+  .paso{display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:14px}
+  .paso .n{width:34px;height:34px;border-radius:10px;background:var(--yellow);color:var(--navy);font-weight:800;display:flex;align-items:center;justify-content:center;flex:none}
+  .paso b{display:block;font-size:15.5px}
+  .paso small{display:block;color:#C9D6EA;font-size:13.5px;line-height:1.35}
+  @media (min-width:760px){.pasos{grid-template-columns:repeat(3,1fr)}}
+
+  /* ---------- Bloque de acceso ----------
+     La puerta del participante. Va en el encabezado, con jerarquía
+     propia: no es un botón suelto entre el texto, es una zona con
+     borde y peso que se lee de una. */
+  .acceso{
+    margin-top:30px;padding:22px 24px;
+    background:rgba(255,255,255,.09);
+    border:1px solid rgba(255,255,255,.22);
+    border-left:4px solid var(--yellow);
+    border-radius:18px;
+    display:flex;flex-wrap:wrap;align-items:center;gap:18px 26px;
+    backdrop-filter:saturate(140%) blur(6px);
+  }
+  .acceso .texto{flex:1 1 300px;min-width:0}
+  .acceso .et{
+    display:block;font-size:11px;font-weight:800;
+    letter-spacing:1.8px;color:var(--yellow);margin-bottom:6px;
+  }
+  .acceso b{display:block;font-size:19px;font-weight:800;letter-spacing:-.3px}
+  .acceso small{display:block;color:#C9D6EA;font-size:14.5px;margin-top:4px;line-height:1.45}
+  .acceso .btn{flex:0 0 auto;padding:15px 26px;font-size:16px}
+  .acceso .btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
+  @media (max-width:560px){
+    .acceso{padding:20px}
+    .acceso .btn{width:100%}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .btn{transition:none}
+    .btn:hover{transform:none}
+  }
+
+  section{padding-block:52px 0}
+  .kicker{display:inline-block;font-size:12.5px;font-weight:800;color:var(--blue);letter-spacing:1.6px;background:var(--sky);border-radius:999px;padding:5px 12px}
+  h2{font-size:clamp(25px,4.4vw,34px);line-height:1.15;color:var(--navy);font-weight:800;letter-spacing:-.8px;margin-top:12px}
+  .sub{color:var(--muted);margin-top:10px;max-width:660px}
+
+  /* planes */
+  .planes{display:grid;grid-template-columns:1fr;gap:18px;margin-top:26px}
+  .plan{background:#fff;border:2px solid var(--line);border-radius:24px;padding:22px;box-shadow:var(--shadow);display:flex;flex-direction:column;position:relative}
+  .plan.destacado{border-color:var(--blue);box-shadow:var(--shadow2)}
+  .plan .etiqueta{position:absolute;top:-13px;left:22px;background:var(--blue);color:#fff;font-size:12px;font-weight:800;letter-spacing:1px;padding:4px 12px;border-radius:999px}
+  .plan .nivel{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:800;letter-spacing:1.4px;border-radius:999px;padding:5px 12px;align-self:flex-start}
+  .plan.b .nivel{background:var(--sky);color:var(--blue)}
+  .plan.m .nivel{background:#FFF6E5;color:#8A6212}
+  .plan.i .nivel{background:#F8E8EA;color:var(--wine)}
+  .plan h3{font-size:23px;font-weight:800;color:var(--navy);margin-top:12px;letter-spacing:-.4px}
+  .plan .para{font-size:14px;color:var(--muted);margin-top:6px}
+  .plan .datos{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+  .plan .dato{background:var(--sky2);border:1px solid var(--line);border-radius:12px;padding:8px 12px;font-size:13.5px;font-weight:700;color:var(--navy)}
+  .plan ul{list-style:none;padding:0;margin:16px 0 0;display:grid;gap:7px}
+  .plan li{font-size:14.5px;font-weight:600;padding-left:24px;position:relative;line-height:1.35}
+  .plan li:before{content:"✓";position:absolute;left:0;top:0;width:18px;height:18px;border-radius:50%;background:var(--blue);color:#fff;font-size:11px;font-weight:800;text-align:center;line-height:18px}
+  .plan .pie{margin-top:auto;padding-top:18px}
+  @media (min-width:900px){.planes{grid-template-columns:repeat(3,1fr)}}
+
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+  .tab{border:2px solid var(--line);background:#fff;color:var(--navy);font-family:inherit;font-weight:700;font-size:14.5px;
+       border-radius:999px;padding:10px 18px;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+  .tab:hover{border-color:var(--blue2)}
+  .tab.on{background:var(--navy);border-color:var(--navy);color:#fff}
+  .verlos{display:inline-block;margin-top:12px;font-size:14px;font-weight:700;color:var(--blue);
+          background:none;border:0;padding:0;cursor:pointer;font-family:inherit}
+  .verlos:hover{text-decoration:underline}
+
+  /* módulos */
+  .bloque{margin-top:30px}
+  .cabnivel{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .cabnivel .tag{font-size:12.5px;font-weight:800;letter-spacing:1.4px;border-radius:999px;padding:6px 14px}
+  .cabnivel.b .tag{background:var(--sky);color:var(--blue)}
+  .cabnivel.m .tag{background:#FFF6E5;color:#8A6212}
+  .cabnivel.i .tag{background:#F8E8EA;color:var(--wine)}
+  .cabnivel h3{font-size:21px;font-weight:800;color:var(--navy)}
+  .cabnivel small{color:var(--muted);font-size:14px}
+  .lista{display:grid;gap:10px;margin-top:16px}
+  .m{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 16px;display:flex;gap:14px;align-items:flex-start;transition:transform .2s,box-shadow .2s}
+  .m:hover{transform:translateX(3px);box-shadow:var(--shadow)}
+  .m .n{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center;flex:none}
+  .m b{display:block;font-size:16px;color:var(--navy);line-height:1.3}
+  .m small{display:block;color:var(--muted);font-size:14px;line-height:1.4;margin-top:2px}
+
+  /* incluye */
+  .incluye{display:grid;grid-template-columns:1fr;gap:14px;margin-top:24px}
+  .inc{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:var(--shadow)}
+  .inc .ic{width:50px;height:50px;border-radius:15px;background:linear-gradient(135deg,var(--sky),var(--sky2));border:1px solid #D9E2F5;display:flex;align-items:center;justify-content:center}
+  .inc b{display:block;font-size:17px;color:var(--navy);margin-top:12px}
+  .inc small{display:block;font-size:14.5px;color:var(--muted);line-height:1.45;margin-top:4px}
+  @media (min-width:760px){.incluye{grid-template-columns:repeat(3,1fr)}}
+
+  .aviso{background:#fff;border:2px dashed var(--line);border-radius:20px;padding:18px;margin-top:28px;color:var(--muted);font-size:14.5px}
+  .aviso b{color:var(--navy)}
+  /* La puerta de entrada de quien ya está inscrito: deja de ser un aviso
+     y pasa a ser una acción. Borde sólido azul, no punteado, porque aquí
+     sí hay algo que hacer. */
+  .aviso.entrada{border:2px solid var(--blue);text-align:center;padding:26px 20px}
+  .aviso.entrada b{display:block;font-size:18px;margin-bottom:6px}
+  .aviso.entrada p{margin:0 0 18px;color:var(--muted)}
+
+  .cierre{background:radial-gradient(600px 300px at 100% 0%,rgba(84,160,238,.45),transparent 60%),linear-gradient(135deg,#0F2A44,#1E4B7A);
+          color:#fff;border-radius:26px;padding:32px 22px;margin-top:52px;text-align:center}
+  .cierre h2{color:#fff}
+  .cierre h2 em{font-style:normal;color:var(--yellow)}
+  .cierre p{color:#C9D6EA;margin-top:8px}
+  .cierre .acciones{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:22px}
+  footer{padding-block:26px 60px;text-align:center;color:var(--muted);font-size:13.5px}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="index.html">
+      <svg width="34" height="34" viewBox="0 0 64 64" aria-hidden="true">
+        <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2A72C4"/><stop offset="1" stop-color="#54A0EE"/></linearGradient></defs>
+        <rect x="15" y="6" width="28" height="34" rx="3" fill="#fff"/><rect x="20" y="13" width="17" height="3" rx="1.5" fill="#9FB3C8"/>
+        <path d="M6 20h15l5 5h28a4 4 0 0 1 4 4v23a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V24a4 4 0 0 1 4-4z" fill="url(#lg)"/>
+        <circle cx="44" cy="42" r="9" fill="#0F2A44" stroke="#F2C14E" stroke-width="4"/>
+        <line x1="50.5" y1="48.5" x2="59" y2="57" stroke="#F2C14E" stroke-width="5" stroke-linecap="round"/>
+      </svg>
+      <b>Folio <span>Digital</span></b>
+    </a>
+    <a class="volver" href="index.html">← Volver al sitio</a>
+    <!-- También en la barra de esta página: quien llega buscando entrar
+         no debería tener que leer la vitrina para encontrar la puerta. -->
+    <a class="btn btn-glass entrada-barra" href="https://folio-digital---aula-virtual.web.app" target="_blank" rel="noopener">
+      <svg width="17" height="17" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10V7a5 5 0 0 1 10 0v3" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/><rect x="4" y="10" width="16" height="10" rx="2.5" fill="#F2C14E"/><circle cx="12" cy="15" r="1.6" fill="#0F2A44"/></svg><span>Entrar al Aula</span>
+    </a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <span class="chip">AULA VIRTUAL</span>
+    <h1>Gestión documental, <em>de lo básico a lo avanzado</em></h1>
+    <p>18 módulos organizados en tres niveles: desde qué es un archivo hasta automatizar el control documental en SharePoint y OneDrive. Su equipo aprende desde el celular, presenta la evaluación en línea y recibe su certificado.</p>
+    <div class="pasos">
+      <div class="paso"><span class="n">1</span><div><b>Vea el módulo</b><small>De 5 a 8 minutos cada uno</small></div></div>
+      <div class="paso"><span class="n">2</span><div><b>Presente la evaluación</b><small>Desde el celular, se califica sola</small></div></div>
+      <div class="paso"><span class="n">3</span><div><b>Reciba su certificado</b><small>Al aprobar las evaluaciones</small></div></div>
+    </div>
+
+    <!-- La puerta va ARRIBA. Estaba al final de la página, después de los
+         18 módulos, y nadie baja hasta allá para entrar a estudiar. -->
+    <div class="acceso">
+      <div class="texto">
+        <span class="et">ACCESO PARTICIPANTES</span>
+        <b>¿Ya está inscrito en una capacitación?</b>
+        <small>Entre con su número de cédula. Adentro están sus módulos, las evaluaciones y su certificado.</small>
+      </div>
+      <a class="btn btn-yellow" href="https://folio-digital---aula-virtual.web.app" target="_blank" rel="noopener">Entrar a la capacitación →</a>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <section id="planes">
+    <span class="kicker">PLANES</span>
+    <h2>Elija la intensidad de la capacitación</h2>
+    <p class="sub">Cada plan incluye el anterior. Se dicta en su empresa o por videollamada, y se adapta a los documentos y procesos que ustedes manejan.</p>
+
+    <div class="planes">
+      <div class="plan b">
+        <span class="nivel">BÁSICO</span>
+        <h3>Fundamentos</h3>
+        <p class="para">Para todo el personal que maneja documentos.</p>
+        <div class="datos"><span class="dato">7 módulos</span><span class="dato">1 sesión</span></div>
+        <ul>
+          <li>Qué es un archivo y el ciclo vital</li>
+          <li>Clasificar, ordenar y describir</li>
+          <li>Alistamiento y foliación</li>
+          <li>Encarpetado, rotulado e inventario (FUID)</li>
+          <li>Material, evaluaciones y certificado</li>
+        </ul>
+        <button class="verlos" type="button" data-ir="b">Ver sus módulos ↓</button>
+        <div class="pie"><a class="btn btn-line" href="https://wa.me/573118345024?text=Hola%20Johann%2C%20vi%20la%20p%C3%A1gina%20de%20Folio%20Digital%20y%20quiero%20el%20diagn%C3%B3stico%20gratis" target="_blank" rel="noopener">Cotizar este plan</a></div>
+      </div>
+
+      <div class="plan m destacado">
+        <span class="etiqueta">MÁS COMPLETO</span>
+        <span class="nivel">MEDIO</span>
+        <h3>Gestión documental</h3>
+        <p class="para">Para quien tiene el archivo a cargo.</p>
+        <div class="datos"><span class="dato">13 módulos</span><span class="dato">2 sesiones</span></div>
+        <ul>
+          <li>Todo lo del plan Básico</li>
+          <li>Instrumentos archivísticos: CCD, TRD, TVD, PGD y PINAR</li>
+          <li>Transferencias y conservación</li>
+          <li>Digitalización y control de calidad</li>
+          <li>Documento electrónico y la nube</li>
+        </ul>
+        <button class="verlos" type="button" data-ir="m">Ver sus módulos ↓</button>
+        <div class="pie"><a class="btn btn-blue" href="https://wa.me/573118345024?text=Hola%20Johann%2C%20vi%20la%20p%C3%A1gina%20de%20Folio%20Digital%20y%20quiero%20el%20diagn%C3%B3stico%20gratis" target="_blank" rel="noopener">Cotizar este plan</a></div>
+      </div>
+
+      <div class="plan i">
+        <span class="nivel">INTENSIVO</span>
+        <h3>Repositorios y automatización</h3>
+        <p class="para">Para empresas que quieren sostener el orden con tecnología.</p>
+        <div class="datos"><span class="dato">18 módulos</span><span class="dato">3 sesiones</span></div>
+        <ul>
+          <li>Todo lo del plan Medio</li>
+          <li>SharePoint: bibliotecas, metadatos y permisos</li>
+          <li>OneDrive: sincronización y respaldo</li>
+          <li>Alertas de vencimiento y formularios</li>
+          <li>Indicadores y tablero de control</li>
+        </ul>
+        <button class="verlos" type="button" data-ir="i">Ver sus módulos ↓</button>
+        <div class="pie"><a class="btn btn-line" href="https://wa.me/573118345024?text=Hola%20Johann%2C%20vi%20la%20p%C3%A1gina%20de%20Folio%20Digital%20y%20quiero%20el%20diagn%C3%B3stico%20gratis" target="_blank" rel="noopener">Cotizar este plan</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contenido">
+    <span class="kicker">CONTENIDO</span>
+    <h2>Los 18 módulos</h2>
+    <p class="sub">Una ruta completa: se empieza por entender qué es un archivo y se termina automatizando su control.</p>
+    <div class="tabs">
+      <button class="tab on" type="button" data-f="todos">Todos</button>
+      <button class="tab" type="button" data-f="b">Básico</button>
+      <button class="tab" type="button" data-f="m">Medio</button>
+      <button class="tab" type="button" data-f="i">Intensivo</button>
+    </div>
+
+    <div class="bloque" data-nivel="b">
+      <div class="cabnivel b"><span class="tag">BÁSICO</span><h3>Fundamentos</h3><small>Módulos 1 al 7</small></div>
+      <div class="lista">
+        <div class="m"><span class="n">1</span><div><b>¿Qué es un archivo?</b><small>Diferencia entre un papel cualquiera y un documento de archivo, y por qué importa.</small></div></div>
+        <div class="m"><span class="n">2</span><div><b>El ciclo vital del documento</b><small>Archivo de gestión, central e histórico: dónde vive cada documento y por cuánto tiempo.</small></div></div>
+        <div class="m"><span class="n">3</span><div><b>Procedencia y orden original</b><small>Los dos principios que sostienen todo lo demás, explicados con ejemplos.</small></div></div>
+        <div class="m"><span class="n">4</span><div><b>Clasificar, ordenar y describir</b><small>Los tres procesos de la organización documental y en qué orden se aplican.</small></div></div>
+        <div class="m"><span class="n">5</span><div><b>Alistamiento</b><small>Depuración, retiro de ganchos y material que daña el papel, y revisión del expediente.</small></div></div>
+        <div class="m"><span class="n">6</span><div><b>Foliación</b><small>Cómo numerar las hojas, cuándo hacerlo y los errores que más se cometen.</small></div></div>
+        <div class="m"><span class="n">7</span><div><b>Encarpetado, rotulado e inventario</b><small>Guardar, identificar y registrar en el FUID para poder encontrarlo después.</small></div></div>
+      </div>
+    </div>
+
+    <div class="bloque" data-nivel="m">
+      <div class="cabnivel m"><span class="tag">MEDIO</span><h3>Gestión documental</h3><small>Módulos 8 al 13</small></div>
+      <div class="lista">
+        <div class="m"><span class="n">8</span><div><b>Los instrumentos archivísticos</b><small>CCD, TRD, TVD, PGD y PINAR: para qué sirve cada uno y cómo se usan en el día a día.</small></div></div>
+        <div class="m"><span class="n">9</span><div><b>Transferencias documentales</b><small>Cuándo y cómo pasa un expediente del archivo de gestión al central.</small></div></div>
+        <div class="m"><span class="n">10</span><div><b>Conservación preventiva</b><small>Condiciones del depósito, manipulación y qué daña los documentos.</small></div></div>
+        <div class="m"><span class="n">11</span><div><b>Digitalización y control de calidad</b><small>Qué hacer antes de escanear y cómo revisar que quedó bien hecho.</small></div></div>
+        <div class="m"><span class="n">12</span><div><b>Documento y expediente electrónico</b><small>Qué los hace válidos y en qué se diferencian del documento en papel.</small></div></div>
+        <div class="m"><span class="n">13</span><div><b>La nube: qué es y cómo se organiza</b><small>Drive, OneDrive y SharePoint: estructura de carpetas, permisos y respaldo.</small></div></div>
+      </div>
+    </div>
+
+    <div class="bloque" data-nivel="i">
+      <div class="cabnivel i"><span class="tag">INTENSIVO</span><h3>Repositorios y automatización</h3><small>Módulos 14 al 18</small></div>
+      <div class="lista">
+        <div class="m"><span class="n">14</span><div><b>Nomenclatura y metadatos</b><small>Cómo nombrar los archivos y qué información asociarles para encontrarlos siempre.</small></div></div>
+        <div class="m"><span class="n">15</span><div><b>SharePoint</b><small>Bibliotecas de documentos, columnas de metadatos, control de versiones y permisos por área. Cómo llevar el CCD a SharePoint.</small></div></div>
+        <div class="m"><span class="n">16</span><div><b>OneDrive</b><small>Sincronización, trabajo compartido, recuperar versiones anteriores y respaldo.</small></div></div>
+        <div class="m"><span class="n">17</span><div><b>Automatización de procesos</b><small>Alertas de vencimiento, formularios de radicación y flujos de aprobación.</small></div></div>
+        <div class="m"><span class="n">18</span><div><b>Indicadores y tablero de control</b><small>Qué medir cada mes y cómo mostrarlo para que el orden se sostenga.</small></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="incluye">
+    <span class="kicker">QUÉ INCLUYE</span>
+    <h2>Todos los planes incluyen</h2>
+    <div class="incluye">
+      <div class="inc">
+        <div class="ic"><svg width="28" height="28" viewBox="0 0 48 48" aria-hidden="true"><rect x="9" y="5" width="30" height="38" rx="5" stroke="#2A72C4" stroke-width="3.5" fill="none"/><rect x="17" y="14" width="14" height="3.5" rx="1.75" fill="#0F2A44"/><rect x="17" y="23" width="14" height="3.5" rx="1.75" fill="#0F2A44"/><rect x="17" y="32" width="8" height="3.5" rx="1.75" fill="#F2C14E"/></svg></div>
+        <b>Material de apoyo</b><small>Guía de cada módulo y listas de chequeo para usar en el puesto de trabajo, con los documentos de su propia empresa.</small>
+      </div>
+      <div class="inc">
+        <div class="ic"><svg width="28" height="28" viewBox="0 0 48 48" aria-hidden="true"><rect x="9" y="5" width="30" height="38" rx="5" stroke="#2A72C4" stroke-width="3.5" fill="none"/><path d="M16 18l3 3 6-6M16 31l3 3 6-6" stroke="#0F2A44" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="29" y="17" width="5" height="3.5" rx="1.75" fill="#F2C14E"/><rect x="29" y="30" width="5" height="3.5" rx="1.75" fill="#F2C14E"/></svg></div>
+        <b>Evaluación en línea</b><small>Una por módulo, desde el celular. Se califica sola y usted recibe el informe de quién aprobó y en qué hay que reforzar.</small>
+      </div>
+      <div class="inc">
+        <div class="ic"><svg width="28" height="28" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="19" r="12" fill="#F2C14E"/><path d="M16 29l-4 15 12-6 12 6-4-15" fill="#2A72C4"/><path d="M19 19l3.5 3.5L29 16" stroke="#0F2A44" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <b>Certificado</b><small>Expedido por Folio Digital a cada participante que apruebe las evaluaciones del plan cursado.</small>
+      </div>
+    </div>
+
+    <div class="aviso entrada">
+      <b>¿Ya está inscrito en una capacitación?</b>
+      <p>Entre con su número de cédula. Adentro están los módulos, las evaluaciones y su certificado.</p>
+      <a class="btn btn-blue" href="https://folio-digital---aula-virtual.web.app" target="_blank" rel="noopener">Entrar a la capacitación →</a>
+    </div>
+  </section>
+
+  <div class="cierre">
+    <h2>¿Quiere capacitar a <em>su equipo</em>?</h2>
+    <p>Armamos el plan con los documentos y los procesos de su propia empresa.</p>
+    <div class="acciones">
+      <a class="btn btn-yellow" href="https://wa.me/573118345024?text=Hola%20Johann%2C%20vi%20la%20p%C3%A1gina%20de%20Folio%20Digital%20y%20quiero%20el%20diagn%C3%B3stico%20gratis" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+      <a class="btn btn-glass" href="https://folio-digital---aula-virtual.web.app" target="_blank" rel="noopener">Entrar a la capacitación</a>
+      <a class="btn btn-glass" href="index.html">Ver todos los servicios</a>
+    </div>
+  </div>
+</main>
+
+<script>
+  (function(){
+    var tabs = [].slice.call(document.querySelectorAll('.tab'));
+    var bloques = [].slice.call(document.querySelectorAll('.bloque'));
+    function filtrar(f){
+      bloques.forEach(function(b){ b.hidden = (f !== 'todos' && b.dataset.nivel !== f); });
+      tabs.forEach(function(t){ t.classList.toggle('on', t.dataset.f === f); });
+    }
+    tabs.forEach(function(t){ t.addEventListener('click', function(){ filtrar(t.dataset.f); }); });
+    document.querySelectorAll('.verlos').forEach(function(v){
+      v.addEventListener('click', function(){
+        filtrar(v.dataset.ir);
+        document.getElementById('contenido').scrollIntoView({behavior: 'smooth', block: 'start'});
+      });
+    });
+  })();
+</script>
+
+<footer>© 2026 Folio Digital · Johann Suárez · Villavicencio, Meta</footer>
+
+</body>
+</html>
