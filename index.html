@@ -702,6 +702,15 @@ html.traza .dib:not(.trazado) *{fill-opacity:0;stroke-opacity:0}
 .vid-sec .etiquetas{justify-content:center;max-width:980px;margin:24px auto 0}
 .vid-sec .etiquetas span{background:#FFFFFF;border-color:#C3CEE3;color:#0F2A44}
 .video2.arriba{margin:0 0 48px}
+/* 2026-11-12: los dos videos del Aula, lado a lado y con el mismo diseño */
+.videos-dos{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin:0 0 48px;align-items:start}
+.video-tarjeta{display:flex;flex-direction:column;gap:10px}
+.video-tarjeta .video-prox{margin-bottom:6px}
+.video-tarjeta .chip{align-self:flex-start}
+.video-tarjeta h3{font-size:22px;font-weight:800}
+.video-tarjeta p{color:var(--tinta2)}
+.chip-nuevo{background:var(--amarillo);color:var(--navy);border-color:transparent}
+@media (max-width:860px){.videos-dos{grid-template-columns:1fr;gap:36px}}
 .video-prox{box-shadow:0 30px 60px -28px rgba(15,42,68,.7)}
 .video-prox video{object-fit:cover}
 /* iconos con volumen */
@@ -1197,15 +1206,25 @@ html.traza .dib:not(.trazado) *{fill-opacity:0;stroke-opacity:0}
       <h2>Su equipo aprende desde el celular</h2>
       <p>18 módulos en tres niveles: básico, medio e intensivo. Sus empleados repasan cuando quieran, presentan la evaluación desde el celular y usted recibe los resultados.</p>
     </div>
-    <div class="video2 arriba">
-      <div>
+    <!-- 2026-11-12: dos videos lado a lado (Johann: «que quede enseguida al lado del video del Aula Virtual») -->
+    <div class="videos-dos">
+      <div class="video-tarjeta">
+        <div class="video-prox" id="video-aula">
+          <video src="videos/video-aula.mp4" poster="videos/video-aula.jpg" preload="none" playsinline></video>
+          <button class="video-play" type="button" aria-label="Reproducir el video del Aula"><i><span><svg class="ico" aria-hidden="true"><use href="#i-play"/></svg></span>Reproducir video</i></button>
+        </div>
         <span class="chip">Video · 2:33 min</span>
         <h3>Video del Aula Virtual</h3>
         <p>Un recorrido por el Aula: cómo se entra, cómo se avanza por los módulos y cómo se presenta la evaluación.</p>
       </div>
-      <div class="video-prox" id="video-aula">
-        <video src="videos/video-aula.mp4" poster="videos/video-aula.jpg" preload="none" playsinline></video>
-        <button class="video-play" type="button" aria-label="Reproducir el video del Aula"><i><span><svg class="ico" aria-hidden="true"><use href="#i-play"/></svg></span>Reproducir video</i></button>
+      <div class="video-tarjeta">
+        <div class="video-prox" id="video-corresp">
+          <video src="videos/video-correspondencia.mp4" poster="videos/video-correspondencia.jpg" preload="none" playsinline></video>
+          <button class="video-play" type="button" aria-label="Reproducir el video del curso de Ventanilla Única"><i><span><svg class="ico" aria-hidden="true"><use href="#i-play"/></svg></span>Reproducir video</i></button>
+        </div>
+        <span class="chip chip-nuevo">Nuevo · Video · 1:48 min</span>
+        <h3>Curso de Ventanilla Única</h3>
+        <p>«La carta que nadie radicó»: por qué se radica lo que entra y lo que sale, y cómo se aprende en el Aula sin escribir nada.</p>
       </div>
     </div>
     <div class="aula-v4">
@@ -1511,11 +1530,18 @@ html.traza .dib:not(.trazado) *{fill-opacity:0;stroke-opacity:0}
   document.querySelectorAll('svg.dib').forEach(function(s){ io.observe(s); });
 })();
 
-/* Video del Aula: solo con clic */
+/* Videos del Aula (Aula Virtual y Ventanilla Única): solo con clic.
+   Si uno arranca, el otro se pausa: nunca suenan los dos a la vez. */
 (function(){
-  var caja=document.getElementById('video-aula'); if(!caja) return;
-  var btn=caja.querySelector('.video-play'), v=caja.querySelector('video');
-  btn.addEventListener('click',function(){ caja.classList.add('jugando'); v.controls=true; v.play(); });
+  var cajas=[].slice.call(document.querySelectorAll('#video-aula, #video-corresp'));
+  cajas.forEach(function(caja){
+    var btn=caja.querySelector('.video-play'), v=caja.querySelector('video');
+    btn.addEventListener('click',function(){
+      cajas.forEach(function(o){ if(o!==caja){ var ov=o.querySelector('video'); if(ov && !ov.paused) ov.pause(); } });
+      caja.classList.add('jugando'); v.controls=true; v.play();
+    });
+    v.addEventListener('play',function(){ cajas.forEach(function(o){ if(o!==caja){ var ov=o.querySelector('video'); if(ov && !ov.paused) ov.pause(); } }); });
+  });
 })();
 </script>
 
