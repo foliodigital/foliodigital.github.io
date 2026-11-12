@@ -513,6 +513,26 @@ a.acceso:hover{background:#fff;border-color:var(--azul);box-shadow:0 14px 30px -
 .acceso.prox{background:rgba(244,247,253,.7)}
 .acceso .a-ico{border-radius:14px;box-shadow:0 10px 20px -10px rgba(42,114,196,.8)}
 .ventana-pie{border-color:rgba(15,42,68,.1)}
+/* 2026-11-11: paso 2 de la ventana (elegir la capacitación) */
+.vista[hidden]{display:none}
+button.acceso{font:inherit;text-align:left;width:100%;cursor:pointer}
+button.acceso:hover{background:#fff;border-color:var(--azul);box-shadow:0 14px 30px -14px rgba(42,114,196,.6)}
+.acceso:focus-visible,.volver:focus-visible,.cerrar:focus-visible{outline:3px solid var(--amarillo);outline-offset:2px}
+.cab-bots{display:flex;gap:8px;flex:none}
+.volver{background:none;border:1.5px solid var(--linea2);border-radius:10px;height:40px;padding:0 14px;font:700 14px/1 var(--fuente);color:var(--navy);cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:border-color .15s}
+.volver:hover{border-color:var(--azul)}
+/* 2026-11-11: anuncio del curso de Correspondencia en la sección Aula Virtual */
+.curso-nuevo{margin-top:36px;display:grid;grid-template-columns:1.35fr 1fr;gap:28px;align-items:center;background:#fff;border:1px solid var(--linea);border-radius:22px;padding:30px 30px 30px 36px;box-shadow:0 18px 40px -24px rgba(15,42,68,.35);position:relative;overflow:hidden}
+.curso-nuevo::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--amarillo)}
+.cn-chip{display:inline-block;background:var(--amarillo);color:var(--navy);font-size:11.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border-radius:99px}
+.curso-nuevo h3{font-size:25px;line-height:1.2;font-weight:800;margin:12px 0 8px;color:var(--navy)}
+.curso-nuevo .cn-txt > p{color:var(--tinta2);font-size:15.5px;line-height:1.55}
+.cn-lista{list-style:none;padding:0;margin:16px 0 20px;display:flex;flex-wrap:wrap;gap:8px}
+.cn-lista li{background:var(--claro);color:var(--navy);border-radius:99px;padding:6px 12px;font-size:13.5px;font-weight:600}
+.cn-lista b{color:var(--azul)}
+.cn-nota{margin-top:10px;font-size:13px;color:var(--tinta2)}
+.cn-dib{width:100%;height:auto;max-width:330px;justify-self:center}
+@media (max-width:860px){.curso-nuevo{grid-template-columns:1fr;padding:24px 18px 24px 24px}.cn-dib{max-width:240px;order:-1}}
 
 /* dibujos de sección */
 .dib{display:block;width:100%;height:auto;overflow:visible}
@@ -1213,6 +1233,41 @@ html.traza .dib:not(.trazado) *{fill-opacity:0;stroke-opacity:0}
     </div>
     <p class="aula-fuente">Capturas reales del Aula Virtual de Folio Digital (capacitación del día 2).</p>
 
+    <!-- 2026-11-11: curso nuevo de Correspondencia (acceso propio, separado de Gestión Documental) -->
+    <div class="curso-nuevo" id="curso-correspondencia">
+      <div class="cn-txt">
+        <span class="cn-chip">Nuevo curso</span>
+        <h3>Fundamentos de la Unidad de Correspondencia y Ventanilla Única</h3>
+        <p>Para secretarias y recepcionistas: recibir, radicar y enviar las comunicaciones de la empresa con la norma vigente, reconocer un derecho de petición aunque no lo diga y no dejar vencer los plazos.</p>
+        <ul class="cn-lista">
+          <li><b>9</b> lecciones</li><li><b>6</b> simulaciones</li><li><b>5</b> horas</li><li>Certificado de asistencia</li><li>Planillas, guía y diapositivas</li>
+        </ul>
+        <div class="acciones">
+          <a class="btn btn-azul" href="https://folio-digital---aula-virtual.web.app/correspondencia.html" target="_blank" rel="noopener">Entrar al curso <svg class="ico fl" aria-hidden="true"><use href="#i-flecha"/></svg></a>
+          <a class="btn btn-borde" href="#contacto">Quiero capacitar a mi equipo</a>
+        </div>
+        <p class="cn-nota">Para quienes están inscritos en este curso. Se entra con el número de cédula.</p>
+      </div>
+      <svg class="cn-dib" viewBox="0 0 260 210" role="img" aria-label="Dibujo: un sobre con el sello de radicado">
+        <rect x="22" y="20" width="216" height="172" rx="26" fill="#E7ECF9" stroke="#0F2A44" stroke-width="2.4" transform="rotate(-3 130 106)"/>
+        <g transform="translate(6 6)"><rect x="40" y="62" width="170" height="112" rx="8" fill="#0F2A44"/></g>
+        <rect x="40" y="62" width="170" height="112" rx="8" fill="#FFFFFF" stroke="#0F2A44" stroke-width="2.4" stroke-linejoin="round"/>
+        <path d="M42 66 L125 128 L208 66" fill="none" stroke="#0F2A44" stroke-width="2.4" stroke-linejoin="round"/>
+        <rect x="58" y="140" width="62" height="6" rx="3" fill="#E7ECF9" stroke="#0F2A44" stroke-width="2"/>
+        <rect x="58" y="153" width="42" height="6" rx="3" fill="#E7ECF9" stroke="#0F2A44" stroke-width="2"/>
+        <g transform="rotate(-10 176 72)">
+          <g transform="translate(5 5)"><rect x="120" y="44" width="118" height="58" rx="10" fill="#0F2A44"/></g>
+          <rect x="120" y="44" width="118" height="58" rx="10" fill="#FFFFFF" stroke="#2A72C4" stroke-width="3.5"/>
+          <text x="179" y="64" text-anchor="middle" font-family="Plus Jakarta Sans,Segoe UI,Arial,sans-serif" font-size="10.5" font-weight="800" fill="#2A72C4" letter-spacing="1.5">RADICADO</text>
+          <text x="179" y="81" text-anchor="middle" font-family="Plus Jakarta Sans,Segoe UI,Arial,sans-serif" font-size="11" font-weight="800" fill="#0F2A44">2026-E-000154</text>
+          <text x="179" y="95" text-anchor="middle" font-family="Plus Jakarta Sans,Segoe UI,Arial,sans-serif" font-size="8.5" font-weight="700" fill="#2A72C4">11/11/2026 · 9:42 a. m.</text>
+        </g>
+        <g transform="translate(5 5)"><circle cx="212" cy="168" r="22" fill="#0F2A44"/></g>
+        <circle cx="212" cy="168" r="22" fill="#F2C14E" stroke="#0F2A44" stroke-width="2.4"/>
+        <path d="M212 155 v14 l9 6" fill="none" stroke="#0F2A44" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+
   </div>
 </section>
 
@@ -1300,7 +1355,7 @@ html.traza .dib:not(.trazado) *{fill-opacity:0;stroke-opacity:0}
         <h4>Plataforma</h4>
         <ul>
           <li><a href="https://folio-digital---aula-virtual.web.app" target="_blank" rel="noopener">Aula Virtual</a></li>
-          <li><a href="#" data-abrir-sesion>Hurahara Studio (próximamente)</a></li>
+          <li><a href="#" data-abrir-sesion>Folio Digital Nube (próximamente)</a></li>
           <li><a href="#" data-abrir-sesion>Iniciar sesión</a></li>
         </ul>
       </div>
@@ -1327,35 +1382,70 @@ html.traza .dib:not(.trazado) *{fill-opacity:0;stroke-opacity:0}
 <!-- Ventana «¿A dónde quiere entrar?» -->
 <div class="velo" id="velo" role="dialog" aria-modal="true" aria-labelledby="t-sesion">
   <div class="ventana">
-    <div class="ventana-cab">
-      <div><h2 id="t-sesion">¿A dónde quiere entrar?</h2><p>Elija la herramienta de la plataforma Folio Digital.</p></div>
-      <button class="cerrar" type="button" id="cerrar" aria-label="Cerrar"><svg class="ico" aria-hidden="true"><use href="#i-x"/></svg></button>
-    </div>
-    <div class="accesos">
-      <a class="acceso" href="https://folio-digital---aula-virtual.web.app" target="_blank" rel="noopener">
-        <div class="a-ico"><svg class="ico" aria-hidden="true"><use href="#i-birrete"/></svg></div>
-        <h3>Aula Virtual</h3>
-        <p>Capacitaciones con simulaciones, evaluación y certificado. Se entra con el número de cédula.</p>
-        <span class="ir">Entrar al Aula <svg class="ico" aria-hidden="true"><use href="#i-flecha"/></svg></span>
-      </a>
-      <div class="acceso prox" aria-disabled="true">
-        <div class="a-ico"><svg class="ico" aria-hidden="true"><use href="#i-monitor"/></svg></div>
-        <h3>Hurahara Studio</h3>
-        <p>Software de archivo: Cuadro de Clasificación Documental e inventario FUID.</p>
-        <span class="ir"><span class="chip-prox">Próximamente</span></span>
+    <!-- Paso 1: herramienta de la plataforma -->
+    <div class="vista" id="vista-inicio">
+      <div class="ventana-cab">
+        <div><h2 id="t-sesion">¿A dónde quiere entrar?</h2><p>Elija la herramienta de la plataforma Folio Digital.</p></div>
+        <button class="cerrar" type="button" aria-label="Cerrar"><svg class="ico" aria-hidden="true"><use href="#i-x"/></svg></button>
       </div>
+      <div class="accesos">
+        <!-- 2026-11-11: ya no va directo al Aula; abre el paso 2 para elegir el curso -->
+        <button class="acceso" type="button" id="abrir-cursos">
+          <div class="a-ico"><svg class="ico" aria-hidden="true"><use href="#i-birrete"/></svg></div>
+          <h3>Aula Virtual</h3>
+          <p>Capacitaciones con simulaciones, evaluación y certificado. Se entra con el número de cédula.</p>
+          <span class="ir">Ver capacitaciones <svg class="ico" aria-hidden="true"><use href="#i-flecha"/></svg></span>
+        </button>
+        <div class="acceso prox" aria-disabled="true">
+          <div class="a-ico"><svg class="ico" aria-hidden="true"><use href="#i-monitor"/></svg></div>
+          <h3>Software de Gestión Documental Folio Digital Nube</h3>
+          <p>Software de archivo: Cuadro de Clasificación Documental e inventario FUID.</p>
+          <span class="ir"><span class="chip-prox">Próximamente</span></span>
+        </div>
+      </div>
+      <div class="ventana-pie">Acceso solo para clientes y participantes inscritos.</div>
     </div>
-    <div class="ventana-pie">Acceso solo para clientes y participantes inscritos.</div>
+    <!-- Paso 2: elegir la capacitación. Cada curso tiene su propia credencial. -->
+    <div class="vista" id="vista-cursos" hidden>
+      <div class="ventana-cab">
+        <div><h2 id="t-cursos">Elija su capacitación</h2><p>Aula Virtual de Folio Digital. Cada curso se entra con su propia credencial.</p></div>
+        <div class="cab-bots">
+          <button class="volver" type="button" id="volver"><span aria-hidden="true">←</span> Volver</button>
+          <button class="cerrar" type="button" aria-label="Cerrar"><svg class="ico" aria-hidden="true"><use href="#i-x"/></svg></button>
+        </div>
+      </div>
+      <div class="accesos">
+        <a class="acceso" href="https://folio-digital---aula-virtual.web.app" target="_blank" rel="noopener">
+          <div class="a-ico"><svg class="ico" aria-hidden="true"><use href="#i-carpeta"/></svg></div>
+          <h3>Fundamentos de Gestión Documental</h3>
+          <p>Organización de archivos, foliación, inventario, transferencias, digitalización y documentos en la nube.</p>
+          <span class="ir">Entrar <svg class="ico" aria-hidden="true"><use href="#i-flecha"/></svg></span>
+        </a>
+        <a class="acceso" href="https://folio-digital---aula-virtual.web.app/correspondencia.html" target="_blank" rel="noopener">
+          <div class="a-ico"><svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg></div>
+          <h3>Fundamentos de la Unidad de Correspondencia o Recepción</h3>
+          <p>Recepción, radicación de entrada y salida, derechos de petición, envíos por 4-72 y rastreo.</p>
+          <span class="ir">Entrar <svg class="ico" aria-hidden="true"><use href="#i-flecha"/></svg></span>
+        </a>
+      </div>
+      <div class="ventana-pie">Acceso solo para participantes inscritos en cada curso.</div>
+    </div>
   </div>
 </div>
 
 <script>
 (function(){
   var velo=document.getElementById('velo'),ultimo=null;
-  function abrir(e){if(e)e.preventDefault();ultimo=document.activeElement;velo.classList.add('abierto');document.body.style.overflow='hidden';document.getElementById('cerrar').focus();}
+  var vIni=document.getElementById('vista-inicio'),vCur=document.getElementById('vista-cursos');
+  /* 2026-11-11: dos pasos en la misma ventana (herramienta -> capacitación) */
+  function paso(n){var dos=n===2;vIni.hidden=dos;vCur.hidden=!dos;velo.setAttribute('aria-labelledby',dos?'t-cursos':'t-sesion');
+    (dos?document.getElementById('volver'):vIni.querySelector('.cerrar')).focus();}
+  function abrir(e){if(e)e.preventDefault();ultimo=document.activeElement;velo.classList.add('abierto');document.body.style.overflow='hidden';paso(1);}
   function cerrar(){velo.classList.remove('abierto');document.body.style.overflow='';if(ultimo)ultimo.focus();}
   document.querySelectorAll('[data-abrir-sesion]').forEach(function(b){b.addEventListener('click',abrir);});
-  document.getElementById('cerrar').addEventListener('click',cerrar);
+  velo.querySelectorAll('.cerrar').forEach(function(b){b.addEventListener('click',cerrar);});
+  document.getElementById('abrir-cursos').addEventListener('click',function(){paso(2);});
+  document.getElementById('volver').addEventListener('click',function(){paso(1);});
   velo.addEventListener('click',function(e){if(e.target===velo)cerrar();});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&velo.classList.contains('abierto'))cerrar();});
 
