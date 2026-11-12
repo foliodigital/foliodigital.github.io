@@ -703,11 +703,17 @@ html.traza .dib:not(.trazado) *{fill-opacity:0;stroke-opacity:0}
 .vid-sec .etiquetas span{background:#FFFFFF;border-color:#C3CEE3;color:#0F2A44}
 .video2.arriba{margin:0 0 48px}
 /* 2026-11-12: título de la sección Aula Virtual grande e imponente */
-.aula-cab{max-width:900px}
-.aula-titulo{font-size:clamp(44px,8.5vw,104px)!important;font-weight:800;line-height:.95;letter-spacing:-.03em;text-transform:uppercase;color:var(--navy);position:relative;display:inline-block}
+/* Tamaño en armonía con el título principal de la página (.hC h1 llega a 46 px):
+   en mayúsculas, 50 px se ve a la par. A 104 px desentonaba (Johann, 2026-11-12). */
+.aula-encabezado{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:40px;align-items:center;margin-bottom:48px}
+.aula-encabezado .sec-cab{margin-bottom:0}
+.aula-cab{max-width:720px}
+.aula-titulo{font-size:clamp(32px,4vw,50px)!important;font-weight:800;line-height:1;letter-spacing:-.02em;text-transform:uppercase;color:var(--navy);position:relative;display:inline-block}
 .aula-titulo span{color:var(--azul)}
-.aula-titulo::after{content:"";display:block;width:38%;height:10px;border-radius:5px;background:var(--amarillo);margin-top:14px}
-.aula-lema{font-size:clamp(22px,2.6vw,30px)!important;font-weight:800;color:var(--navy)!important;margin-top:18px!important;line-height:1.25}
+.aula-titulo::after{content:"";display:block;width:42%;height:7px;border-radius:4px;background:var(--amarillo);margin-top:12px}
+.aula-lema{font-size:clamp(20px,2.1vw,25px)!important;font-weight:800;color:var(--navy)!important;margin-top:16px!important;line-height:1.3}
+.aula-ilus{width:100%}
+@media (max-width:860px){.aula-encabezado{grid-template-columns:1fr;gap:12px}.aula-ilus{max-width:260px;order:-1}}
 /* 2026-11-12: los dos videos del Aula, lado a lado y con el mismo diseño */
 .videos-dos{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin:0 0 48px;align-items:start}
 .video-tarjeta{display:flex;flex-direction:column;gap:10px}
@@ -1208,10 +1214,42 @@ html.traza .dib:not(.trazado) *{fill-opacity:0;stroke-opacity:0}
 <section class="sec alt" id="aula">
   <div class="cont">
     <!-- 2026-11-12 (Johann): «AULA VIRTUAL» grande e imponente; debajo, celular o computador -->
+    <div class="aula-encabezado">
     <div class="sec-cab aula-cab">
       <h2 class="aula-titulo">Aula <span>Virtual</span></h2>
       <p class="aula-lema">Su equipo aprende desde el celular o el computador</p>
       <p>18 módulos en tres niveles: básico, medio e intensivo. Sus empleados repasan cuando quieran, presentan la evaluación desde el celular o el computador, y usted recibe los resultados.</p>
+    </div>
+    <!-- Dibujo al lado del título: se traza al subir y bajar, como los demás (clase «dib») -->
+    <div class="aula-ilus"><svg viewBox="0 0 340 240" role="img" aria-hidden="true" class="dib dib-brut">
+      <rect x="14" y="16" width="312" height="208" rx="28" fill="#E7ECF9" stroke="#0F2A44" stroke-width="2.4" transform="rotate(-3 170 120)"/>
+      <g fill="#0F2A44" opacity=".35"><circle cx="290" cy="30" r="1.6"/><circle cx="298" cy="30" r="1.6"/><circle cx="306" cy="30" r="1.6"/><circle cx="290" cy="38" r="1.6"/><circle cx="298" cy="38" r="1.6"/><circle cx="306" cy="38" r="1.6"/></g>
+      <g transform="translate(5 5)"><rect x="46" y="54" width="196" height="122" rx="8" fill="#0F2A44"/></g>
+      <rect x="46" y="54" width="196" height="122" rx="8" fill="#FFFFFF" stroke="#0F2A44" stroke-width="2.4"/>
+      <rect x="46" y="54" width="196" height="20" rx="8" fill="#0F2A44"/><rect x="46" y="66" width="196" height="8" fill="#0F2A44"/>
+      <circle cx="58" cy="64" r="3" fill="#F2C14E"/><circle cx="68" cy="64" r="3" fill="#54A0EE"/>
+      <rect x="58" y="86" width="80" height="8" rx="4" fill="#0F2A44" stroke="#0F2A44" stroke-width="2.4" stroke-linejoin="round"/>
+      <rect x="58" y="104" width="52" height="56" rx="6" fill="#F2C14E" stroke="#0F2A44" stroke-width="2.4" stroke-linejoin="round"/>
+      <rect x="118" y="104" width="52" height="56" rx="6" fill="#54A0EE" stroke="#0F2A44" stroke-width="2.4" stroke-linejoin="round"/>
+      <rect x="178" y="104" width="52" height="56" rx="6" fill="#E7ECF9" stroke="#0F2A44" stroke-width="2.4" stroke-linejoin="round"/>
+      <path d="M74 132 l8 8 l14 -16" fill="none" stroke="#0F2A44" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M134 132 l8 8 l14 -16" fill="none" stroke="#0F2A44" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="196" y="122" width="16" height="16" rx="3" fill="none" stroke="#0F2A44" stroke-width="2.4"/>
+      <path d="M28 182 H262 L250 196 H40 Z" fill="#1E4B7A" stroke="#0F2A44" stroke-width="2.4" stroke-linejoin="round"/>
+      <g transform="translate(5 5)"><rect x="236" y="88" width="66" height="116" rx="12" fill="#0F2A44"/></g>
+      <rect x="236" y="88" width="66" height="116" rx="12" fill="#FFFFFF" stroke="#0F2A44" stroke-width="2.4"/>
+      <rect x="244" y="100" width="50" height="10" rx="5" fill="#2A72C4" stroke="#0F2A44" stroke-width="2.4" stroke-linejoin="round"/>
+      <rect x="244" y="118" width="50" height="5" rx="2.5" fill="#E7ECF9" stroke="#0F2A44" stroke-width="2.4" stroke-linejoin="round"/>
+      <rect x="244" y="129" width="38" height="5" rx="2.5" fill="#E7ECF9" stroke="#0F2A44" stroke-width="2.4" stroke-linejoin="round"/>
+      <circle cx="269" cy="164" r="17" fill="#F2C14E" stroke="#0F2A44" stroke-width="2.4"/>
+      <path d="M261 164 l6 6 l11 -12" fill="none" stroke="#0F2A44" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="258" y="192" width="22" height="4" rx="2" fill="#0F2A44"/>
+      <g transform="translate(5 5)"><path d="M150 18 L196 34 L150 50 L104 34 Z" fill="#0F2A44"/></g>
+      <path d="M150 18 L196 34 L150 50 L104 34 Z" fill="#2A72C4" stroke="#0F2A44" stroke-width="2.4" stroke-linejoin="round"/>
+      <path d="M124 41 v12 q26 12 52 0 v-12" fill="#1E4B7A" stroke="#0F2A44" stroke-width="2.4" stroke-linejoin="round"/>
+      <path d="M196 34 v18" fill="none" stroke="#F2C14E" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="196" cy="54" r="4" fill="#F2C14E" stroke="#0F2A44" stroke-width="2"/>
+    </svg></div>
     </div>
     <!-- 2026-11-12: dos videos lado a lado (Johann: «que quede enseguida al lado del video del Aula Virtual») -->
     <div class="videos-dos">
@@ -1221,7 +1259,7 @@ html.traza .dib:not(.trazado) *{fill-opacity:0;stroke-opacity:0}
           <button class="video-play" type="button" aria-label="Reproducir el video del Aula"><i><span><svg class="ico" aria-hidden="true"><use href="#i-play"/></svg></span>Reproducir video</i></button>
         </div>
         <span class="chip">Video · 2:33 min</span>
-        <h3>Fundamentos básicos de gestión documental</h3>
+        <h3>Curso de Fundamentos básicos de gestión documental</h3>
         <p>Un recorrido por el Aula: cómo se entra, cómo se avanza por los módulos y cómo se presenta la evaluación.</p>
       </div>
       <div class="video-tarjeta">
