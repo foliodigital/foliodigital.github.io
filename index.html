@@ -197,6 +197,21 @@ svg.i{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stro
 .acceso span{font-size:14.5px}
 .campus-pronto{margin-top:16px;text-align:center;font-size:14px;color:rgba(255,255,255,.7)}
 .campus-pronto b{color:var(--oro)}
+.resumen{margin:28px auto 0;max-width:980px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.resumen div{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:12px 14px;text-align:left}
+.resumen b{display:block;font-family:"Bricolage Grotesque",sans-serif;font-size:16px;color:#fff}
+.resumen span{font-size:13px;color:rgba(255,255,255,.75)}
+.resumen .r-diag{background:var(--oro);border-color:var(--oro)}.resumen .r-diag b,.resumen .r-diag span{color:var(--noche)}
+@media (max-width:760px){.resumen{grid-template-columns:1fr 1fr}}
+.pasos-diag{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:0 0 34px}
+.pasos-diag div{background:var(--fondo);border:1px solid var(--linea);border-radius:18px;padding:18px}
+.pasos-diag .n{display:inline-grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--t-menta);color:var(--menta);font-weight:800;font-family:"JetBrains Mono",monospace}
+.pasos-diag b{display:block;margin:10px 0 4px;color:var(--noche);font-size:16px}
+.pasos-diag span{font-size:14px;color:var(--gris)}
+@media (max-width:860px){.pasos-diag{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.pasos-diag{grid-template-columns:1fr}}
+.aviso-datos{display:block;margin-top:8px;font-size:12.5px;color:var(--gris)}
+.aviso-datos a,.espera .autoriza a{text-decoration:underline}
 .espera{margin-top:22px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.06);border-radius:22px;padding:24px 28px}
 .espera .ceja-p{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--oro)}
 .espera h3{font-family:"Bricolage Grotesque",sans-serif;font-size:24px;margin:6px 0 4px;color:#fff}
@@ -570,6 +585,12 @@ input[type=range]{width:100%;accent-color:var(--agua)}
       <span><svg class="i"><use href="#i-check"/></svg>Aula Virtual con certificado</span>
       <span><svg class="i"><use href="#i-check"/></svg>Según la Ley 594 de 2000 y el Acuerdo 001 de 2024</span>
     </div>
+    <div class="resumen" aria-label="En pocas palabras">
+      <div><b>Organizamos</b><span>su archivo en papel y digital</span></div>
+      <div><b>Capacitamos</b><span>a su equipo con Aula Virtual</span></div>
+      <div><b>Lo sostenemos</b><span>con software de gestión documental</span></div>
+      <div class="r-diag"><b>Diagnóstico gratis</b><span>30–45 min por videollamada, sin compromiso</span></div>
+    </div>
   </div>
 </section>
 
@@ -763,29 +784,6 @@ input[type=range]{width:100%;accent-color:var(--agua)}
       </article>
     </div>
 
-    <!-- El curso de gestión documental, como en la página actual: portátil + celular + tres rasgos -->
-    <div class="bloque-blanco" style="margin-top:28px">
-      <div class="dispositivos">
-        <div class="equipo">
-          <div class="portatil"><img src="img-aula/aula-inicio.jpg" alt="Captura real del Aula Virtual en el computador: módulos del día"></div>
-          <div class="base-portatil"></div>
-          <div class="movil"><img src="img-aula/aula-movil-inicio.jpg" alt="Captura real del Aula Virtual en el celular"></div>
-        </div>
-        <div>
-          <span class="ceja c-agua">Fundamentos de gestión documental</span>
-          <h3 class="titulo-b">Su equipo aprende en el computador o en el celular</h3>
-          <div class="rasgos" style="margin-top:16px">
-            <div class="rasgo"><div class="ic"><svg class="i"><use href="#i-libro"/></svg></div><div><b>18 módulos en 3 niveles</b><span>Desde qué es un archivo hasta SharePoint, OneDrive y automatización.</span></div></div>
-            <div class="rasgo"><div class="ic"><svg class="i"><use href="#i-check"/></svg></div><div><b>Evaluación en línea</b><span>Se califica sola y usted ve quién aprobó y en qué hay que reforzar.</span></div></div>
-            <div class="rasgo"><div class="ic"><svg class="i"><use href="#i-cert"/></svg></div><div><b>Certificado</b><span>Cada participante que aprueba recibe su certificado con código QR.</span></div></div>
-          </div>
-          <div class="acc" style="margin-top:18px">
-            <a class="btn btn-noche" href="https://folio-digital---aula-virtual.web.app" target="_blank" rel="noopener">Entrar a la capacitación <svg class="i" style="width:18px;height:18px"><use href="#i-flecha"/></svg></a>
-            <a class="btn btn-blanco" href="#niveles">Ver los 3 niveles</a>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <div class="cab-sec centro" id="niveles" style="margin:72px auto 34px">
       <h3 class="disp" style="font-size:clamp(26px,3vw,38px);letter-spacing:-.8px">Tres niveles para que cada persona aprenda lo que necesita</h3>
@@ -885,7 +883,7 @@ input[type=range]{width:100%;accent-color:var(--agua)}
         <input type="text" id="e-n" placeholder="Su nombre" required autocomplete="name">
         <input type="email" id="e-c" placeholder="Su correo" required autocomplete="email">
         <button class="btn btn-oro" type="submit"><svg class="i"><use href="#i-chat"/></svg>Avíseme cuando abra</button>
-        <label class="autoriza"><input type="checkbox" id="e-a" required><span>Autorizo a Folio Digital a usar mi nombre y correo solo para avisarme cuando abra el Campus Virtual (Ley 1581 de 2012).</span></label>
+        <label class="autoriza"><input type="checkbox" id="e-a" required><span>Autorizo a Folio Digital a usar mi nombre y correo solo para avisarme cuando abra el Campus Virtual (<a href="politica-datos.html">política de datos</a>, Ley 1581 de 2012).</span></label>
       </form>
     </div>
   </div>
@@ -958,7 +956,7 @@ input[type=range]{width:100%;accent-color:var(--agua)}
       <span class="c-agua">01–03 · ORDENAR</span><span class="c-fucsia">04–06 · IDENTIFICAR</span><span class="c-verde">07–08 · DIGITALIZAR Y ENCONTRAR</span>
     </div>
     <div class="proceso">
-      <div class="pc" style="--c:var(--agua-o);--t:var(--t-agua)"><div class="top"><span class="num">01</span><span class="ico"><svg class="i"><use href="#i-lupa"/></svg></span></div><h3>Revisamos su archivo</h3><p>Vamos a su empresa, vemos cómo están sus documentos y le decimos qué riesgos tiene.</p><span class="tag">Gratis · 30 min</span></div>
+      <div class="pc" style="--c:var(--agua-o);--t:var(--t-agua)"><div class="top"><span class="num">01</span><span class="ico"><svg class="i"><use href="#i-lupa"/></svg></span></div><h3>Revisamos su archivo</h3><p>Por videollamada vemos cómo están sus documentos y le decimos qué riesgos tiene.</p><span class="tag">Gratis · 30–45 min</span></div>
       <div class="pc" style="--c:var(--verde-o);--t:var(--t-verde)"><div class="top"><span class="num">02</span><span class="ico"><svg class="i"><use href="#i-carpeta"/></svg></span></div><h3>Agrupamos por áreas</h3><p>Contabilidad, personal, contratos: cada documento con su área.</p><span class="tag">Por áreas</span></div>
       <div class="pc" style="--c:#E8603E;--t:var(--t-coral)"><div class="top"><span class="num">03</span><span class="ico"><svg class="i"><use href="#i-reloj"/></svg></span></div><h3>Ordenamos por fechas</h3><p>En cada carpeta, en el orden en que se fueron produciendo.</p><span class="tag">En orden</span></div>
       <div class="pc" style="--c:var(--fucsia);--t:var(--t-fucsia)"><div class="top"><span class="num">04</span><span class="ico"><svg class="i"><use href="#i-x"/></svg></span></div><h3>Quitamos lo que sobra</h3><p>Fuera copias y hojas sin valor; cada hoja queda numerada.</p><span class="tag">Sin duplicados</span></div>
@@ -1043,7 +1041,13 @@ input[type=range]{width:100%;accent-color:var(--agua)}
     <div class="cab-sec centro">
       <span class="ceja c-menta">Hablemos</span>
       <h2 class="tit">Empiece con un <span class="res r-menta">diagnóstico gratis</span></h2>
-      <p class="lead">30 minutos en su empresa. Le decimos qué riesgos tiene su archivo y cómo resolverlos, sin compromiso.</p>
+      <p class="lead">30 a 45 minutos por videollamada. Le decimos qué riesgos tiene su archivo y cómo resolverlos. El diagnóstico no lo obliga a contratar nada.</p>
+    </div>
+    <div class="pasos-diag" aria-label="Cómo funciona el diagnóstico">
+      <div><span class="n">1</span><b>Nos escribe</b><span>Por WhatsApp o con el formulario de abajo, y acordamos la hora.</span></div>
+      <div><span class="n">2</span><b>Videollamada de 30–45 min</b><span>Revisamos cómo guardan los documentos, dónde se pierden, qué deben conservar y qué riesgos legales tienen.</span></div>
+      <div><span class="n">3</span><b>Recibe su informe</b><span>Un informe corto (1–2 páginas) con lo encontrado y una cotización con precio fijo y tiempos.</span></div>
+      <div><span class="n">4</span><b>Usted decide</b><span>Sin compromiso: si no contrata, el informe es suyo igual.</span></div>
     </div>
     <div class="contacto">
       <form class="formu" id="formu">
@@ -1058,6 +1062,7 @@ input[type=range]{width:100%;accent-color:var(--agua)}
         </select>
         <button class="btn" type="submit"><svg class="i"><use href="#i-chat"/></svg>Enviar por WhatsApp</button>
         <small>Le respondemos lo antes posible.</small>
+        <small class="aviso-datos">Sus datos solo se usan para responderle. <a href="politica-datos.html">Política de tratamiento de datos</a>.</small>
       </form>
       <div class="canales">
         <a class="canal wa" href="https://wa.me/573118345024?text=Hola%2C%20vi%20la%20p%C3%A1gina%20de%20Folio%20Digital%20y%20quiero%20el%20diagn%C3%B3stico%20gratis" target="_blank" rel="noopener"><span class="ic" style="background:rgba(32,180,134,.2);color:#5BE0B3"><svg class="i"><use href="#i-chat"/></svg></span><div><small>WhatsApp</small><b>311 834 5024</b></div><svg class="i flecha"><use href="#i-flecha"/></svg></a>
@@ -1096,7 +1101,7 @@ input[type=range]{width:100%;accent-color:var(--agua)}
         <li><svg class="i"><use href="#i-correo"/></svg><a href="mailto:foliodigital.johann@gmail.com">foliodigital.johann@gmail.com</a></li>
         <li><svg class="i"><use href="#i-pin"/></svg><a href="#ubicacion">Villavicencio, Meta</a></li></ul></div>
     </div>
-    <div class="abajo"><span>© 2026 Folio Digital · Johann Suárez · Villavicencio, Meta</span><nav><a href="#">Política de tratamiento de datos personales (Ley 1581 de 2012)</a><a href="#">Términos de uso</a></nav></div>
+    <div class="abajo"><span>© 2026 Folio Digital · Johann Suárez · Villavicencio, Meta</span><nav><a href="politica-datos.html">Política de tratamiento de datos personales (Ley 1581 de 2012)</a></nav></div>
   </div>
 </footer>
 
