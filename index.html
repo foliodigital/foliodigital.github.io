@@ -72,7 +72,17 @@ svg.i{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stro
 .nav .aula-btn{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 16px;border-radius:999px;border:1px solid rgba(242,193,78,.6);color:var(--oro);font-weight:700;font-size:14px}
 .nav .aula-btn:hover{background:rgba(242,193,78,.1)}
 @media(max-width:1060px){.nav nav{display:none}.nav .aula-btn{margin-left:auto}}
-@media(max-width:560px){.nav .btn{display:none}}
+.menu-btn{display:none;width:44px;height:44px;border-radius:12px;border:1px solid rgba(255,255,255,.25);background:transparent;cursor:pointer;flex-direction:column;justify-content:center;align-items:center;gap:5px;padding:0}
+.menu-btn span{display:block;width:20px;height:2px;background:#fff;border-radius:2px}
+.menu-movil{background:var(--noche);border-top:1px solid rgba(255,255,255,.1);padding:10px 20px 20px;display:grid;gap:4px}
+.menu-movil[hidden]{display:none}
+.menu-movil > a:not(.btn){color:#fff;font-weight:600;padding:12px 4px;border-bottom:1px solid rgba(255,255,255,.08)}
+.menu-movil .btn{justify-content:center;margin-top:10px}
+.btn-wa{background:#20B486;color:#fff}
+.wa-flota{display:none;position:fixed;right:14px;bottom:14px;z-index:60;align-items:center;gap:8px;height:50px;padding:0 18px;border-radius:999px;background:#20B486;color:#fff;font-weight:700;font-size:14.5px;box-shadow:0 10px 26px rgba(0,0,0,.25)}
+.wa-flota .i{width:20px;height:20px}
+@media(max-width:1060px){.menu-btn{display:inline-flex}}
+@media(max-width:560px){.nav .cont{gap:10px}.nav img{height:34px}.nav .btn{height:40px;padding:0 14px;font-size:13px}.nav .aula-btn{padding:0 12px;font-size:0;gap:0}.nav .aula-btn .i{width:20px!important;height:20px!important}.wa-flota{display:inline-flex}}
 
 /* ---------- Portada: el video es el gancho ---------- */
 .hero{position:relative;overflow:hidden;color:#fff;background:radial-gradient(900px 480px at 85% 0%,rgba(0,171,199,.22),transparent 60%),radial-gradient(800px 500px at 0% 100%,rgba(242,193,78,.10),transparent 60%),linear-gradient(180deg,var(--noche-3),var(--noche))}
@@ -197,6 +207,7 @@ svg.i{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stro
 .acceso span{font-size:14.5px}
 .campus-pronto{margin-top:16px;text-align:center;font-size:14px;color:rgba(255,255,255,.7)}
 .campus-pronto b{color:var(--oro)}
+.hero .directo{max-width:760px;margin:14px auto 0;font-size:clamp(17px,2vw,20px);font-weight:600;color:#fff}
 .resumen{margin:28px auto 0;max-width:980px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
 .resumen div{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:12px 14px;text-align:left}
 .resumen b{display:block;font-family:"Bricolage Grotesque",sans-serif;font-size:16px;color:#fff}
@@ -566,19 +577,27 @@ input[type=range]{width:100%;accent-color:var(--agua)}
       <a href="#solucion">Servicios</a><a href="#problema">El problema</a><a href="#aula">Capacitación</a><a href="#organizacion">Organización</a><a href="#software">Software</a><a href="#contacto">Contacto</a>
     </nav>
     <a class="aula-btn" href="https://folio-digital---aula-virtual.web.app" target="_blank" rel="noopener"><svg class="i" style="width:18px;height:18px"><use href="#i-birrete"/></svg>Aula Virtual</a>
-    <a class="btn btn-oro" href="#contacto">Diagnóstico gratis</a>
+    <a class="btn btn-oro" href="#contacto">Revisión gratis</a>
+    <button class="menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-movil"><span></span><span></span><span></span></button>
+  </div>
+  <div class="menu-movil" id="menu-movil" hidden>
+    <a href="#solucion">Servicios</a><a href="#problema">El problema</a><a href="#aula">Capacitación</a><a href="#organizacion">Organización</a><a href="#software">Software</a><a href="#contacto">Contacto</a>
+    <a class="btn btn-oro" href="#contacto">Revisar gratis mis documentos</a>
+    <a class="btn btn-wa" href="https://wa.me/573118345024?text=Hola%2C%20quiero%20agendar%20la%20revisi%C3%B3n%20gratis%20de%20los%20documentos%20de%20mi%20empresa" target="_blank" rel="noopener"><svg class="i"><use href="#i-chat"/></svg>Escribir por WhatsApp</a>
   </div>
 </header>
+<a class="wa-flota" href="https://wa.me/573118345024?text=Hola%2C%20quiero%20agendar%20la%20revisi%C3%B3n%20gratis%20de%20los%20documentos%20de%20mi%20empresa" target="_blank" rel="noopener" aria-label="Agendar revisión gratis por WhatsApp"><svg class="i"><use href="#i-chat"/></svg><span>Agendar revisión</span></a>
 
 <!-- ================= 1 · EL GANCHO: VIDEO ================= -->
 <section class="hero" id="inicio">
   <div class="cont">
     <span class="ceja">Gestión documental para empresas · Villavicencio, Meta</span>
     <h1>¿Cuánto le cuesta a su empresa <span class="res r-oro">no encontrar</span> un documento?</h1>
+    <p class="directo">Organizamos los documentos de su empresa y enseñamos a su equipo a guardarlos, encontrarlos y responder a tiempo.</p>
     <p class="sub">Vea en dos minutos lo que pasa en miles de oficinas todos los días… y cómo se resuelve.</p>
     <div class="pantalla"><video controls preload="metadata" poster="videos/video-gancho.jpg" src="videos/video-gancho.mp4"></video></div>
     <div class="ctas">
-      <a class="btn btn-oro" href="#contacto">Quiero mi diagnóstico gratis <svg class="i" style="width:18px;height:18px"><use href="#i-flecha"/></svg></a>
+      <a class="btn btn-oro" href="#contacto">Revisar gratis los documentos de mi empresa <svg class="i" style="width:18px;height:18px"><use href="#i-flecha"/></svg></a>
       <a class="btn btn-linea" href="#aula"><svg class="i" style="width:19px;height:19px"><use href="#i-birrete"/></svg>Capacitar a mi equipo</a>
     </div>
     <div class="confianza">
@@ -590,14 +609,14 @@ input[type=range]{width:100%;accent-color:var(--agua)}
       <div><b>Organizamos</b><span>su archivo en papel y digital</span></div>
       <div><b>Capacitamos</b><span>a su equipo con Aula Virtual</span></div>
       <div><b>Lo sostenemos</b><span>con software de gestión documental</span></div>
-      <div class="r-diag"><b>Diagnóstico gratis</b><span>30–45 min por videollamada, con resumen de hallazgos y sin compromiso</span></div>
+      <div class="r-diag"><b>Revisión gratis</b><span>30–45 min por videollamada, con resumen de hallazgos y sin compromiso</span></div>
     </div>
   </div>
 </section>
 
 <div class="cinta" aria-hidden="true"><div class="pista">
-  <span>Organización de archivos</span><span>Programa de gestión documental</span><span>Digitalización</span><span>Base de datos con metadatos</span><span>Ventanilla única de correspondencia</span><span>Capacitación de equipos</span><span>Archivo en la nube</span><span>Software de gestión documental</span>
-  <span>Organización de archivos</span><span>Programa de gestión documental</span><span>Digitalización</span><span>Base de datos con metadatos</span><span>Ventanilla única de correspondencia</span><span>Capacitación de equipos</span><span>Archivo en la nube</span><span>Software de gestión documental</span>
+  <span>Organización de archivos</span><span>Programa de gestión documental</span><span>Digitalización</span><span>Base de datos para encontrar todo</span><span>Ventanilla única de correspondencia</span><span>Capacitación de equipos</span><span>Archivo en la nube</span><span>Software de gestión documental</span>
+  <span>Organización de archivos</span><span>Programa de gestión documental</span><span>Digitalización</span><span>Base de datos para encontrar todo</span><span>Ventanilla única de correspondencia</span><span>Capacitación de equipos</span><span>Archivo en la nube</span><span>Software de gestión documental</span>
 </div></div>
 
 <!-- ================= SERVICIOS (primero) ================= -->
@@ -612,7 +631,7 @@ input[type=range]{width:100%;accent-color:var(--agua)}
       <a class="sl" href="#organizacion"><span class="n">01</span><div class="ic c-verde"><svg class="i"><use href="#i-caja"/></svg></div><h3>Organizamos su archivo</h3><p>Del caos en cajas a un archivo rotulado, inventariado y digitalizado, con base de datos para encontrar todo en segundos.</p><span class="mas">Cómo lo hacemos <svg class="i" style="width:16px;height:16px"><use href="#i-flecha"/></svg></span></a>
       <a class="sl" href="#pgd"><span class="n">02</span><div class="ic c-oro"><svg class="i"><use href="#i-libro"/></svg></div><h3>Programa de Gestión Documental</h3><p>Las reglas claras de su empresa: cómo se recibe, se guarda, se encuentra y cuánto tiempo se conserva cada documento.</p><span class="mas">Qué incluye <svg class="i" style="width:16px;height:16px"><use href="#i-flecha"/></svg></span></a>
       <a class="sl estrella" href="#aula"><span class="eti">MÁS SOLICITADO</span><span class="n" style="color:rgba(255,255,255,.4)">03</span><div class="ic" style="background:rgba(242,193,78,.16);color:var(--oro)"><svg class="i"><use href="#i-birrete"/></svg></div><h3>Capacitamos a su equipo</h3><p>Formamos a su personal en los procesos profesionales de la gestión documental, con Aula Virtual, evaluación y certificado.</p><span class="mas">Ver la capacitación <svg class="i" style="width:16px;height:16px"><use href="#i-flecha"/></svg></span></a>
-      <a class="sl" href="#software"><span class="n">04</span><div class="ic c-fucsia"><svg class="i"><use href="#i-pantalla"/></svg></div><h3>Lo sostenemos con software</h3><p>SGDEA-NUBE radica, clasifica y avisa vencimientos para que el orden no dependa de la memoria de nadie.</p><span class="mas">Conocer el software <svg class="i" style="width:16px;height:16px"><use href="#i-flecha"/></svg></span></a>
+      <a class="sl" href="#software"><span class="n">04</span><div class="ic c-fucsia"><svg class="i"><use href="#i-pantalla"/></svg></div><h3>Lo sostenemos con software</h3><p>SGDEA-NUBE registra con número y fecha cada carta que entra o sale (eso es «radicar»), la clasifica y avisa antes de que venza el plazo para que el orden no dependa de la memoria de nadie.</p><span class="mas">Conocer el software <svg class="i" style="width:16px;height:16px"><use href="#i-flecha"/></svg></span></a>
     </div>
   </div>
 </section>
@@ -633,7 +652,7 @@ input[type=range]{width:100%;accent-color:var(--agua)}
       <div class="ps"><span class="ck"><svg class="i"><use href="#i-check"/></svg></span><div><b>No sabe qué puede botar</b><span>Guarda todo «por si acaso»… o bota justo lo que la ley le exige conservar.</span></div></div>
       <div class="ps"><span class="ck"><svg class="i"><use href="#i-check"/></svg></span><div><b>Las cartas llegan y nadie responde</b><span>Peticiones y requerimientos que se quedan en un escritorio hasta que vencen.</span></div></div>
     </div>
-    <div class="veredicto"><p>Nada de esto es culpa de su equipo: <b>es que nadie les dio un sistema ni les enseñó a usarlo.</b> Eso es exactamente lo que hacemos.</p><a class="btn btn-oro" href="#contacto">Pedir mi diagnóstico gratis</a></div>
+    <div class="veredicto"><p>Nada de esto es culpa de su equipo: <b>es que nadie les dio un sistema ni les enseñó a usarlo.</b> Eso es exactamente lo que hacemos.</p><a class="btn btn-oro" href="#contacto">Revisar gratis mis documentos</a></div>
   </div>
 </section>
 
@@ -744,7 +763,7 @@ input[type=range]{width:100%;accent-color:var(--agua)}
         <div class="grande" id="costo">$0</div>
         <p>en salarios por horas dedicadas a buscar documentos. Es una estimación, no un ahorro garantizado: con el archivo organizado y un buscador, buena parte de ese tiempo se puede recuperar.</p>
         <div class="horas"><span id="h-anio">0 horas al año</span><span id="d-anio">0 días de trabajo</span></div>
-        <small class="supuestos">Supuestos: 22 días laborales al mes, jornadas de 8 horas y valor de la hora = salario mensual ÷ 176.</small>
+        <small class="supuestos">El resultado depende de los datos que usted ingrese. Supuestos: 22 días laborales al mes, jornadas de 8 horas y valor de la hora = salario mensual ÷ 176.</small>
       </div>
     </div>
   </div>
@@ -840,7 +859,7 @@ input[type=range]{width:100%;accent-color:var(--agua)}
       <div>
         <span class="ceja" style="background:var(--oro);color:var(--noche)">NUEVO CURSO</span>
         <h3 class="titulo-b">Fundamentos de la Unidad de Correspondencia y Ventanilla Única</h3>
-        <p class="lead" style="font-size:16.5px">Para secretarias y recepcionistas: recibir, radicar y enviar las comunicaciones de la empresa con la norma vigente, reconocer un derecho de petición aunque no lo diga y no dejar vencer los plazos.</p>
+        <p class="lead" style="font-size:16.5px">Para secretarias y recepcionistas: recibir, registrar con número y fecha (radicar) y enviar las comunicaciones de la empresa con la norma vigente, reconocer un derecho de petición aunque no lo diga y no dejar vencer los plazos.</p>
         <div class="datos" style="margin:16px 0 18px"><span><b>9</b> lecciones</span><span><b>6</b> simulaciones</span><span><b>5</b> horas</span><span>Certificado</span><span>Planillas, guía y diapositivas</span></div>
         <div class="acc">
           <a class="btn btn-noche" href="https://folio-digital---aula-virtual.web.app/correspondencia.html" target="_blank" rel="noopener">Entrar al curso <svg class="i" style="width:18px;height:18px"><use href="#i-flecha"/></svg></a>
@@ -900,7 +919,7 @@ input[type=range]{width:100%;accent-color:var(--agua)}
       <h2 class="tit">Las reglas claras que <span class="res r-oro">protegen</span> su empresa</h2>
       <p class="lead">Un Programa de Gestión Documental es el manual de su empresa para manejar la información. Con él, cualquier empleado sabe qué hacer con un documento, aunque cambie el personal.</p>
       <div class="pgd-lista" style="margin-top:22px">
-        <div class="pl"><div class="ic c-agua"><svg class="i"><use href="#i-sobre"/></svg></div><div><b>Cómo entra y sale cada documento</b><span>Recepción, radicación y respuesta a tiempo.</span></div></div>
+        <div class="pl"><div class="ic c-agua"><svg class="i"><use href="#i-sobre"/></svg></div><div><b>Cómo entra y sale cada documento</b><span>Recibir cada carta, registrarla con número y fecha (radicarla) y responderla a tiempo.</span></div></div>
         <div class="pl"><div class="ic c-oro"><svg class="i"><use href="#i-reloj"/></svg></div><div><b>Cuánto tiempo se guarda cada uno</b><span>Con soporte legal: ni bota lo que debe guardar, ni guarda lo que ya puede eliminar.</span></div></div>
         <div class="pl"><div class="ic c-menta"><svg class="i"><use href="#i-nube"/></svg></div><div><b>Dónde y cómo se guarda</b><span>En papel y en digital, con nombres y carpetas que todos entienden.</span></div></div>
         <div class="pl"><div class="ic c-coral"><svg class="i"><use href="#i-escudo"/></svg></div><div><b>Qué hacer si pasa algo</b><span>Copias de respaldo y un plan para no perder la información ante un desastre.</span></div></div>
@@ -953,7 +972,7 @@ input[type=range]{width:100%;accent-color:var(--agua)}
     <div class="cab-sec">
       <span class="ceja c-verde">Organización de archivos</span>
       <h2 class="tit">Del caos en cajas a <span class="res r-verde">un archivo que se consulta</span></h2>
-      <p class="lead">Así organizamos su archivo, paso a paso. Después del diagnóstico recibe una propuesta con precio fijo y tiempos claros.</p>
+      <p class="lead">Así organizamos su archivo, paso a paso. Después de la revisión gratis recibe una propuesta con precio fijo y tiempos claros.</p>
     </div>
     <div class="fase-txt">
       <span class="c-agua">01–03 · ORDENAR</span><span class="c-fucsia">04–06 · IDENTIFICAR</span><span class="c-verde">07–08 · DIGITALIZAR Y ENCONTRAR</span>
@@ -1043,10 +1062,10 @@ input[type=range]{width:100%;accent-color:var(--agua)}
   <div class="cont">
     <div class="cab-sec centro">
       <span class="ceja c-menta">Hablemos</span>
-      <h2 class="tit">Empiece con un <span class="res r-menta">diagnóstico gratis</span></h2>
-      <p class="lead">30 a 45 minutos por videollamada. Al terminar se lleva un resumen de hallazgos por escrito: qué riesgos tiene su archivo y cómo resolverlos. El diagnóstico no lo obliga a contratar nada.</p>
+      <h2 class="tit">Empiece con una <span class="res r-menta">revisión gratis</span> de sus documentos</h2>
+      <p class="lead">30 a 45 minutos por videollamada. Al terminar se lleva un resumen de hallazgos por escrito: qué riesgos tiene su archivo y cómo resolverlos. La revisión no lo obliga a contratar nada.</p>
     </div>
-    <div class="pasos-diag" aria-label="Cómo funciona el diagnóstico">
+    <div class="pasos-diag" aria-label="Cómo funciona la revisión gratis">
       <div><span class="n">1</span><b>Nos escribe</b><span>Por WhatsApp o con el formulario de abajo, y acordamos la hora.</span></div>
       <div><span class="n">2</span><b>Videollamada de 30–45 min</b><span>Revisamos cómo guardan los documentos, dónde se pierden, qué deben conservar y qué riesgos legales tienen.</span></div>
       <div><span class="n">3</span><b>Recibe su resumen de hallazgos</b><span>1–2 páginas con lo encontrado, los riesgos y qué hacer primero, más una cotización con precio fijo y tiempos.</span></div>
@@ -1060,7 +1079,7 @@ input[type=range]{width:100%;accent-color:var(--agua)}
         <label for="f-e">Empresa</label><input id="f-e" placeholder="Ej.: Constructora del Llano">
         <label for="f-q">¿Qué necesita?</label>
         <select id="f-q">
-          <option>Diagnóstico gratis de mi archivo</option><option>Capacitar a mi equipo (Aula Virtual)</option><option>Curso de Ventanilla Única de Correspondencia</option>
+          <option>Revisión gratis de los documentos de mi empresa</option><option>Capacitar a mi equipo (Aula Virtual)</option><option>Curso de Ventanilla Única de Correspondencia</option>
           <option>Organizar mi archivo</option><option>Programa de Gestión Documental</option><option>Digitalizar y crear la base de datos</option><option>Conocer el software SGDEA-NUBE</option>
         </select>
         <button class="btn" type="submit"><svg class="i"><use href="#i-chat"/></svg>Enviar por WhatsApp</button>
@@ -1068,7 +1087,7 @@ input[type=range]{width:100%;accent-color:var(--agua)}
         <small class="aviso-datos">Sus datos solo se usan para responderle. <a href="politica-datos.html">Política de tratamiento de datos</a>.</small>
       </form>
       <div class="canales">
-        <a class="canal wa" href="https://wa.me/573118345024?text=Hola%2C%20vi%20la%20p%C3%A1gina%20de%20Folio%20Digital%20y%20quiero%20el%20diagn%C3%B3stico%20gratis" target="_blank" rel="noopener"><span class="ic" style="background:rgba(32,180,134,.2);color:#5BE0B3"><svg class="i"><use href="#i-chat"/></svg></span><div><small>WhatsApp</small><b>311 834 5024</b></div><svg class="i flecha"><use href="#i-flecha"/></svg></a>
+        <a class="canal wa" href="https://wa.me/573118345024?text=Hola%2C%20vi%20la%20p%C3%A1gina%20de%20Folio%20Digital%20y%20quiero%20la%20revisi%C3%B3n%20gratis%20de%20mis%20documentos" target="_blank" rel="noopener"><span class="ic" style="background:rgba(32,180,134,.2);color:#5BE0B3"><svg class="i"><use href="#i-chat"/></svg></span><div><small>WhatsApp</small><b>311 834 5024</b></div><svg class="i flecha"><use href="#i-flecha"/></svg></a>
         <a class="canal" href="tel:+573118345024"><span class="ic c-agua"><svg class="i"><use href="#i-tel"/></svg></span><div><small>Llámenos</small><b>311 834 5024</b></div><svg class="i flecha"><use href="#i-flecha"/></svg></a>
         <a class="canal" href="mailto:foliodigital.johann@gmail.com"><span class="ic c-oro"><svg class="i"><use href="#i-correo"/></svg></span><div><small>Correo</small><b>foliodigital.johann@gmail.com</b></div><svg class="i flecha"><use href="#i-flecha"/></svg></a>
         <div class="canal"><span class="ic c-coral"><svg class="i"><use href="#i-pin"/></svg></span><div><small>Ubicación</small><b>Villavicencio, Meta</b><small style="margin-top:2px">Presencial o virtual</small></div></div>
@@ -1147,6 +1166,12 @@ $("formu").addEventListener("submit", (e) => {
   const texto = `Hola, soy ${$("f-n").value.trim()}${$("f-e").value.trim() ? " de " + $("f-e").value.trim() : ""}. Vi la página de Folio Digital y necesito: ${$("f-q").value}.`;
   window.open("https://wa.me/573118345024?text=" + encodeURIComponent(texto), "_blank", "noopener");
 });
+// Menú compacto del celular
+(() => {
+  const b = document.querySelector(".menu-btn"), m = document.getElementById("menu-movil");
+  b.addEventListener("click", () => { const abre = m.hidden; m.hidden = !abre; b.setAttribute("aria-expanded", String(abre)); });
+  m.addEventListener("click", (e) => { if (e.target.closest("a")) { m.hidden = true; b.setAttribute("aria-expanded", "false"); } });
+})();
 // Lista de espera del Campus Virtual → WhatsApp con el mensaje listo (los datos solo le llegan a Folio Digital).
 $("form-espera").addEventListener("submit", (e) => {
   e.preventDefault();
