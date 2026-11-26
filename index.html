@@ -197,6 +197,14 @@ svg.i{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stro
 .acceso span{font-size:14.5px}
 .campus-pronto{margin-top:16px;text-align:center;font-size:14px;color:rgba(255,255,255,.7)}
 .campus-pronto b{color:var(--oro)}
+.espera{margin-top:22px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.06);border-radius:22px;padding:24px 28px}
+.espera .ceja-p{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--oro)}
+.espera h3{font-family:"Bricolage Grotesque",sans-serif;font-size:24px;margin:6px 0 4px;color:#fff}
+.espera p{font-size:14.5px;color:rgba(255,255,255,.75);margin:0 0 16px}
+.espera form{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.espera input[type=text],.espera input[type=email]{flex:1 1 220px;height:52px;border-radius:999px;border:1px solid rgba(255,255,255,.25);background:#fff;color:var(--tinta);padding:0 20px;font:inherit;font-size:15px}
+.espera .autoriza{flex-basis:100%;display:flex;gap:10px;align-items:flex-start;font-size:13px;color:rgba(255,255,255,.75);cursor:pointer}
+.espera .autoriza input{margin-top:3px;width:16px;height:16px;flex:none}
 @media(max-width:980px){.cursos,.niveles{grid-template-columns:1fr}.nv.dest{transform:none}.incluye,.capturas{grid-template-columns:1fr 1fr}}
 @media(max-width:520px){.incluye,.capturas{grid-template-columns:1fr}}
 
@@ -869,7 +877,17 @@ input[type=range]{width:100%;accent-color:var(--agua)}
       <div><b>¿Ya está inscrito en una capacitación?</b><span>Entre con su número de cédula: adentro están sus módulos, su evaluación y su certificado.</span></div>
       <a class="btn btn-noche" href="https://folio-digital---aula-virtual.web.app" target="_blank" rel="noopener">Entrar al Aula Virtual</a>
     </div>
-    <p class="campus-pronto"><b>Próximamente:</b> Campus Virtual con cursos por suscripción para personas, sin necesidad de una capacitación en empresa.</p>
+    <div class="espera" id="campus">
+      <span class="ceja-p">Próximamente · Campus Virtual</span>
+      <h3>Cursos en video para personas, a su ritmo</h3>
+      <p>Módulos grabados de gestión documental, simulaciones y certificado, sin necesidad de una capacitación en empresa. Déjenos su nombre y le avisamos primero cuando abra.</p>
+      <form id="form-espera">
+        <input type="text" id="e-n" placeholder="Su nombre" required autocomplete="name">
+        <input type="email" id="e-c" placeholder="Su correo" required autocomplete="email">
+        <button class="btn btn-oro" type="submit"><svg class="i"><use href="#i-chat"/></svg>Avíseme cuando abra</button>
+        <label class="autoriza"><input type="checkbox" id="e-a" required><span>Autorizo a Folio Digital a usar mi nombre y correo solo para avisarme cuando abra el Campus Virtual (Ley 1581 de 2012).</span></label>
+      </form>
+    </div>
   </div>
 </section>
 
@@ -1119,6 +1137,12 @@ calcular();
 $("formu").addEventListener("submit", (e) => {
   e.preventDefault();
   const texto = `Hola, soy ${$("f-n").value.trim()}${$("f-e").value.trim() ? " de " + $("f-e").value.trim() : ""}. Vi la página de Folio Digital y necesito: ${$("f-q").value}.`;
+  window.open("https://wa.me/573118345024?text=" + encodeURIComponent(texto), "_blank", "noopener");
+});
+// Lista de espera del Campus Virtual → WhatsApp con el mensaje listo (los datos solo le llegan a Folio Digital).
+$("form-espera").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const texto = `Hola, quiero entrar a la lista de espera del Campus Virtual de Folio Digital. Nombre: ${$("e-n").value.trim()}. Correo: ${$("e-c").value.trim()}. Autorizo el uso de mis datos solo para que me avisen cuando abra.`;
   window.open("https://wa.me/573118345024?text=" + encodeURIComponent(texto), "_blank", "noopener");
 });
 
