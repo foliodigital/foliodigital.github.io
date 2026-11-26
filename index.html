@@ -81,6 +81,8 @@ svg.i{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stro
 .btn-wa{background:#20B486;color:#fff}
 .wa-flota{display:none;position:fixed;right:14px;bottom:14px;z-index:60;align-items:center;gap:8px;height:50px;padding:0 18px;border-radius:999px;background:#20B486;color:#fff;font-weight:700;font-size:14.5px;box-shadow:0 10px 26px rgba(0,0,0,.25)}
 .wa-flota .i{width:20px;height:20px}
+.wa-flota{opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity .25s,transform .25s}
+.wa-flota.visible{opacity:1;transform:none;pointer-events:auto}
 @media(max-width:1060px){.menu-btn{display:inline-flex}}
 @media(max-width:560px){.nav .cont{gap:10px}.nav img{height:34px}.nav .btn{height:40px;padding:0 14px;font-size:13px}.nav .aula-btn{padding:0 12px;font-size:0;gap:0}.nav .aula-btn .i{width:20px!important;height:20px!important}.wa-flota{display:inline-flex}}
 
@@ -207,6 +209,7 @@ svg.i{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stro
 .acceso span{font-size:14.5px}
 .campus-pronto{margin-top:16px;text-align:center;font-size:14px;color:rgba(255,255,255,.7)}
 .campus-pronto b{color:var(--oro)}
+.sl .dolor{font-weight:700;color:var(--noche);margin:6px 0 4px}.sl.estrella .dolor{color:var(--oro)}
 .hero .directo{max-width:760px;margin:14px auto 0;font-size:clamp(17px,2vw,20px);font-weight:600;color:#fff}
 .resumen{margin:28px auto 0;max-width:980px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
 .resumen div{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:12px 14px;text-align:left}
@@ -574,19 +577,19 @@ input[type=range]{width:100%;accent-color:var(--agua)}
   <div class="cont">
     <a href="#inicio"><img src="logo-oscuro.svg" alt="Folio Digital"></a>
     <nav aria-label="Menú principal">
-      <a href="#solucion">Servicios</a><a href="#problema">El problema</a><a href="#aula">Capacitación</a><a href="#organizacion">Organización</a><a href="#software">Software</a><a href="#contacto">Contacto</a>
+      <a href="#problema">El problema</a><a href="#solucion">Servicios</a><a href="#aula">Capacitación</a><a href="#organizacion">Organización</a><a href="#software">Software</a><a href="#contacto">Contacto</a>
     </nav>
     <a class="aula-btn" href="https://folio-digital---aula-virtual.web.app" target="_blank" rel="noopener"><svg class="i" style="width:18px;height:18px"><use href="#i-birrete"/></svg>Aula Virtual</a>
-    <a class="btn btn-oro" href="#contacto">Revisión gratis</a>
+    <a class="btn btn-oro" href="#contacto">Pedir revisión gratis</a>
     <button class="menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-movil"><span></span><span></span><span></span></button>
   </div>
   <div class="menu-movil" id="menu-movil" hidden>
-    <a href="#solucion">Servicios</a><a href="#problema">El problema</a><a href="#aula">Capacitación</a><a href="#organizacion">Organización</a><a href="#software">Software</a><a href="#contacto">Contacto</a>
-    <a class="btn btn-oro" href="#contacto">Revisar gratis mis documentos</a>
+    <a href="#problema">El problema</a><a href="#solucion">Servicios</a><a href="#aula">Capacitación</a><a href="#organizacion">Organización</a><a href="#software">Software</a><a href="#contacto">Contacto</a>
+    <a class="btn btn-oro" href="#contacto">Pedir revisión gratis</a>
     <a class="btn btn-wa" href="https://wa.me/573118345024?text=Hola%2C%20quiero%20agendar%20la%20revisi%C3%B3n%20gratis%20de%20los%20documentos%20de%20mi%20empresa" target="_blank" rel="noopener"><svg class="i"><use href="#i-chat"/></svg>Escribir por WhatsApp</a>
   </div>
 </header>
-<a class="wa-flota" href="https://wa.me/573118345024?text=Hola%2C%20quiero%20agendar%20la%20revisi%C3%B3n%20gratis%20de%20los%20documentos%20de%20mi%20empresa" target="_blank" rel="noopener" aria-label="Agendar revisión gratis por WhatsApp"><svg class="i"><use href="#i-chat"/></svg><span>Agendar revisión</span></a>
+<a class="wa-flota" href="https://wa.me/573118345024?text=Hola%2C%20quiero%20agendar%20la%20revisi%C3%B3n%20gratis%20de%20los%20documentos%20de%20mi%20empresa" target="_blank" rel="noopener" aria-label="Pedir revisión gratis por WhatsApp"><svg class="i"><use href="#i-chat"/></svg><span>Pedir revisión gratis</span></a>
 
 <!-- ================= 1 · EL GANCHO: VIDEO ================= -->
 <section class="hero" id="inicio">
@@ -597,7 +600,7 @@ input[type=range]{width:100%;accent-color:var(--agua)}
     <p class="sub">Vea en dos minutos lo que pasa en miles de oficinas todos los días… y cómo se resuelve.</p>
     <div class="pantalla"><video controls preload="metadata" poster="videos/video-gancho.jpg" src="videos/video-gancho.mp4"></video></div>
     <div class="ctas">
-      <a class="btn btn-oro" href="#contacto">Revisar gratis los documentos de mi empresa <svg class="i" style="width:18px;height:18px"><use href="#i-flecha"/></svg></a>
+      <a class="btn btn-oro" href="#contacto">Pedir revisión gratis <svg class="i" style="width:18px;height:18px"><use href="#i-flecha"/></svg></a>
       <a class="btn btn-linea" href="#aula"><svg class="i" style="width:19px;height:19px"><use href="#i-birrete"/></svg>Capacitar a mi equipo</a>
     </div>
     <div class="confianza">
@@ -619,7 +622,24 @@ input[type=range]{width:100%;accent-color:var(--agua)}
   <span>Organización de archivos</span><span>Programa de gestión documental</span><span>Digitalización</span><span>Base de datos para encontrar todo</span><span>Ventanilla única de correspondencia</span><span>Capacitación de equipos</span><span>Archivo en la nube</span><span>Software de gestión documental</span>
 </div></div>
 
-<!-- ================= SERVICIOS (primero) ================= -->
+<!-- ================= 2 · EL PROBLEMA ================= -->
+<section class="sec" id="problema">
+  <div class="cont">
+    <div class="cab-sec centro">
+      <span class="ceja c-coral">El problema</span>
+      <h2 class="tit">¿A su empresa <span class="res r-coral">le pasa esto?</span></h2>
+      <p class="lead">Los tres problemas que más encontramos en las empresas. Si tiene uno, el desorden ya le está costando plata y tiempo.</p>
+    </div>
+    <div class="pasa">
+      <div class="ps"><span class="ck"><svg class="i"><use href="#i-check"/></svg></span><div><b>Los documentos se pierden una y otra vez</b><span>Un contrato, una factura, una hoja de vida… y nadie sabe quién la tuvo por última vez.</span></div></div>
+      <div class="ps"><span class="ck"><svg class="i"><use href="#i-check"/></svg></span><div><b>Cada empleado guarda «a su manera»</b><span>En su escritorio, su correo o su USB. Cuando se va, se lleva la información.</span></div></div>
+      <div class="ps"><span class="ck"><svg class="i"><use href="#i-check"/></svg></span><div><b>Las cartas llegan y nadie responde</b><span>Peticiones y requerimientos que se quedan en un escritorio hasta que vencen.</span></div></div>
+    </div>
+    <div class="veredicto"><p>Nada de esto es culpa de su equipo: <b>es que nadie les dio un sistema ni les enseñó a usarlo.</b> Eso es exactamente lo que hacemos, en cuatro servicios.</p><a class="btn btn-oro" href="#solucion">Ver los cuatro servicios</a></div>
+  </div>
+</section>
+
+<!-- ================= SERVICIOS ================= -->
 <section class="sec suave" id="solucion">
   <div class="cont">
     <div class="cab-sec centro">
@@ -628,121 +648,13 @@ input[type=range]{width:100%;accent-color:var(--agua)}
       <p class="lead">No basta con organizar una vez. Por eso trabajamos en cuatro frentes que se complementan.</p>
     </div>
     <div class="solucion">
-      <a class="sl" href="#organizacion"><span class="n">01</span><div class="ic c-verde"><svg class="i"><use href="#i-caja"/></svg></div><h3>Organizamos su archivo</h3><p>Del caos en cajas a un archivo rotulado, inventariado y digitalizado, con base de datos para encontrar todo en segundos.</p><span class="mas">Cómo lo hacemos <svg class="i" style="width:16px;height:16px"><use href="#i-flecha"/></svg></span></a>
-      <a class="sl" href="#pgd"><span class="n">02</span><div class="ic c-oro"><svg class="i"><use href="#i-libro"/></svg></div><h3>Programa de Gestión Documental</h3><p>Las reglas claras de su empresa: cómo se recibe, se guarda, se encuentra y cuánto tiempo se conserva cada documento.</p><span class="mas">Qué incluye <svg class="i" style="width:16px;height:16px"><use href="#i-flecha"/></svg></span></a>
-      <a class="sl estrella" href="#aula"><span class="eti">MÁS SOLICITADO</span><span class="n" style="color:rgba(255,255,255,.4)">03</span><div class="ic" style="background:rgba(242,193,78,.16);color:var(--oro)"><svg class="i"><use href="#i-birrete"/></svg></div><h3>Capacitamos a su equipo</h3><p>Formamos a su personal en los procesos profesionales de la gestión documental, con Aula Virtual, evaluación y certificado.</p><span class="mas">Ver la capacitación <svg class="i" style="width:16px;height:16px"><use href="#i-flecha"/></svg></span></a>
-      <a class="sl" href="#software"><span class="n">04</span><div class="ic c-fucsia"><svg class="i"><use href="#i-pantalla"/></svg></div><h3>Lo sostenemos con software</h3><p>SGDEA-NUBE registra con número y fecha cada carta que entra o sale (eso es «radicar»), la clasifica y avisa antes de que venza el plazo para que el orden no dependa de la memoria de nadie.</p><span class="mas">Conocer el software <svg class="i" style="width:16px;height:16px"><use href="#i-flecha"/></svg></span></a>
+      <a class="sl" href="#organizacion"><span class="n">01</span><div class="ic c-verde"><svg class="i"><use href="#i-caja"/></svg></div><h3>Organización de archivos</h3><p class="dolor">Para cuando nadie encuentra los documentos.</p><p>Ordenamos y rotulamos cajas y carpetas, hacemos la lista de todo y lo pasamos a PDF para encontrarlo en segundos.</p><span class="mas">Conocer el servicio <svg class="i" style="width:16px;height:16px"><use href="#i-flecha"/></svg></span></a>
+      <a class="sl" href="#pgd"><span class="n">02</span><div class="ic c-oro"><svg class="i"><use href="#i-libro"/></svg></div><h3>Programa de Gestión Documental</h3><p class="dolor">Para cuando cada empleado guarda «a su manera».</p><p>El manual de su empresa: cómo se recibe, dónde se guarda y cuánto tiempo se conserva cada documento.</p><span class="mas">Conocer el servicio <svg class="i" style="width:16px;height:16px"><use href="#i-flecha"/></svg></span></a>
+      <a class="sl estrella" href="#aula"><span class="eti">MÁS SOLICITADO</span><span class="n" style="color:rgba(255,255,255,.4)">03</span><div class="ic" style="background:rgba(242,193,78,.16);color:var(--oro)"><svg class="i"><use href="#i-birrete"/></svg></div><h3>Capacitación de equipos</h3><p class="dolor">Para que el orden no dependa de una sola persona.</p><p>Su personal aprende a guardar, encontrar y responder a tiempo, con Aula Virtual, evaluación y certificado.</p><span class="mas">Conocer el servicio <svg class="i" style="width:16px;height:16px"><use href="#i-flecha"/></svg></span></a>
+      <a class="sl" href="#software"><span class="n">04</span><div class="ic c-fucsia"><svg class="i"><use href="#i-pantalla"/></svg></div><h3>Software de gestión documental</h3><p class="dolor">Para cuando las cartas llegan y nadie responde.</p><p>SGDEA-NUBE registra cada carta que entra o sale con número y fecha («radicar») y avisa antes de que venza el plazo.</p><span class="mas">Conocer el servicio <svg class="i" style="width:16px;height:16px"><use href="#i-flecha"/></svg></span></a>
     </div>
   </div>
 </section>
-
-<!-- ================= 2 · EL PROBLEMA ================= -->
-<section class="sec" id="problema">
-  <div class="cont">
-    <div class="cab-sec centro">
-      <span class="ceja c-coral">El problema</span>
-      <h2 class="tit">¿A su empresa <span class="res r-coral">le pasa esto?</span></h2>
-      <p class="lead">Si marca dos o más, el desorden ya le está costando plata, tiempo y tranquilidad.</p>
-    </div>
-    <div class="pasa">
-      <div class="ps"><span class="ck"><svg class="i"><use href="#i-check"/></svg></span><div><b>Los documentos se pierden una y otra vez</b><span>Un contrato, una factura, una hoja de vida… y nadie sabe quién la tuvo por última vez.</span></div></div>
-      <div class="ps"><span class="ck"><svg class="i"><use href="#i-check"/></svg></span><div><b>Nadie sabe cómo organizarlos</b><span>Cajas en la bodega sin rótulo y carpetas que mezclan de todo.</span></div></div>
-      <div class="ps"><span class="ck"><svg class="i"><use href="#i-check"/></svg></span><div><b>No hay plan si pasa algo</b><span>Una inundación, un incendio, un robo o un virus, y se pierde la historia de la empresa.</span></div></div>
-      <div class="ps"><span class="ck"><svg class="i"><use href="#i-check"/></svg></span><div><b>Cada empleado guarda «a su manera»</b><span>En su escritorio, su correo o su USB. Cuando se va, se lleva la información.</span></div></div>
-      <div class="ps"><span class="ck"><svg class="i"><use href="#i-check"/></svg></span><div><b>No sabe qué puede botar</b><span>Guarda todo «por si acaso»… o bota justo lo que la ley le exige conservar.</span></div></div>
-      <div class="ps"><span class="ck"><svg class="i"><use href="#i-check"/></svg></span><div><b>Las cartas llegan y nadie responde</b><span>Peticiones y requerimientos que se quedan en un escritorio hasta que vencen.</span></div></div>
-    </div>
-    <div class="veredicto"><p>Nada de esto es culpa de su equipo: <b>es que nadie les dio un sistema ni les enseñó a usarlo.</b> Eso es exactamente lo que hacemos.</p><a class="btn btn-oro" href="#contacto">Revisar gratis mis documentos</a></div>
-  </div>
-</section>
-
-<!-- ================= LA HISTORIA ================= -->
-<section class="sec historia" id="historia">
-  <div class="cont">
-    <div>
-      <span class="ceja c-sol">Una mañana cualquiera</span>
-      <h2 class="tit" style="margin-bottom:20px">«¿Alguien ha visto <span class="res r-sol">el contrato?</span>»</h2>
-      <div class="escena">
-        <div class="hora"><div><small>Martes</small><b id="reloj">9:00</b></div><div><small>Buscando</small><span class="perdido" id="perdido">0 min</span></div></div>
-        <svg class="dib" viewBox="0 0 720 470" role="img" aria-label="Dibujo: una secretaria rodeada de cajas y carpetas busca un contrato mientras pasan las horas">
-          <rect width="720" height="470" rx="20" fill="#FFF6EE"/>
-          <rect y="372" width="720" height="98" fill="#F3E6DA"/>
-          <!-- Reloj de pared -->
-          <circle cx="600" cy="92" r="46" fill="#fff" stroke="#0F2A44" stroke-width="6"/>
-          <g stroke="#0F2A44" stroke-width="3"><path d="M600 52v8M600 124v8M560 92h8M632 92h8"/></g>
-          <path class="manecilla" id="m-hora" d="M600 92 L600 70" stroke="#0F2A44" stroke-width="6" stroke-linecap="round"/>
-          <path class="manecilla" id="m-min" d="M600 92 L600 58" stroke="#E8603E" stroke-width="4" stroke-linecap="round"/>
-          <line class="segundero" x1="600" y1="92" x2="600" y2="60" stroke="#FF7A59" stroke-width="2.2" stroke-linecap="round"/>
-          <circle cx="600" cy="92" r="5" fill="#0F2A44"/>
-          <!-- Estante con cajas sin rótulo -->
-          <rect x="34" y="120" width="190" height="10" rx="3" fill="#C9A98C"/><rect x="34" y="228" width="190" height="10" rx="3" fill="#C9A98C"/>
-          <rect x="44" y="64" width="78" height="56" rx="4" fill="#D9B48F"/><rect x="128" y="74" width="88" height="46" rx="4" fill="#CFA67C"/>
-          <rect x="44" y="164" width="96" height="64" rx="4" fill="#CFA67C"/><rect x="146" y="176" width="70" height="52" rx="4" fill="#D9B48F"/>
-          <g font-family="Bricolage Grotesque, sans-serif" font-weight="800" fill="#fff"><text class="pulso" x="72" y="100" font-size="26">?</text><text x="162" y="106" font-size="22">?</text><text x="82" y="206" font-size="26">?</text><text x="170" y="210" font-size="20">2019</text></g>
-          <!-- Cajas en el piso -->
-          <rect x="560" y="300" width="120" height="86" rx="5" fill="#D9B48F"/><rect x="548" y="292" width="144" height="16" rx="4" fill="#C49770"/>
-          <g class="tambalea"><rect x="600" y="230" width="84" height="64" rx="5" fill="#E2C19F" transform="rotate(-6 642 262)"/></g>
-          <text class="tiembla" x="604" y="352" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="30" fill="#fff">???</text>
-          <!-- Escritorio -->
-          <rect x="190" y="318" width="360" height="18" rx="5" fill="#0F2A44"/>
-          <rect x="206" y="336" width="12" height="62" fill="#16395C"/><rect x="522" y="336" width="12" height="62" fill="#16395C"/>
-          <!-- Pantalla -->
-          <rect x="398" y="226" width="124" height="82" rx="8" fill="#16395C"/><rect x="406" y="234" width="108" height="64" rx="4" fill="#E6F7FA"/>
-          <rect x="452" y="308" width="16" height="12" fill="#16395C"/>
-          <g class="busca" fill="#9FB3C8"><rect x="414" y="244" width="70" height="6" rx="3"/><rect x="414" y="256" width="88" height="6" rx="3"/><rect x="414" y="268" width="56" height="6" rx="3"/></g>
-          <text x="440" y="290" font-family="Plus Jakarta Sans, sans-serif" font-weight="700" font-size="11" fill="#E8603E" class="parpadea">0 resultados</text>
-          <!-- Carpetas abiertas y papeles -->
-          <path d="M214 312l58-20 64 6-46 22z" fill="#F2B33D"/><path d="M226 306l50-16 50 5-40 16z" fill="#fff"/>
-          <rect x="300" y="300" width="80" height="14" rx="3" fill="#7C6CF2" opacity=".85"/>
-          <g class="vuela v1"><g transform="rotate(-14 250 160)"><rect x="236" y="138" width="40" height="52" rx="3" fill="#fff" stroke="#D5DFE8"/><path d="M243 150h26M243 158h20M243 166h24" stroke="#C9D6E2" stroke-width="3"/></g></g>
-          <g class="vuela v2"><g transform="rotate(18 520 170)"><rect x="504" y="146" width="40" height="52" rx="3" fill="#fff" stroke="#D5DFE8"/><path d="M511 158h26M511 166h18M511 174h24" stroke="#C9D6E2" stroke-width="3"/></g></g>
-          <!-- La secretaria -->
-          <path d="M300 318c0-50 22-82 62-82s62 32 62 82z" fill="#7C6CF2"/>
-          <path d="M346 238l16 26 16-26" fill="#fff"/>
-          <rect x="352" y="214" width="20" height="26" rx="8" fill="#E9B894"/>
-          <g class="cabeza">
-          <circle cx="362" cy="188" r="34" fill="#F1C7A5"/>
-          <path d="M326 192c-4-34 14-54 38-54 26 0 42 20 36 50-6-14-18-24-36-26-16 0-30 10-38 30z" fill="#2B1B14"/>
-          <path d="M328 186c-10 18-6 48 4 60 4-14 2-34 0-46z" fill="#2B1B14"/>
-          <path d="M346 186q6-4 12 0M368 186q6-4 12 0" stroke="#2B1B14" stroke-width="3" fill="none" stroke-linecap="round"/>
-          <g class="ojos"><circle cx="352" cy="194" r="3" fill="#2B1B14"/><circle cx="374" cy="194" r="3" fill="#2B1B14"/></g>
-          <path d="M354 212q9-6 18 0" stroke="#B5634B" stroke-width="3" fill="none" stroke-linecap="round"/>
-          <path class="gota" d="M330 160c-6 10-6 16 0 18 6-2 6-8 0-18z" fill="#7FD3F2"/>
-          </g>
-          <!-- brazo a la frente -->
-          <g class="rasca"><path d="M408 270c22-14 24-48 6-70" stroke="#7C6CF2" stroke-width="22" fill="none" stroke-linecap="round"/>
-          <circle cx="408" cy="190" r="12" fill="#F1C7A5"/></g>
-          <!-- brazo con celular -->
-          <path d="M318 268c-20 16-22 38-6 50" stroke="#7C6CF2" stroke-width="22" fill="none" stroke-linecap="round"/>
-          <rect x="300" y="296" width="22" height="34" rx="5" fill="#111B21"/><rect class="brilla" x="303" y="300" width="16" height="24" rx="2" fill="#25D366"/>
-          <!-- gota de sudor y signos -->
-          <g font-family="Bricolage Grotesque, sans-serif" font-weight="800" fill="#FF7A59"><text class="sube s1" x="270" y="120" font-size="44">?</text><text class="sube s2" x="446" y="138" font-size="34">?</text><text class="sube s3" x="300" y="80" font-size="26">?</text></g>
-        </svg>
-      </div>
-      <div class="final">
-        <div class="fin mal"><small>Sin sistema</small><b id="fin-mal">2 h 47 min</b><p>buscando, y el contrato nunca apareció.</p></div>
-        <div class="fin bien"><small>Con Folio Digital</small><b>8 segundos</b><p>Escribe «contrato constructora» y sale: Caja C-014, estante 3.</p></div>
-      </div>
-    </div>
-
-    <div class="celular" aria-label="Conversación de WhatsApp de la oficina">
-      <div class="pant">
-        <div class="top"><div class="av">O</div><div><b>Oficina 🏢</b><small>Gerencia, Contabilidad, Archivo y 6 más</small></div></div>
-        <div class="chat" id="chat">
-          <div class="bur yo">¿Alguien sabe dónde está el contrato de Constructora del Llano? El gerente lo necesita ya 🙏<small>9:04</small></div>
-          <div class="bur"><i style="color:#1F7AEC">Contabilidad</i>Uy no, por aquí no ha pasado<small>9:12</small></div>
-          <div class="bur"><i style="color:#12946C">Recursos Humanos</i>Creo que lo tenía Pedro, el que se fue en marzo 🤔<small>9:31</small></div>
-          <div class="bur"><i style="color:#C98A0C">Archivo</i>Revisa la caja azul de la bodega, la de 2019<small>9:58</small></div>
-          <div class="bur yo">Ya revisé tres cajas y nada 😩<small>10:42</small></div>
-          <div class="bur"><i style="color:#7C6CF2">Comercial</i>¿No estará en el correo de Pedro?<small>11:05</small></div>
-          <div class="bur ger"><i style="color:#E8603E">Gerente</i>¿Todavía no aparece? El cliente está esperando en la sala 😤<small>11:47</small></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
 
 <!-- ================= 3 · LA SOLUCIÓN ================= -->
 <!-- ================= 4 · CALCULADORA ================= -->
@@ -1082,7 +994,7 @@ input[type=range]{width:100%;accent-color:var(--agua)}
           <option>Revisión gratis de los documentos de mi empresa</option><option>Capacitar a mi equipo (Aula Virtual)</option><option>Curso de Ventanilla Única de Correspondencia</option>
           <option>Organizar mi archivo</option><option>Programa de Gestión Documental</option><option>Digitalizar y crear la base de datos</option><option>Conocer el software SGDEA-NUBE</option>
         </select>
-        <button class="btn" type="submit"><svg class="i"><use href="#i-chat"/></svg>Enviar por WhatsApp</button>
+        <button class="btn" type="submit"><svg class="i"><use href="#i-chat"/></svg>Pedir revisión gratis</button>
         <small>Le respondemos lo antes posible.</small>
         <small class="aviso-datos">Sus datos solo se usan para responderle. <a href="politica-datos.html">Política de tratamiento de datos</a>.</small>
       </form>
@@ -1128,24 +1040,6 @@ input[type=range]{width:100%;accent-color:var(--agua)}
 </footer>
 
 <script>
-// La historia: los mensajes aparecen y el reloj avanza cuando la sección se ve (una sola vez).
-(() => {
-  const burbujas = [...document.querySelectorAll("#chat .bur")];
-  const horas = ["9:04", "9:12", "9:31", "9:58", "10:42", "11:05", "11:47"];
-  const reloj = document.getElementById("reloj"), perdido = document.getElementById("perdido");
-  const mH = document.getElementById("m-hora"), mM = document.getElementById("m-min");
-  const mover = (hhmm) => {
-    const [h, m] = hhmm.split(":").map(Number);
-    mM.style.transform = `rotate(${m * 6}deg)`; mH.style.transform = `rotate(${(h % 12) * 30 + m / 2}deg)`;
-    const total = (h - 9) * 60 + m; reloj.textContent = hhmm;
-    perdido.textContent = total >= 60 ? `${Math.floor(total / 60)} h ${total % 60} min` : `${total} min`;
-  };
-  mover("9:00");
-  const quieto = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const correr = () => burbujas.forEach((b, i) => setTimeout(() => { b.classList.add("ver"); mover(horas[i]); }, quieto ? 0 : 400 + i * 1100));
-  const obs = new IntersectionObserver((e) => { if (e[0].isIntersecting) { correr(); obs.disconnect(); } }, { threshold: 0.35 });
-  obs.observe(document.getElementById("historia"));
-})();
 // Calculadora: todo ocurre en el navegador; nada se envía.
 const $ = (id) => document.getElementById(id);
 const pesos = (n) => "$" + Math.round(n).toLocaleString("es-CO");
@@ -1171,6 +1065,14 @@ $("formu").addEventListener("submit", (e) => {
   const b = document.querySelector(".menu-btn"), m = document.getElementById("menu-movil");
   b.addEventListener("click", () => { const abre = m.hidden; m.hidden = !abre; b.setAttribute("aria-expanded", String(abre)); });
   m.addEventListener("click", (e) => { if (e.target.closest("a")) { m.hidden = true; b.setAttribute("aria-expanded", "false"); } });
+})();
+// Botón flotante: aparece solo cuando el botón principal ya quedó atrás (no se montan)
+(() => {
+  const f = document.querySelector(".wa-flota"), ctas = document.querySelector(".hero .ctas"), contacto = document.getElementById("contacto");
+  let pasado = false, enContacto = false;
+  const pinta = () => f.classList.toggle("visible", pasado && !enContacto);
+  new IntersectionObserver(([e]) => { pasado = !e.isIntersecting && e.boundingClientRect.top < 0; pinta(); }).observe(ctas);
+  new IntersectionObserver(([e]) => { enContacto = e.isIntersecting; pinta(); }).observe(contacto);
 })();
 // Lista de espera del Campus Virtual → WhatsApp con el mensaje listo (los datos solo le llegan a Folio Digital).
 $("form-espera").addEventListener("submit", (e) => {
