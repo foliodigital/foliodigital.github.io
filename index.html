@@ -210,6 +210,7 @@ svg.i{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stro
 .pasos-diag span{font-size:14px;color:var(--gris)}
 @media (max-width:860px){.pasos-diag{grid-template-columns:1fr 1fr}}
 @media (max-width:520px){.pasos-diag{grid-template-columns:1fr}}
+.calc .sal .supuestos{display:block;margin-top:12px;font-size:12px;letter-spacing:0;text-transform:none;opacity:.75}
 .aviso-datos{display:block;margin-top:8px;font-size:12.5px;color:var(--gris)}
 .aviso-datos a,.espera .autoriza a{text-decoration:underline}
 .espera{margin-top:22px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.06);border-radius:22px;padding:24px 28px}
@@ -562,7 +563,7 @@ input[type=range]{width:100%;accent-color:var(--agua)}
   <div class="cont">
     <a href="#inicio"><img src="logo-oscuro.svg" alt="Folio Digital"></a>
     <nav aria-label="Menú principal">
-      <a href="#problema">El problema</a><a href="#solucion">Soluciones</a><a href="#aula">Capacitación</a><a href="#organizacion">Organización</a><a href="#software">Software</a><a href="#contacto">Contacto</a>
+      <a href="#solucion">Servicios</a><a href="#problema">El problema</a><a href="#aula">Capacitación</a><a href="#organizacion">Organización</a><a href="#software">Software</a><a href="#contacto">Contacto</a>
     </nav>
     <a class="aula-btn" href="https://folio-digital---aula-virtual.web.app" target="_blank" rel="noopener"><svg class="i" style="width:18px;height:18px"><use href="#i-birrete"/></svg>Aula Virtual</a>
     <a class="btn btn-oro" href="#contacto">Diagnóstico gratis</a>
@@ -589,7 +590,7 @@ input[type=range]{width:100%;accent-color:var(--agua)}
       <div><b>Organizamos</b><span>su archivo en papel y digital</span></div>
       <div><b>Capacitamos</b><span>a su equipo con Aula Virtual</span></div>
       <div><b>Lo sostenemos</b><span>con software de gestión documental</span></div>
-      <div class="r-diag"><b>Diagnóstico gratis</b><span>30–45 min por videollamada, sin compromiso</span></div>
+      <div class="r-diag"><b>Diagnóstico gratis</b><span>30–45 min por videollamada, con resumen de hallazgos y sin compromiso</span></div>
     </div>
   </div>
 </section>
@@ -598,6 +599,23 @@ input[type=range]{width:100%;accent-color:var(--agua)}
   <span>Organización de archivos</span><span>Programa de gestión documental</span><span>Digitalización</span><span>Base de datos con metadatos</span><span>Ventanilla única de correspondencia</span><span>Capacitación de equipos</span><span>Archivo en la nube</span><span>Software de gestión documental</span>
   <span>Organización de archivos</span><span>Programa de gestión documental</span><span>Digitalización</span><span>Base de datos con metadatos</span><span>Ventanilla única de correspondencia</span><span>Capacitación de equipos</span><span>Archivo en la nube</span><span>Software de gestión documental</span>
 </div></div>
+
+<!-- ================= SERVICIOS (primero) ================= -->
+<section class="sec suave" id="solucion">
+  <div class="cont">
+    <div class="cab-sec centro">
+      <span class="ceja c-agua">La solución inteligente</span>
+      <h2 class="tit">Orden que se instala, <span class="res r-agua">se aprende</span> y se sostiene</h2>
+      <p class="lead">No basta con organizar una vez. Por eso trabajamos en cuatro frentes que se complementan.</p>
+    </div>
+    <div class="solucion">
+      <a class="sl" href="#organizacion"><span class="n">01</span><div class="ic c-verde"><svg class="i"><use href="#i-caja"/></svg></div><h3>Organizamos su archivo</h3><p>Del caos en cajas a un archivo rotulado, inventariado y digitalizado, con base de datos para encontrar todo en segundos.</p><span class="mas">Cómo lo hacemos <svg class="i" style="width:16px;height:16px"><use href="#i-flecha"/></svg></span></a>
+      <a class="sl" href="#pgd"><span class="n">02</span><div class="ic c-oro"><svg class="i"><use href="#i-libro"/></svg></div><h3>Programa de Gestión Documental</h3><p>Las reglas claras de su empresa: cómo se recibe, se guarda, se encuentra y cuánto tiempo se conserva cada documento.</p><span class="mas">Qué incluye <svg class="i" style="width:16px;height:16px"><use href="#i-flecha"/></svg></span></a>
+      <a class="sl estrella" href="#aula"><span class="eti">MÁS SOLICITADO</span><span class="n" style="color:rgba(255,255,255,.4)">03</span><div class="ic" style="background:rgba(242,193,78,.16);color:var(--oro)"><svg class="i"><use href="#i-birrete"/></svg></div><h3>Capacitamos a su equipo</h3><p>Formamos a su personal en los procesos profesionales de la gestión documental, con Aula Virtual, evaluación y certificado.</p><span class="mas">Ver la capacitación <svg class="i" style="width:16px;height:16px"><use href="#i-flecha"/></svg></span></a>
+      <a class="sl" href="#software"><span class="n">04</span><div class="ic c-fucsia"><svg class="i"><use href="#i-pantalla"/></svg></div><h3>Lo sostenemos con software</h3><p>SGDEA-NUBE radica, clasifica y avisa vencimientos para que el orden no dependa de la memoria de nadie.</p><span class="mas">Conocer el software <svg class="i" style="width:16px;height:16px"><use href="#i-flecha"/></svg></span></a>
+    </div>
+  </div>
+</section>
 
 <!-- ================= 2 · EL PROBLEMA ================= -->
 <section class="sec" id="problema">
@@ -615,7 +633,7 @@ input[type=range]{width:100%;accent-color:var(--agua)}
       <div class="ps"><span class="ck"><svg class="i"><use href="#i-check"/></svg></span><div><b>No sabe qué puede botar</b><span>Guarda todo «por si acaso»… o bota justo lo que la ley le exige conservar.</span></div></div>
       <div class="ps"><span class="ck"><svg class="i"><use href="#i-check"/></svg></span><div><b>Las cartas llegan y nadie responde</b><span>Peticiones y requerimientos que se quedan en un escritorio hasta que vencen.</span></div></div>
     </div>
-    <div class="veredicto"><p>Nada de esto es culpa de su equipo: <b>es que nadie les dio un sistema ni les enseñó a usarlo.</b> Eso es exactamente lo que hacemos.</p><a class="btn btn-oro" href="#solucion">Ver la solución</a></div>
+    <div class="veredicto"><p>Nada de esto es culpa de su equipo: <b>es que nadie les dio un sistema ni les enseñó a usarlo.</b> Eso es exactamente lo que hacemos.</p><a class="btn btn-oro" href="#contacto">Pedir mi diagnóstico gratis</a></div>
   </div>
 </section>
 
@@ -708,26 +726,10 @@ input[type=range]{width:100%;accent-color:var(--agua)}
 
 
 <!-- ================= 3 · LA SOLUCIÓN ================= -->
-<section class="sec suave" id="solucion">
-  <div class="cont">
-    <div class="cab-sec centro">
-      <span class="ceja c-agua">La solución inteligente</span>
-      <h2 class="tit">Orden que se instala, <span class="res r-agua">se aprende</span> y se sostiene</h2>
-      <p class="lead">No basta con organizar una vez. Por eso trabajamos en cuatro frentes que se complementan.</p>
-    </div>
-    <div class="solucion">
-      <a class="sl" href="#organizacion"><span class="n">01</span><div class="ic c-verde"><svg class="i"><use href="#i-caja"/></svg></div><h3>Organizamos su archivo</h3><p>Del caos en cajas a un archivo rotulado, inventariado y digitalizado, con base de datos para encontrar todo en segundos.</p><span class="mas">Cómo lo hacemos <svg class="i" style="width:16px;height:16px"><use href="#i-flecha"/></svg></span></a>
-      <a class="sl" href="#pgd"><span class="n">02</span><div class="ic c-oro"><svg class="i"><use href="#i-libro"/></svg></div><h3>Programa de Gestión Documental</h3><p>Las reglas claras de su empresa: cómo se recibe, se guarda, se encuentra y cuánto tiempo se conserva cada documento.</p><span class="mas">Qué incluye <svg class="i" style="width:16px;height:16px"><use href="#i-flecha"/></svg></span></a>
-      <a class="sl estrella" href="#aula"><span class="eti">MÁS SOLICITADO</span><span class="n" style="color:rgba(255,255,255,.4)">03</span><div class="ic" style="background:rgba(242,193,78,.16);color:var(--oro)"><svg class="i"><use href="#i-birrete"/></svg></div><h3>Capacitamos a su equipo</h3><p>Formamos a su personal en los procesos profesionales de la gestión documental, con Aula Virtual, evaluación y certificado.</p><span class="mas">Ver la capacitación <svg class="i" style="width:16px;height:16px"><use href="#i-flecha"/></svg></span></a>
-      <a class="sl" href="#software"><span class="n">04</span><div class="ic c-fucsia"><svg class="i"><use href="#i-pantalla"/></svg></div><h3>Lo sostenemos con software</h3><p>SGDEA-NUBE radica, clasifica y avisa vencimientos para que el orden no dependa de la memoria de nadie.</p><span class="mas">Conocer el software <svg class="i" style="width:16px;height:16px"><use href="#i-flecha"/></svg></span></a>
-    </div>
-  </div>
-</section>
-
 <!-- ================= 4 · CALCULADORA ================= -->
 <section class="sec" style="padding-top:72px;padding-bottom:72px" id="calculadora-sec">
   <div class="cont">
-    <div class="cab-sec centro"><span class="ceja c-coral">Haga la cuenta</span><h2 class="tit">El archivo no es un gasto. <span class="res r-coral">Es un seguro.</span></h2><p class="lead">Mueva las barras con los datos de su empresa y vea cuánto le cuesta, cada año, el tiempo que su equipo pasa buscando papeles.</p></div>
+    <div class="cab-sec centro"><span class="ceja c-coral">Haga la cuenta</span><h2 class="tit">El archivo no es un gasto. <span class="res r-coral">Es un seguro.</span></h2><p class="lead">Mueva las barras con los datos de su empresa y estime cuánto le cuesta, cada año, el tiempo que su equipo pasa buscando papeles.</p></div>
     <div class="calc" id="calculadora" style="margin-top:0">
       <div class="ent">
         <h3>¿Cuánto le cuesta buscar documentos?</h3>
@@ -738,10 +740,11 @@ input[type=range]{width:100%;accent-color:var(--agua)}
       </div>
       <div class="sal">
         <div class="malla" aria-hidden="true"><i></i><i></i></div>
-        <small>SU EMPRESA PAGA, CADA AÑO, POR BUSCAR</small>
+        <small>ESTIMADO: LO QUE SU EMPRESA PAGA CADA AÑO POR BUSCAR</small>
         <div class="grande" id="costo">$0</div>
-        <p>en salarios de tiempo que no produce. Con el archivo organizado y un buscador, la mayor parte de ese tiempo se recupera.</p>
+        <p>en salarios por horas dedicadas a buscar documentos. Es una estimación, no un ahorro garantizado: con el archivo organizado y un buscador, buena parte de ese tiempo se puede recuperar.</p>
         <div class="horas"><span id="h-anio">0 horas al año</span><span id="d-anio">0 días de trabajo</span></div>
+        <small class="supuestos">Supuestos: 22 días laborales al mes, jornadas de 8 horas y valor de la hora = salario mensual ÷ 176.</small>
       </div>
     </div>
   </div>
@@ -1041,13 +1044,13 @@ input[type=range]{width:100%;accent-color:var(--agua)}
     <div class="cab-sec centro">
       <span class="ceja c-menta">Hablemos</span>
       <h2 class="tit">Empiece con un <span class="res r-menta">diagnóstico gratis</span></h2>
-      <p class="lead">30 a 45 minutos por videollamada. Le decimos qué riesgos tiene su archivo y cómo resolverlos. El diagnóstico no lo obliga a contratar nada.</p>
+      <p class="lead">30 a 45 minutos por videollamada. Al terminar se lleva un resumen de hallazgos por escrito: qué riesgos tiene su archivo y cómo resolverlos. El diagnóstico no lo obliga a contratar nada.</p>
     </div>
     <div class="pasos-diag" aria-label="Cómo funciona el diagnóstico">
       <div><span class="n">1</span><b>Nos escribe</b><span>Por WhatsApp o con el formulario de abajo, y acordamos la hora.</span></div>
       <div><span class="n">2</span><b>Videollamada de 30–45 min</b><span>Revisamos cómo guardan los documentos, dónde se pierden, qué deben conservar y qué riesgos legales tienen.</span></div>
-      <div><span class="n">3</span><b>Recibe su informe</b><span>Un informe corto (1–2 páginas) con lo encontrado y una cotización con precio fijo y tiempos.</span></div>
-      <div><span class="n">4</span><b>Usted decide</b><span>Sin compromiso: si no contrata, el informe es suyo igual.</span></div>
+      <div><span class="n">3</span><b>Recibe su resumen de hallazgos</b><span>1–2 páginas con lo encontrado, los riesgos y qué hacer primero, más una cotización con precio fijo y tiempos.</span></div>
+      <div><span class="n">4</span><b>Usted decide</b><span>Sin compromiso: si no contrata, el resumen es suyo igual.</span></div>
     </div>
     <div class="contacto">
       <form class="formu" id="formu">
