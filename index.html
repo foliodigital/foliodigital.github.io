@@ -645,6 +645,16 @@ input[type=range]{width:100%;accent-color:var(--agua)}
 .sala .tag{display:inline-block;padding:4px 10px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:.06em;background:rgba(255,255,255,.12);color:#fff}
 .sala .tag.c-agua{background:#00ABC7;color:#0F2A44}.sala .tag.c-coral{background:#FF7A59;color:#0F2A44}
 @media(max-width:600px){.au-cert{top:-30px;right:6px;padding:7px 10px;transform-origin:right top}.au-cert .qr{width:24px;height:24px}.au-cert b{font-size:12px}.aula-ilus{margin-top:30px}}
+
+/* Botón Aula Virtual: píldora blanca con borde en degradado y círculo de ícono */
+.nav .aula-btn{height:48px;padding:0 20px 0 6px;gap:10px;color:#0F2A44;font-weight:800;letter-spacing:.1px;border:2px solid transparent;
+  background:linear-gradient(#fff,#fff) padding-box,linear-gradient(110deg,#00ABC7,#22C55E 50%,#E6007E) border-box;
+  box-shadow:0 8px 22px -8px rgba(0,171,199,.75),inset 0 -2px 0 rgba(15,42,68,.06);position:relative;overflow:hidden;flex:none}
+.nav .aula-btn .i{width:34px!important;height:34px!important;padding:8px;border-radius:50%;color:#fff!important;background:linear-gradient(135deg,#00ABC7,#22C55E);box-shadow:0 4px 10px -3px rgba(0,171,199,.8)}
+.nav .aula-btn::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.85),transparent);transform:skewX(-20deg);animation:aula-brillo 4.5s ease-in-out infinite}
+@keyframes aula-brillo{0%,70%{left:-60%}100%{left:130%}}
+.nav .aula-btn:hover{transform:translateY(-2px);box-shadow:0 14px 28px -10px rgba(230,0,126,.55),0 0 0 4px rgba(0,171,199,.18)}
+@media(prefers-reduced-motion:reduce){.nav .aula-btn::after{animation:none;display:none}}
 </style>
 </head>
 <body>
