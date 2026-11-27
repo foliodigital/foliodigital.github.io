@@ -569,6 +569,19 @@ input[type=range]{width:100%;accent-color:var(--agua)}
 .tiempos .nota-legal{margin-top:12px;font-size:13px;color:var(--gris);background:var(--t-oro);border-radius:12px;padding:10px 12px}
 .ilustrativo{margin:10px auto 0;font-size:13px;color:var(--gris);text-align:center}
 .ilustrativo.izq{text-align:left;margin:4px 0 8px}
+
+/* Escala real de años (0–20) con colores vivos; se llena al aparecer */
+.tiempos .tm .top{display:flex;justify-content:space-between;flex-wrap:nowrap}
+.tiempos .tm .top b{flex:1;min-width:0}
+.tiempos .anios{flex:none;font-family:"Bricolage Grotesque",sans-serif!important;font-weight:800;font-size:15px!important;color:#fff!important;padding:4px 12px;border-radius:999px}
+.tiempos .anios.a1{background:linear-gradient(90deg,#00ABC7,#22C55E)} .tiempos .anios.a2{background:linear-gradient(90deg,#E6007E,#FF7A59)} .tiempos .anios.a3{background:linear-gradient(90deg,#7C6CF2,#F2C14E)}
+.regla{display:flex;justify-content:space-between;font-size:11px;font-weight:700;color:var(--gris);margin:6px 0 2px;font-family:"JetBrains Mono",monospace}
+.escala{position:relative;height:12px;margin-top:10px;border-radius:999px;background:repeating-linear-gradient(90deg,#EEF2F7 0 calc(25% - 2px),#D9E1EA calc(25% - 2px) 25%)}
+.escala i{position:absolute;inset:0 auto 0 0;width:0;border-radius:999px;background:var(--g);box-shadow:0 4px 14px -4px rgba(230,0,126,.35);transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.tiempos.ver .escala i{width:var(--w)}
+.escala.variable i{background:repeating-linear-gradient(45deg,#7C6CF2 0 10px,#F2C14E 10px 20px);background-size:200% 100%;opacity:.9;animation:rayas 3s linear infinite}
+@keyframes rayas{to{background-position:-56px 0}}
+@media(prefers-reduced-motion:reduce){.escala i{transition:none}.escala.variable i{animation:none}}
 </style>
 </head>
 <body>
@@ -903,13 +916,17 @@ input[type=range]{width:100%;accent-color:var(--agua)}
     <div class="tiempos">
       <h3>¿Cuánto tiempo se guarda cada documento?</h3>
       <p>Depende del tipo de documento y de las obligaciones de cada empresa. Dos ejemplos de plazos que fija la ley para casos concretos:</p>
-      <div class="tm"><div class="top"><b>Libros y papeles del comerciante</b><span class="anios">10 años</span></div>
+      <div class="regla" aria-hidden="true"><span>0</span><span>5</span><span>10</span><span>15</span><span>20 años</span></div>
+      <div class="tm"><div class="top"><b>Libros y papeles del comerciante</b><span class="anios a1">10 años</span></div>
+        <div class="escala" role="img" aria-label="10 de 20 años en la escala"><i style="--w:50%;--g:linear-gradient(90deg,#00ABC7,#22C55E)"></i></div>
         <small>Contados desde la fecha del último asiento, documento o comprobante. Aplica a comerciantes y a quienes la ley obliga a conservar esa información · Ley 962 de 2005, art. 28.</small></div>
-      <div class="tm"><div class="top"><b>Registros del Sistema de Seguridad y Salud en el Trabajo (SG-SST)</b><span class="anios">20 años</span></div>
+      <div class="tm"><div class="top"><b>Registros del Sistema de Seguridad y Salud en el Trabajo (SG-SST)</b><span class="anios a2">20 años</span></div>
+        <div class="escala" role="img" aria-label="20 de 20 años en la escala"><i style="--w:100%;--g:linear-gradient(90deg,#E6007E,#FF7A59)"></i></div>
         <small>Contados desde que termina la relación laboral; incluye, por ejemplo, los conceptos de los exámenes de ingreso, periódicos y de retiro · Decreto 1072 de 2015, art. 2.2.4.6.13. No es la historia clínica ocupacional: esa tiene reserva médica y el mismo artículo limita quién puede acceder a ella.</small></div>
-      <div class="tm"><div class="top"><b>Contratos, actas y demás documentos</b><span class="anios">Según su empresa</span></div>
+      <div class="tm"><div class="top"><b>Contratos, actas y demás documentos</b><span class="anios a3">Según su empresa</span></div>
+        <div class="escala variable" role="img" aria-label="Plazo variable según la empresa"><i style="--w:100%"></i></div>
         <small>Se definen en el programa de su empresa, de acuerdo con las normas que le apliquen.</small></div>
-      <p class="nota-legal">Son ejemplos informativos, no una tabla de retención. En la revisión gratis identificamos qué plazos aplican a su empresa.</p>
+      <p class="nota-legal">La escala muestra solo los años mínimos de cada ejemplo. Son ejemplos informativos, no una tabla de retención. En la revisión gratis identificamos qué plazos aplican a su empresa.</p>
     </div>
   </div>
 </section>
@@ -1132,6 +1149,9 @@ document.querySelectorAll('a[href="#inicio"]').forEach((enlace) => {
     });
   });
 });
+// Las barras de la escala de años se llenan cuando la caja aparece en pantalla
+(() => { const c = document.querySelector(".tiempos"); if (!c) return;
+  new IntersectionObserver((e, o) => { if (e[0].isIntersecting) { c.classList.add("ver"); o.disconnect(); } }, { threshold: .3 }).observe(c); })();
 // Menú compacto del celular
 (() => {
   const b = document.querySelector(".menu-btn"), m = document.getElementById("menu-movil");
