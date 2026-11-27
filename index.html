@@ -75,8 +75,9 @@ svg.i{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stro
 .nav nav a:focus-visible,.nav-normas summary:focus-visible{color:#fff}
 .nav nav a[aria-current="page"]{color:#fff}
 .nav .btn{height:44px;font-size:14px;padding:0 18px}
-.nav .aula-btn{display:inline-flex;align-items:center;gap:8px;height:46px;padding:0 18px;border-radius:999px;border:2px solid var(--oro);background:rgba(242,193,78,.14);color:var(--oro);font-weight:800;font-size:15px}
-.nav .aula-btn:hover{background:rgba(242,193,78,.1)}
+.nav .aula-btn{display:inline-flex;align-items:center;gap:8px;height:46px;padding:0 20px;border-radius:999px;border:2px solid #00ABC7;background:#fff;color:#007C93;font-weight:800;font-size:15px;box-shadow:0 0 0 4px rgba(0,171,199,.18),0 8px 22px -6px rgba(0,171,199,.6);transition:transform .15s,box-shadow .2s}
+.nav .aula-btn:hover{transform:translateY(-1px);box-shadow:0 0 0 6px rgba(0,171,199,.25),0 12px 26px -6px rgba(0,171,199,.7)}
+.nav .aula-btn .i{color:#00ABC7}
 .nav-normas{position:relative}
 .nav-normas summary{display:flex;align-items:center;gap:6px;cursor:pointer;list-style:none;white-space:nowrap}
 .nav-normas summary::-webkit-details-marker{display:none}
@@ -582,6 +583,20 @@ input[type=range]{width:100%;accent-color:var(--agua)}
 .escala.variable i{background:repeating-linear-gradient(45deg,#7C6CF2 0 10px,#F2C14E 10px 20px);background-size:200% 100%;opacity:.9;animation:rayas 3s linear infinite}
 @keyframes rayas{to{background-position:-56px 0}}
 @media(prefers-reduced-motion:reduce){.escala i{transition:none}.escala.variable i{animation:none}}
+
+/* Dibujo animado del flujo del documento (PGD) */
+.pgd-der{display:grid;gap:18px;align-content:start}
+.flujo{background:linear-gradient(135deg,#F0FBFD,#FFF4EE 60%,#FDEBF5);border:1px solid var(--linea);border-radius:22px;padding:12px 10px 4px;box-shadow:var(--sombra)}
+.flujo svg{display:block;width:100%;height:auto}
+.fl-ruta{animation:fl-corre 1.2s linear infinite}
+@keyframes fl-corre{to{stroke-dashoffset:-44}}
+.fl-escaneo{animation:fl-esc 2.4s ease-in-out infinite}
+@keyframes fl-esc{0%,100%{transform:translateY(0)}50%{transform:translateY(42px)}}
+.fl-flota{animation:fl-flo 4s ease-in-out infinite}
+@keyframes fl-flo{0%,100%{transform:translate(222px,22px)}50%{transform:translate(222px,14px)}}
+.fl-gira{animation:fl-gir 3s linear infinite}
+@keyframes fl-gir{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.fl-ruta,.fl-escaneo,.fl-flota,.fl-gira{animation:none}}
 </style>
 </head>
 <body>
@@ -913,6 +928,57 @@ input[type=range]{width:100%;accent-color:var(--agua)}
         <div class="pl"><div class="ic c-coral"><svg class="i"><use href="#i-escudo"/></svg></div><div><b>Qué hacer si pasa algo</b><span>Copias de respaldo y un plan para no perder la información ante un desastre.</span></div></div>
       </div>
     </div>
+    <div class="pgd-der">
+    <div class="flujo" aria-label="Dibujo animado: los documentos pasan del computador a la nube con respaldo y al archivo">
+      <svg viewBox="0 0 560 250" role="img" aria-hidden="true">
+        <defs>
+          <linearGradient id="fl-nube" x1="0" x2="1"><stop offset="0" stop-color="#00ABC7"/><stop offset="1" stop-color="#22C55E"/></linearGradient>
+          <linearGradient id="fl-caja" x1="0" x2="1"><stop offset="0" stop-color="#FF7A59"/><stop offset="1" stop-color="#F2C14E"/></linearGradient>
+          <linearGradient id="fl-ruta" x1="0" x2="1"><stop offset="0" stop-color="#00ABC7"/><stop offset=".5" stop-color="#E6007E"/><stop offset="1" stop-color="#FF7A59"/></linearGradient>
+          <path id="fl-p" d="M120 120 C 190 40, 240 40, 280 70 C 320 100, 360 120, 450 135"/>
+        </defs>
+        <!-- ruta animada -->
+        <use href="#fl-p" class="fl-ruta" fill="none" stroke="url(#fl-ruta)" stroke-width="4" stroke-linecap="round" stroke-dasharray="10 12"/>
+        <!-- computador -->
+        <g transform="translate(20 70)">
+          <rect x="0" y="0" width="110" height="78" rx="10" fill="#0F2A44"/>
+          <rect x="8" y="8" width="94" height="58" rx="5" fill="#16395C"/>
+          <rect x="30" y="14" width="46" height="46" rx="4" fill="#fff"/>
+          <rect x="37" y="22" width="30" height="4" rx="2" fill="#00ABC7"/><rect x="37" y="31" width="24" height="3" rx="1.5" fill="#CBD5E1"/><rect x="37" y="38" width="28" height="3" rx="1.5" fill="#CBD5E1"/><rect x="37" y="45" width="18" height="3" rx="1.5" fill="#E6007E"/>
+          <rect class="fl-escaneo" x="30" y="14" width="46" height="4" fill="#22C55E" opacity=".75"/>
+          <rect x="40" y="78" width="30" height="10" fill="#16395C"/><rect x="22" y="88" width="66" height="7" rx="3.5" fill="#0F2A44"/>
+        </g>
+        <!-- nube con respaldo -->
+        <g transform="translate(222 22)" class="fl-flota">
+          <path d="M28 64 a24 24 0 0 1 4-47 a30 30 0 0 1 56-8 a22 22 0 0 1 30 26 a20 20 0 0 1-6 29 z" fill="url(#fl-nube)"/>
+          <circle cx="62" cy="40" r="15" fill="#fff"/>
+          <path d="M55 40 l5 5 l10-11" stroke="#22C55E" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <g class="fl-gira" transform-origin="98 18"><circle cx="98" cy="18" r="11" fill="#E6007E"/><path d="M92 18 a6 6 0 0 1 11-3 M104 18 a6 6 0 0 1 -11 3" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"/></g>
+        </g>
+        <!-- archivo -->
+        <g transform="translate(440 80)">
+          <rect x="0" y="18" width="100" height="78" rx="8" fill="url(#fl-caja)"/>
+          <rect x="-4" y="6" width="108" height="18" rx="5" fill="#FF7A59"/>
+          <rect x="30" y="44" width="40" height="18" rx="4" fill="#fff"/>
+          <text x="50" y="57" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#0F2A44">C-014</text>
+          <rect x="22" y="72" width="56" height="5" rx="2.5" fill="#0F2A44" opacity=".35"/>
+        </g>
+        <!-- hojas que viajan -->
+        <g><rect width="20" height="26" rx="3" x="-10" y="-13" fill="#fff" stroke="#00ABC7" stroke-width="2.5"/><rect x="-6" y="-6" width="12" height="2.5" fill="#00ABC7"/><rect x="-6" y="0" width="9" height="2.5" fill="#CBD5E1"/>
+          <animateMotion dur="4s" repeatCount="indefinite" rotate="auto"><mpath href="#fl-p"/></animateMotion></g>
+        <g><rect width="20" height="26" rx="3" x="-10" y="-13" fill="#fff" stroke="#E6007E" stroke-width="2.5"/><rect x="-6" y="-6" width="12" height="2.5" fill="#E6007E"/><rect x="-6" y="0" width="9" height="2.5" fill="#CBD5E1"/>
+          <animateMotion dur="4s" begin="1.33s" repeatCount="indefinite" rotate="auto"><mpath href="#fl-p"/></animateMotion></g>
+        <g><rect width="20" height="26" rx="3" x="-10" y="-13" fill="#fff" stroke="#22C55E" stroke-width="2.5"/><rect x="-6" y="-6" width="12" height="2.5" fill="#22C55E"/><rect x="-6" y="0" width="9" height="2.5" fill="#CBD5E1"/>
+          <animateMotion dur="4s" begin="2.66s" repeatCount="indefinite" rotate="auto"><mpath href="#fl-p"/></animateMotion></g>
+        <!-- rótulos -->
+        <g font-family="Plus Jakarta Sans,sans-serif" font-size="13" font-weight="700" fill="#0F2A44" text-anchor="middle">
+          <text x="75" y="198">Se recibe y registra</text><text x="282" y="168">Se guarda en la nube</text><text x="488" y="198">Se archiva</text>
+        </g>
+        <g font-family="Plus Jakarta Sans,sans-serif" font-size="11" fill="#5C6B7A" text-anchor="middle">
+          <text x="75" y="214">número y fecha</text><text x="282" y="184">con copia de respaldo</text><text x="488" y="214">en caja y estante</text>
+        </g>
+      </svg>
+    </div>
     <div class="tiempos">
       <h3>¿Cuánto tiempo se guarda cada documento?</h3>
       <p>Depende del tipo de documento y de las obligaciones de cada empresa. Dos ejemplos de plazos que fija la ley para casos concretos:</p>
@@ -927,6 +993,7 @@ input[type=range]{width:100%;accent-color:var(--agua)}
         <div class="escala variable" role="img" aria-label="Plazo variable según la empresa"><i style="--w:100%"></i></div>
         <small>Se definen en el programa de su empresa, de acuerdo con las normas que le apliquen.</small></div>
       <p class="nota-legal">La escala muestra solo los años mínimos de cada ejemplo. Son ejemplos informativos, no una tabla de retención. En la revisión gratis identificamos qué plazos aplican a su empresa.</p>
+    </div>
     </div>
   </div>
 </section>
