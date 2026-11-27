@@ -729,6 +729,38 @@ body.con-aviso .nav{top:46px}
 .arte .circ svg.i{position:static!important;inset:auto!important;width:32px!important;height:32px!important;color:var(--b)}
 .sl.estrella{overflow:visible}.sl.estrella .arte{border-radius:24px 24px 0 0}
 .sl.estrella .eti{top:-13px;left:50%;transform:translateX(-50%);white-space:nowrap}
+
+/* Ruta compacta: pestañas por nivel + ficha + módulos en rejilla (sin barra de desplazamiento) */
+.ruta-top{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:22px}
+.ruta-top .ruta-sub{margin-bottom:0}
+.ruta-tabs{display:flex;gap:6px;background:rgba(255,255,255,.08);padding:6px;border-radius:999px}
+.rt{border:0;cursor:pointer;font:inherit;font-weight:700;font-size:14.5px;color:rgba(255,255,255,.75);background:transparent;padding:10px 18px;border-radius:999px;transition:background .2s,color .2s}
+.rt b{color:var(--c);margin-right:2px}
+.rt:hover{color:#fff}
+.rt.activo{background:#fff;color:#0F2A44}
+.rp{display:grid;grid-template-columns:340px 1fr;gap:22px;animation:rp-entra .35s ease}
+@keyframes rp-entra{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.rp-ficha{position:relative;overflow:hidden;border-radius:24px;padding:24px;color:#fff;background:var(--g);display:flex;flex-direction:column;gap:12px}
+.rp-ficha::after{content:"";position:absolute;width:160px;height:160px;border-radius:50%;right:-50px;top:-50px;background:rgba(255,255,255,.2);animation:rm-flota 6s ease-in-out infinite}
+.rp-ficha small{font-size:12px;font-weight:800;letter-spacing:1.6px;opacity:.9}
+.rp-ficha h4{font-family:"Bricolage Grotesque",sans-serif;font-size:26px;line-height:1.1;margin:0}
+.rp-cifras{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rp-cifras span{background:rgba(255,255,255,.2);border-radius:14px;padding:10px;text-align:center;font-size:12.5px}
+.rp-cifras b{display:block;font-family:"Bricolage Grotesque",sans-serif;font-size:30px;line-height:1}
+.rp-ficha dl{margin:0;display:grid;gap:2px;font-size:14px}
+.rp-ficha dt{font-weight:800;font-size:11.5px;letter-spacing:1px;text-transform:uppercase;opacity:.85;margin-top:6px}
+.rp-ficha dd{margin:0}
+.rp-ficha .btn{margin-top:auto;align-self:flex-start;background:#fff;color:#0F2A44;height:44px;position:relative;z-index:1}
+.rp-mods{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;align-content:start}
+.rp-mods li{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:10px 12px;color:#fff;font-weight:600;font-size:14.5px;line-height:1.25}
+.rp-mods li span{flex:none;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:16px;background:var(--chip,#00ABC7);color:#0F2A44}
+.rp[data-n="basico"] .rp-mods{--chip:#22C55E}.rp[data-n="medio"] .rp-mods{--chip:#FF7A59}.rp[data-n="intensivo"] .rp-mods{--chip:#00ABC7}
+.rp-mods li.previo{opacity:.55}.rp-mods li.previo span{background:rgba(255,255,255,.18);color:#fff}
+.ruta-ayuda{margin-top:20px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;background:rgba(255,255,255,.06);border:1px dashed rgba(255,255,255,.25);border-radius:18px;padding:14px 18px;color:#fff}
+@media(max-width:900px){.rp{grid-template-columns:1fr}.ruta-tabs{width:100%;justify-content:space-between}.rt{padding:9px 12px;font-size:13.5px}}
+@media(prefers-reduced-motion:reduce){.rp{animation:none}.rp-ficha::after{animation:none}}
+.rp[hidden]{display:none!important}
+.rp-mods li.incluye{grid-column:1/-1;background:transparent;border-style:dashed;color:rgba(255,255,255,.75);font-weight:600;justify-content:center}
 </style>
 </head>
 <body>
@@ -972,21 +1004,41 @@ body.con-aviso .nav{top:46px}
     </div>
 
 
+
     <div class="ruta" id="ruta">
-      <h3 class="ruta-tit">La <span class="grad-txt">ruta de aprendizaje</span> que sigue su equipo</h3>
-      <p class="ruta-sub">18 módulos en tres niveles. Cada nivel incluye el anterior. Deslice para ver los módulos.</p>
-      <div class="ruta-fila">
-        <div class="ruta-cab"><h4 style="color:#22C55E">01 · Básico · Fundamentos</h4><p>Para todo el personal: ordenar bien desde el primer día.</p><div class="ruta-flechas"><button type="button" class="rf-izq" aria-label="Anteriores">‹</button><button type="button" class="rf-der" aria-label="Siguientes">›</button></div></div>
-        <div class="ruta-pista"><div class="rm"><div class="rm-arte" style="background:linear-gradient(135deg,#00ABC7,#22C55E)"><span class="rm-n">1</span><i class="rm-f1"></i><i class="rm-f2"></i></div><b>¿Qué es un archivo?</b><span>Papel cualquiera vs. documento de archivo.</span></div><div class="rm"><div class="rm-arte" style="background:linear-gradient(135deg,#E6007E,#FF7A59)"><span class="rm-n">2</span><i class="rm-f1"></i><i class="rm-f2"></i></div><b>El ciclo vital del documento</b><span>Gestión, central e histórico.</span></div><div class="rm"><div class="rm-arte" style="background:linear-gradient(135deg,#7C6CF2,#00ABC7)"><span class="rm-n">3</span><i class="rm-f1"></i><i class="rm-f2"></i></div><b>Procedencia y orden original</b><span>Los dos principios de todo lo demás.</span></div><div class="rm"><div class="rm-arte" style="background:linear-gradient(135deg,#F2C14E,#FF7A59)"><span class="rm-n">4</span><i class="rm-f1"></i><i class="rm-f2"></i></div><b>Clasificar, ordenar y describir</b><span>Los tres procesos y su orden.</span></div><div class="rm"><div class="rm-arte" style="background:linear-gradient(135deg,#22C55E,#F2C14E)"><span class="rm-n">5</span><i class="rm-f1"></i><i class="rm-f2"></i></div><b>Alistamiento</b><span>Depurar, retirar ganchos, revisar.</span></div><div class="rm"><div class="rm-arte" style="background:linear-gradient(135deg,#FF7A59,#E6007E)"><span class="rm-n">6</span><i class="rm-f1"></i><i class="rm-f2"></i></div><b>Foliación</b><span>Numerar bien y evitar errores.</span></div><div class="rm"><div class="rm-arte" style="background:linear-gradient(135deg,#00ABC7,#22C55E)"><span class="rm-n">7</span><i class="rm-f1"></i><i class="rm-f2"></i></div><b>Encarpetado, rotulado e inventario</b><span>Guardar, identificar y registrar.</span></div></div>
+      <div class="ruta-top">
+        <div><h3 class="ruta-tit">La <span class="grad-txt">ruta de aprendizaje</span> de su equipo</h3>
+        <p class="ruta-sub">Tres niveles, 18 módulos. Cada nivel incluye el anterior: escoja uno para ver qué aprende.</p></div>
+        <div class="ruta-tabs" role="tablist" aria-label="Niveles"><button type="button" role="tab" class="rt activo" data-n="basico" aria-selected="true" style="--c:#22C55E"><b>01</b> Básico</button><button type="button" role="tab" class="rt" data-n="medio" aria-selected="false" style="--c:#FF7A59"><b>02</b> Medio</button><button type="button" role="tab" class="rt" data-n="intensivo" aria-selected="false" style="--c:#00ABC7"><b>03</b> Intensivo</button></div>
       </div>
-      <div class="ruta-fila">
-        <div class="ruta-cab"><h4 style="color:#FF7A59">02 · Medio · Gestión documental</h4><p>Para quien tiene el archivo a cargo.</p><div class="ruta-flechas"><button type="button" class="rf-izq" aria-label="Anteriores">‹</button><button type="button" class="rf-der" aria-label="Siguientes">›</button></div></div>
-        <div class="ruta-pista"><div class="rm"><div class="rm-arte" style="background:linear-gradient(135deg,#E6007E,#FF7A59)"><span class="rm-n">8</span><i class="rm-f1"></i><i class="rm-f2"></i></div><b>Los instrumentos archivísticos</b><span>Para qué sirve cada uno, en el día a día.</span></div><div class="rm"><div class="rm-arte" style="background:linear-gradient(135deg,#7C6CF2,#00ABC7)"><span class="rm-n">9</span><i class="rm-f1"></i><i class="rm-f2"></i></div><b>Transferencias documentales</b><span>Del archivo de gestión al central.</span></div><div class="rm"><div class="rm-arte" style="background:linear-gradient(135deg,#F2C14E,#FF7A59)"><span class="rm-n">10</span><i class="rm-f1"></i><i class="rm-f2"></i></div><b>Conservación preventiva</b><span>Qué daña los documentos y cómo evitarlo.</span></div><div class="rm"><div class="rm-arte" style="background:linear-gradient(135deg,#22C55E,#F2C14E)"><span class="rm-n">11</span><i class="rm-f1"></i><i class="rm-f2"></i></div><b>Digitalización y control de calidad</b><span>Antes de escanear y después.</span></div><div class="rm"><div class="rm-arte" style="background:linear-gradient(135deg,#FF7A59,#E6007E)"><span class="rm-n">12</span><i class="rm-f1"></i><i class="rm-f2"></i></div><b>Documento y expediente electrónico</b><span>Qué los hace válidos.</span></div><div class="rm"><div class="rm-arte" style="background:linear-gradient(135deg,#00ABC7,#22C55E)"><span class="rm-n">13</span><i class="rm-f1"></i><i class="rm-f2"></i></div><b>La nube: qué es y cómo se organiza</b><span>Carpetas, permisos y respaldo.</span></div></div>
+      <div class="rp" data-n="basico" role="tabpanel">
+        <div class="rp-ficha" style="--g:linear-gradient(135deg,#00ABC7,#22C55E)">
+          <small>NIVEL 01 · BÁSICO</small><h4>Fundamentos</h4>
+          <div class="rp-cifras"><span><b>7</b>módulos</span><span><b>1</b>sesión</span></div>
+          <dl><dt>Para quién</dt><dd>Todo el personal que recibe, produce o guarda documentos.</dd><dt>Requisitos</dt><dd>Ninguno: se empieza desde cero.</dd><dt>Al terminar podrá</dt><dd>Ordenar, foliar, rotular e inventariar las carpetas de su área.</dd></dl>
+          <a class="btn" href="#niveles">Ver el plan Básico</a>
+        </div>
+        <ol class="rp-mods"><li class="nuevo"><span>1</span>¿Qué es un archivo?</li><li class="nuevo"><span>2</span>El ciclo vital del documento</li><li class="nuevo"><span>3</span>Procedencia y orden original</li><li class="nuevo"><span>4</span>Clasificar, ordenar y describir</li><li class="nuevo"><span>5</span>Alistamiento</li><li class="nuevo"><span>6</span>Foliación</li><li class="nuevo"><span>7</span>Encarpetado, rotulado e inventario</li></ol>
       </div>
-      <div class="ruta-fila">
-        <div class="ruta-cab"><h4 style="color:#00ABC7">03 · Intensivo · Repositorios y automatización</h4><p>Para sostener el orden con tecnología.</p><div class="ruta-flechas"><button type="button" class="rf-izq" aria-label="Anteriores">‹</button><button type="button" class="rf-der" aria-label="Siguientes">›</button></div></div>
-        <div class="ruta-pista"><div class="rm"><div class="rm-arte" style="background:linear-gradient(135deg,#E6007E,#FF7A59)"><span class="rm-n">14</span><i class="rm-f1"></i><i class="rm-f2"></i></div><b>Nomenclatura y metadatos</b><span>Nombrar archivos para hallarlos siempre.</span></div><div class="rm"><div class="rm-arte" style="background:linear-gradient(135deg,#7C6CF2,#00ABC7)"><span class="rm-n">15</span><i class="rm-f1"></i><i class="rm-f2"></i></div><b>SharePoint</b><span>Bibliotecas, columnas, versiones y permisos.</span></div><div class="rm"><div class="rm-arte" style="background:linear-gradient(135deg,#F2C14E,#FF7A59)"><span class="rm-n">16</span><i class="rm-f1"></i><i class="rm-f2"></i></div><b>OneDrive</b><span>Sincronizar, compartir y recuperar.</span></div><div class="rm"><div class="rm-arte" style="background:linear-gradient(135deg,#22C55E,#F2C14E)"><span class="rm-n">17</span><i class="rm-f1"></i><i class="rm-f2"></i></div><b>Automatización de procesos</b><span>Alertas, formularios y aprobaciones.</span></div><div class="rm"><div class="rm-arte" style="background:linear-gradient(135deg,#FF7A59,#E6007E)"><span class="rm-n">18</span><i class="rm-f1"></i><i class="rm-f2"></i></div><b>Indicadores y tablero de control</b><span>Qué medir cada mes.</span></div></div>
+      <div class="rp" data-n="medio" role="tabpanel" hidden>
+        <div class="rp-ficha" style="--g:linear-gradient(135deg,#E6007E,#FF7A59)">
+          <small>NIVEL 02 · MEDIO</small><h4>Gestión documental</h4>
+          <div class="rp-cifras"><span><b>13</b>módulos</span><span><b>2</b>sesiones</span></div>
+          <dl><dt>Para quién</dt><dd>Quien tiene el archivo a cargo y debe responder por él.</dd><dt>Requisitos</dt><dd>Ninguno: incluye todo el nivel Básico.</dd><dt>Al terminar podrá</dt><dd>Llevar el archivo de la empresa: transferencias, conservación, digitalización y nube.</dd></dl>
+          <a class="btn" href="#niveles">Ver el plan Medio</a>
+        </div>
+        <ol class="rp-mods"><li class="nuevo"><span>8</span>Los instrumentos archivísticos</li><li class="nuevo"><span>9</span>Transferencias documentales</li><li class="nuevo"><span>10</span>Conservación preventiva</li><li class="nuevo"><span>11</span>Digitalización y control de calidad</li><li class="nuevo"><span>12</span>Documento y expediente electrónico</li><li class="nuevo"><span>13</span>La nube: qué es y cómo se organiza</li><li class="incluye">Incluye además los módulos 1 al 7 del nivel Básico.</li></ol>
       </div>
+      <div class="rp" data-n="intensivo" role="tabpanel" hidden>
+        <div class="rp-ficha" style="--g:linear-gradient(135deg,#7C6CF2,#00ABC7)">
+          <small>NIVEL 03 · INTENSIVO</small><h4>Repositorios y automatización</h4>
+          <div class="rp-cifras"><span><b>18</b>módulos</span><span><b>3</b>sesiones</span></div>
+          <dl><dt>Para quién</dt><dd>Empresas que quieren sostener el orden con tecnología.</dd><dt>Requisitos</dt><dd>Ninguno: incluye los niveles Básico y Medio.</dd><dt>Al terminar podrá</dt><dd>Organizar SharePoint y OneDrive, automatizar alertas y medir con indicadores.</dd></dl>
+          <a class="btn" href="#niveles">Ver el plan Intensivo</a>
+        </div>
+        <ol class="rp-mods"><li class="nuevo"><span>14</span>Nomenclatura y metadatos</li><li class="nuevo"><span>15</span>SharePoint</li><li class="nuevo"><span>16</span>OneDrive</li><li class="nuevo"><span>17</span>Automatización de procesos</li><li class="nuevo"><span>18</span>Indicadores y tablero de control</li><li class="incluye">Incluye además los módulos 1 al 13 de los niveles Básico y Medio.</li></ol>
+      </div>
+      <div class="ruta-ayuda"><span>¿No sabe qué nivel necesita su equipo? <b>Le orientamos sin costo.</b></span><a class="btn btn-oro" href="https://wa.me/573118345024?text=Hola%2C%20quiero%20que%20me%20orienten%20sobre%20qu%C3%A9%20nivel%20de%20capacitaci%C3%B3n%20necesita%20mi%20equipo" target="_blank" rel="noopener">Orientarme por WhatsApp</a></div>
     </div>
 
     <div class="planes">
@@ -1420,12 +1472,11 @@ document.querySelectorAll('a[href="#inicio"]').forEach((enlace) => {
   new IntersectionObserver(([e]) => { pasado = !e.isIntersecting && e.boundingClientRect.top < 0; pinta(); }).observe(ctas);
   new IntersectionObserver(([e]) => { enC = e.isIntersecting; pinta(); }).observe(contacto);
 })();
-// Ruta de aprendizaje: flechas que deslizan cada fila
-document.querySelectorAll(".ruta-fila").forEach((f) => {
-  const pista = f.querySelector(".ruta-pista"), paso = () => pista.clientWidth * 0.8;
-  f.querySelector(".rf-izq").addEventListener("click", () => pista.scrollBy({ left: -paso(), behavior: "smooth" }));
-  f.querySelector(".rf-der").addEventListener("click", () => pista.scrollBy({ left: paso(), behavior: "smooth" }));
-});
+// Ruta de aprendizaje: pestañas por nivel
+document.querySelectorAll(".rt").forEach((b) => b.addEventListener("click", () => {
+  document.querySelectorAll(".rt").forEach((x) => { x.classList.toggle("activo", x === b); x.setAttribute("aria-selected", String(x === b)); });
+  document.querySelectorAll(".rp").forEach((pn) => { pn.hidden = pn.dataset.n !== b.dataset.n; });
+}));
 // Menú compacto del celular
 (() => {
   const b = document.querySelector(".menu-btn"), m = document.getElementById("menu-movil");
