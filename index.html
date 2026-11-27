@@ -761,6 +761,39 @@ body.con-aviso .nav{top:46px}
 @media(prefers-reduced-motion:reduce){.rp{animation:none}.rp-ficha::after{animation:none}}
 .rp[hidden]{display:none!important}
 .rp-mods li.incluye{grid-column:1/-1;background:transparent;border-style:dashed;color:rgba(255,255,255,.75);font-weight:600;justify-content:center}
+
+/* Ruta: tres niveles a la vista; al tocar uno se abre con sus temas y los otros se ocultan */
+.rp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.rp-grid .rp{display:block!important;animation:rp-entra .35s ease}
+.rp-grid .rp-mods,.rp-grid .rp-volver{display:none}
+.rp-grid .rp-ficha{height:100%;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.rp-grid:not(.sel) .rp-ficha:hover{transform:translateY(-6px);box-shadow:0 26px 50px -20px rgba(0,0,0,.7)}
+.rp-grid.sel{grid-template-columns:1fr}
+.rp-grid.sel .rp:not(.activa){display:none!important}
+.rp-grid.sel .rp.activa{display:grid!important;grid-template-columns:360px 1fr;gap:22px}
+.rp-grid .rp.activa .rp-ficha{cursor:default;height:auto}
+.rp-grid .rp.activa .rp-mods{display:grid;animation:rp-entra .4s ease}
+.rp-grid .rp.activa .rp-abrir{display:none}
+.rp-grid .rp.activa .rp-volver{display:inline-flex}
+.rp-mods li{animation:rp-entra .4s ease both}
+.rp-mods li:nth-child(2){animation-delay:.04s}.rp-mods li:nth-child(3){animation-delay:.08s}.rp-mods li:nth-child(4){animation-delay:.12s}.rp-mods li:nth-child(5){animation-delay:.16s}.rp-mods li:nth-child(6){animation-delay:.2s}.rp-mods li:nth-child(7){animation-delay:.24s}
+@media(max-width:900px){.rp-grid{grid-template-columns:1fr}.rp-grid.sel .rp.activa{grid-template-columns:1fr}}
+
+.rp-mods li.rp-nav{grid-column:1/-1;display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);padding:8px 10px;animation:none}
+.rp-atras{display:inline-flex;align-items:center;gap:10px;border:0;cursor:pointer;font:inherit;font-weight:800;font-size:14px;color:#0F2A44;background:#fff;padding:8px 16px 8px 8px;border-radius:999px;box-shadow:0 8px 20px -8px rgba(0,0,0,.6);transition:transform .15s}
+.rp-atras span{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#00ABC7,#E6007E);color:#fff;font-size:15px;transition:transform .2s}
+.rp-atras:hover{transform:translateY(-1px)}.rp-atras:hover span{transform:translateX(-3px)}
+.rp-miga{font-size:14px;color:rgba(255,255,255,.7)}
+.rp-otros{margin-left:auto;display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,.65)}
+.rp-salto{display:inline-flex;align-items:center;gap:7px;border:1px solid rgba(255,255,255,.2);background:transparent;color:#fff;font:inherit;font-weight:700;font-size:13px;padding:6px 12px;border-radius:999px;cursor:pointer}
+.rp-salto i{width:10px;height:10px;border-radius:50%;background:var(--c)}
+.rp-salto:hover{background:rgba(255,255,255,.1)}
+.rp-grid .rp.activa .rp-volver{display:none}
+@media(max-width:600px){.rp-otros{margin-left:0}}
+
+.rp-mods li.rp-nav span.rp-miga,.rp-mods li.rp-nav span.rp-otros{width:auto;height:auto;border-radius:0;display:flex;background:none;color:rgba(255,255,255,.7);font-family:inherit;font-weight:600;font-size:13.5px}
+.rp-mods li.rp-nav span.rp-miga{display:inline}
+.rp-mods li.rp-nav .rp-atras span{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#00ABC7,#E6007E);color:#fff;font-size:15px;font-family:inherit}
 </style>
 </head>
 <body>
@@ -1008,35 +1041,36 @@ body.con-aviso .nav{top:46px}
     <div class="ruta" id="ruta">
       <div class="ruta-top">
         <div><h3 class="ruta-tit">La <span class="grad-txt">ruta de aprendizaje</span> de su equipo</h3>
-        <p class="ruta-sub">Tres niveles, 18 módulos. Cada nivel incluye el anterior: escoja uno para ver qué aprende.</p></div>
-        <div class="ruta-tabs" role="tablist" aria-label="Niveles"><button type="button" role="tab" class="rt activo" data-n="basico" aria-selected="true" style="--c:#22C55E"><b>01</b> Básico</button><button type="button" role="tab" class="rt" data-n="medio" aria-selected="false" style="--c:#FF7A59"><b>02</b> Medio</button><button type="button" role="tab" class="rt" data-n="intensivo" aria-selected="false" style="--c:#00ABC7"><b>03</b> Intensivo</button></div>
+        <p class="ruta-sub">Tres niveles, 18 módulos. Cada nivel incluye el anterior: toque un nivel para ver sus temas.</p></div>
       </div>
-      <div class="rp" data-n="basico" role="tabpanel">
+      <div class="rp-grid">
+      <div class="rp" data-n="basico" role="region">
         <div class="rp-ficha" style="--g:linear-gradient(135deg,#00ABC7,#22C55E)">
           <small>NIVEL 01 · BÁSICO</small><h4>Fundamentos</h4>
           <div class="rp-cifras"><span><b>7</b>módulos</span><span><b>1</b>sesión</span></div>
           <dl><dt>Para quién</dt><dd>Todo el personal que recibe, produce o guarda documentos.</dd><dt>Requisitos</dt><dd>Ninguno: se empieza desde cero.</dd><dt>Al terminar podrá</dt><dd>Ordenar, foliar, rotular e inventariar las carpetas de su área.</dd></dl>
-          <a class="btn" href="#niveles">Ver el plan Básico</a>
+          <button type="button" class="btn rp-abrir">Ver los temas →</button><button type="button" class="btn rp-volver">← Ver los tres niveles</button>
         </div>
-        <ol class="rp-mods"><li class="nuevo"><span>1</span>¿Qué es un archivo?</li><li class="nuevo"><span>2</span>El ciclo vital del documento</li><li class="nuevo"><span>3</span>Procedencia y orden original</li><li class="nuevo"><span>4</span>Clasificar, ordenar y describir</li><li class="nuevo"><span>5</span>Alistamiento</li><li class="nuevo"><span>6</span>Foliación</li><li class="nuevo"><span>7</span>Encarpetado, rotulado e inventario</li></ol>
+        <ol class="rp-mods"><li class="rp-nav"><button type="button" class="rp-atras"><span>←</span>Volver a los tres niveles</button><span class="rp-miga">Ruta <b style="color:#22C55E">› Nivel 01 · Básico</b></span><span class="rp-otros">Ver también: <button type="button" class="rp-salto" data-ir="medio" style="--c:#FF7A59"><i></i>Medio</button><button type="button" class="rp-salto" data-ir="intensivo" style="--c:#00ABC7"><i></i>Intensivo</button></span></li><li class="nuevo"><span>1</span>¿Qué es un archivo?</li><li class="nuevo"><span>2</span>El ciclo vital del documento</li><li class="nuevo"><span>3</span>Procedencia y orden original</li><li class="nuevo"><span>4</span>Clasificar, ordenar y describir</li><li class="nuevo"><span>5</span>Alistamiento</li><li class="nuevo"><span>6</span>Foliación</li><li class="nuevo"><span>7</span>Encarpetado, rotulado e inventario</li></ol>
       </div>
-      <div class="rp" data-n="medio" role="tabpanel" hidden>
+      <div class="rp" data-n="medio" role="region">
         <div class="rp-ficha" style="--g:linear-gradient(135deg,#E6007E,#FF7A59)">
           <small>NIVEL 02 · MEDIO</small><h4>Gestión documental</h4>
           <div class="rp-cifras"><span><b>13</b>módulos</span><span><b>2</b>sesiones</span></div>
           <dl><dt>Para quién</dt><dd>Quien tiene el archivo a cargo y debe responder por él.</dd><dt>Requisitos</dt><dd>Ninguno: incluye todo el nivel Básico.</dd><dt>Al terminar podrá</dt><dd>Llevar el archivo de la empresa: transferencias, conservación, digitalización y nube.</dd></dl>
-          <a class="btn" href="#niveles">Ver el plan Medio</a>
+          <button type="button" class="btn rp-abrir">Ver los temas →</button><button type="button" class="btn rp-volver">← Ver los tres niveles</button>
         </div>
-        <ol class="rp-mods"><li class="nuevo"><span>8</span>Los instrumentos archivísticos</li><li class="nuevo"><span>9</span>Transferencias documentales</li><li class="nuevo"><span>10</span>Conservación preventiva</li><li class="nuevo"><span>11</span>Digitalización y control de calidad</li><li class="nuevo"><span>12</span>Documento y expediente electrónico</li><li class="nuevo"><span>13</span>La nube: qué es y cómo se organiza</li><li class="incluye">Incluye además los módulos 1 al 7 del nivel Básico.</li></ol>
+        <ol class="rp-mods"><li class="rp-nav"><button type="button" class="rp-atras"><span>←</span>Volver a los tres niveles</button><span class="rp-miga">Ruta <b style="color:#FF7A59">› Nivel 02 · Medio</b></span><span class="rp-otros">Ver también: <button type="button" class="rp-salto" data-ir="basico" style="--c:#22C55E"><i></i>Básico</button><button type="button" class="rp-salto" data-ir="intensivo" style="--c:#00ABC7"><i></i>Intensivo</button></span></li><li class="nuevo"><span>8</span>Los instrumentos archivísticos</li><li class="nuevo"><span>9</span>Transferencias documentales</li><li class="nuevo"><span>10</span>Conservación preventiva</li><li class="nuevo"><span>11</span>Digitalización y control de calidad</li><li class="nuevo"><span>12</span>Documento y expediente electrónico</li><li class="nuevo"><span>13</span>La nube: qué es y cómo se organiza</li><li class="incluye">Incluye además los módulos 1 al 7 del nivel Básico.</li></ol>
       </div>
-      <div class="rp" data-n="intensivo" role="tabpanel" hidden>
+      <div class="rp" data-n="intensivo" role="region">
         <div class="rp-ficha" style="--g:linear-gradient(135deg,#7C6CF2,#00ABC7)">
           <small>NIVEL 03 · INTENSIVO</small><h4>Repositorios y automatización</h4>
           <div class="rp-cifras"><span><b>18</b>módulos</span><span><b>3</b>sesiones</span></div>
           <dl><dt>Para quién</dt><dd>Empresas que quieren sostener el orden con tecnología.</dd><dt>Requisitos</dt><dd>Ninguno: incluye los niveles Básico y Medio.</dd><dt>Al terminar podrá</dt><dd>Organizar SharePoint y OneDrive, automatizar alertas y medir con indicadores.</dd></dl>
-          <a class="btn" href="#niveles">Ver el plan Intensivo</a>
+          <button type="button" class="btn rp-abrir">Ver los temas →</button><button type="button" class="btn rp-volver">← Ver los tres niveles</button>
         </div>
-        <ol class="rp-mods"><li class="nuevo"><span>14</span>Nomenclatura y metadatos</li><li class="nuevo"><span>15</span>SharePoint</li><li class="nuevo"><span>16</span>OneDrive</li><li class="nuevo"><span>17</span>Automatización de procesos</li><li class="nuevo"><span>18</span>Indicadores y tablero de control</li><li class="incluye">Incluye además los módulos 1 al 13 de los niveles Básico y Medio.</li></ol>
+        <ol class="rp-mods"><li class="rp-nav"><button type="button" class="rp-atras"><span>←</span>Volver a los tres niveles</button><span class="rp-miga">Ruta <b style="color:#00ABC7">› Nivel 03 · Intensivo</b></span><span class="rp-otros">Ver también: <button type="button" class="rp-salto" data-ir="basico" style="--c:#22C55E"><i></i>Básico</button><button type="button" class="rp-salto" data-ir="medio" style="--c:#FF7A59"><i></i>Medio</button></span></li><li class="nuevo"><span>14</span>Nomenclatura y metadatos</li><li class="nuevo"><span>15</span>SharePoint</li><li class="nuevo"><span>16</span>OneDrive</li><li class="nuevo"><span>17</span>Automatización de procesos</li><li class="nuevo"><span>18</span>Indicadores y tablero de control</li><li class="incluye">Incluye además los módulos 1 al 13 de los niveles Básico y Medio.</li></ol>
+      </div>
       </div>
       <div class="ruta-ayuda"><span>¿No sabe qué nivel necesita su equipo? <b>Le orientamos sin costo.</b></span><a class="btn btn-oro" href="https://wa.me/573118345024?text=Hola%2C%20quiero%20que%20me%20orienten%20sobre%20qu%C3%A9%20nivel%20de%20capacitaci%C3%B3n%20necesita%20mi%20equipo" target="_blank" rel="noopener">Orientarme por WhatsApp</a></div>
     </div>
@@ -1472,11 +1506,18 @@ document.querySelectorAll('a[href="#inicio"]').forEach((enlace) => {
   new IntersectionObserver(([e]) => { pasado = !e.isIntersecting && e.boundingClientRect.top < 0; pinta(); }).observe(ctas);
   new IntersectionObserver(([e]) => { enC = e.isIntersecting; pinta(); }).observe(contacto);
 })();
-// Ruta de aprendizaje: pestañas por nivel
-document.querySelectorAll(".rt").forEach((b) => b.addEventListener("click", () => {
-  document.querySelectorAll(".rt").forEach((x) => { x.classList.toggle("activo", x === b); x.setAttribute("aria-selected", String(x === b)); });
-  document.querySelectorAll(".rp").forEach((pn) => { pn.hidden = pn.dataset.n !== b.dataset.n; });
-}));
+// Ruta de aprendizaje: abrir un nivel (los otros se ocultan) y volver a los tres
+(() => {
+  const g = document.querySelector(".rp-grid"); if (!g) return;
+  const abrir = (rp) => { g.classList.add("sel"); g.querySelectorAll(".rp").forEach((x) => x.classList.toggle("activa", x === rp)); document.getElementById("ruta").scrollIntoView({ behavior: "smooth", block: "start" }); };
+  const volver = () => { g.classList.remove("sel"); g.querySelectorAll(".rp").forEach((x) => x.classList.remove("activa")); };
+  g.querySelectorAll(".rp").forEach((rp) => {
+    rp.querySelector(".rp-ficha").addEventListener("click", (e) => { if (e.target.closest(".rp-volver")) return; if (!rp.classList.contains("activa")) abrir(rp); });
+    rp.querySelector(".rp-volver").addEventListener("click", (e) => { e.stopPropagation(); volver(); });
+    rp.querySelector(".rp-atras").addEventListener("click", volver);
+    rp.querySelectorAll(".rp-salto").forEach((s) => s.addEventListener("click", () => abrir(g.querySelector(`.rp[data-n="${s.dataset.ir}"]`))));
+  });
+})();
 // Menú compacto del celular
 (() => {
   const b = document.querySelector(".menu-btn"), m = document.getElementById("menu-movil");
