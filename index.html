@@ -32,6 +32,8 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
+#inicio{scroll-margin-top:96px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 body{font-family:"Plus Jakarta Sans",system-ui,sans-serif;color:var(--tinta);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
@@ -68,25 +70,43 @@ svg.i{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stro
 .nav img{height:58px;width:auto;display:block}
 .nav .cont > a:first-child{flex:none}
 .nav nav a,.nav .aula-btn,.nav .btn{white-space:nowrap}
-.nav nav{gap:18px!important}
-.nav nav{display:flex;gap:24px;margin-left:auto;font-size:14.5px;font-weight:600;color:rgba(255,255,255,.78)}
+.nav nav{display:flex;gap:14px;margin-left:auto;font-size:13.5px;font-weight:600;color:rgba(255,255,255,.78)}
 .nav nav a:hover{color:#fff}
+.nav nav a:focus-visible,.nav-normas summary:focus-visible{color:#fff}
+.nav nav a[aria-current="page"]{color:#fff}
 .nav .btn{height:44px;font-size:14px;padding:0 18px}
 .nav .aula-btn{display:inline-flex;align-items:center;gap:8px;height:46px;padding:0 18px;border-radius:999px;border:2px solid var(--oro);background:rgba(242,193,78,.14);color:var(--oro);font-weight:800;font-size:15px}
 .nav .aula-btn:hover{background:rgba(242,193,78,.1)}
-@media(max-width:1240px){.nav nav{display:none}.nav .aula-btn{margin-left:auto}}
+.nav-normas{position:relative}
+.nav-normas summary{display:flex;align-items:center;gap:6px;cursor:pointer;list-style:none;white-space:nowrap}
+.nav-normas summary::-webkit-details-marker{display:none}
+.nav-normas summary::after{content:"";width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .15s}
+.nav-normas[open] summary::after{transform:rotate(225deg) translate(-1px,-1px)}
+.nav-normas summary:focus-visible,.menu-normas summary:focus-visible{outline:2px solid var(--oro);outline-offset:5px;border-radius:3px}
+.normas-menu{position:absolute;top:calc(100% + 28px);left:50%;transform:translateX(-50%);z-index:70;width:min(360px,calc(100vw - 32px));padding:18px;border:1px solid var(--linea);border-radius:16px;background:#fff;color:var(--tinta);box-shadow:0 18px 44px rgba(0,0,0,.22);font-size:13px;font-weight:400;line-height:1.5}
+.normas-menu p{color:var(--gris);margin-bottom:10px}
+.normas-menu ul{padding-left:18px}
+.normas-menu li+li{margin-top:8px}
+.normas-menu a{color:var(--agua-o);font-weight:700;text-decoration:underline;text-underline-offset:2px}
+@media(max-width:1440px){.nav nav{display:none}.nav .aula-btn{margin-left:auto}}
 .menu-btn{display:none;width:44px;height:44px;border-radius:12px;border:1px solid rgba(255,255,255,.25);background:transparent;cursor:pointer;flex-direction:column;justify-content:center;align-items:center;gap:5px;padding:0}
 .menu-btn span{display:block;width:20px;height:2px;background:#fff;border-radius:2px}
 .menu-movil{background:var(--noche);border-top:1px solid rgba(255,255,255,.1);padding:10px 20px 20px;display:grid;gap:4px}
 .menu-movil[hidden]{display:none}
 .menu-movil > a:not(.btn){color:#fff;font-weight:600;padding:12px 4px;border-bottom:1px solid rgba(255,255,255,.08)}
 .menu-movil .btn{justify-content:center;margin-top:10px}
+.menu-normas{color:#fff;border-bottom:1px solid rgba(255,255,255,.08)}
+.menu-normas summary{cursor:pointer;list-style:none;padding:12px 4px;font-weight:600}
+.menu-normas summary::-webkit-details-marker{display:none}
+.menu-normas summary::after{content:" ▾";color:var(--oro)}
+.menu-normas[open] summary::after{content:" ▴"}
+.menu-normas .normas-menu{position:static;transform:none;width:auto;margin:0 0 12px;padding:14px;border:0;box-shadow:none}
 .btn-wa{background:#20B486;color:#fff}
 .wa-flota{display:none;position:fixed;right:14px;bottom:14px;z-index:60;align-items:center;gap:8px;height:50px;padding:0 18px;border-radius:999px;background:#20B486;color:#fff;font-weight:700;font-size:14.5px;box-shadow:0 10px 26px rgba(0,0,0,.25)}
 .wa-flota .i{width:20px;height:20px}
 .wa-flota{opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity .25s,transform .25s}
 .wa-flota.visible{opacity:1;transform:none;pointer-events:auto}
-@media(max-width:1240px){.menu-btn{display:inline-flex}}
+@media(max-width:1440px){.menu-btn{display:inline-flex}}
 @media(max-width:560px){.nav .cont{gap:10px}.nav img{height:40px}.nav .btn{height:40px;padding:0 14px;font-size:13px}.nav .aula-btn{padding:0 12px;font-size:0;gap:0}.nav .aula-btn .i{width:20px!important;height:20px!important}.wa-flota{display:inline-flex}}
 @media(max-width:440px){.nav .aula-btn{display:none}.nav .cont{gap:8px}.nav .btn{margin-left:auto;font-size:12.5px;padding:0 12px}}
 
@@ -214,11 +234,6 @@ svg.i{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stro
 .acceso span{font-size:14.5px}
 .campus-pronto{margin-top:16px;text-align:center;font-size:14px;color:rgba(255,255,255,.7)}
 .campus-pronto b{color:var(--oro)}
-.normas{margin-top:20px;border:1px solid var(--linea);border-radius:16px;background:#fff;padding:0 18px}
-.normas summary{cursor:pointer;list-style:none;padding:14px 0;font-weight:700;color:var(--noche);font-size:15px}
-.normas summary::-webkit-details-marker{display:none}
-.normas summary span{color:var(--agua-o)}.normas summary span::after{content:" ▾"}.normas[open] summary span::after{content:" ▴"}
-.normas p{font-size:14px;color:var(--gris);margin:0 0 10px}.normas ul{margin:0 0 16px;padding-left:20px;font-size:14px}.normas li{margin:6px 0}.normas a{color:var(--agua-o);font-weight:700;text-decoration:underline}
 .sl .dolor{font-weight:700;color:var(--noche);margin:6px 0 4px}.sl.estrella .dolor{color:var(--oro)}
 .hero .directo{max-width:760px;margin:14px auto 0;font-size:clamp(17px,2vw,20px);font-weight:600;color:var(--tinta)}
 .hero .cta-1{margin-top:22px}
@@ -544,6 +559,19 @@ input[type=range]{width:100%;accent-color:var(--agua)}
 @keyframes brilla{0%,100%{fill:#25D366}50%{fill:#B8F5CF}}
 @media(prefers-reduced-motion:reduce){.dib *{animation:none!important}}
 
+
+/* ===== Paleta sobria (auditoría 26-nov): azul noche, blanco, dorado y turquesa oscuro; texto oscuro sobre acentos claros ===== */
+:root{ --coral:#D9A21B; --menta:#007C93; --violeta:#16395C; --verde:#007C93; --verde-o:#006577; --fucsia:#16395C; --fucsia-o:#0F2A44; --naranja:#D9A21B;
+  --t-coral:#FFF6E0; --t-menta:#E6F7FA; --t-violeta:#EAF0F6; --t-verde:#E6F7FA; --t-fucsia:#EAF0F6; }
+.r-agua{color:var(--noche)} .r-coral{color:var(--noche)} .r-menta,.r-verde{background:var(--agua-o);color:#fff} .r-fucsia{background:var(--noche-2);color:#fff}
+.btn-wa,.wa-flota{background:#0E7C66!important;color:#fff!important}
+.tiempos .tm{padding:14px 0;border-top:1px solid var(--linea)}
+.tiempos .tm .top{gap:12px;align-items:baseline}
+.tiempos .tm .anios{color:var(--noche)!important;white-space:nowrap}
+.tiempos .tm small{display:block;margin-top:6px;line-height:1.5;color:var(--gris)}
+.tiempos .nota-legal{margin-top:12px;font-size:13px;color:var(--gris);background:var(--t-oro);border-radius:12px;padding:10px 12px}
+.ilustrativo{margin:10px auto 0;font-size:13px;color:var(--gris);text-align:center}
+.ilustrativo.izq{text-align:left;margin:4px 0 8px}
 </style>
 </head>
 <body>
@@ -589,14 +617,38 @@ input[type=range]{width:100%;accent-color:var(--agua)}
   <div class="cont">
     <a href="#inicio"><img src="logo-oscuro.svg" alt="Folio Digital"></a>
     <nav aria-label="Menú principal">
-      <a href="#problema">El problema</a><a href="#solucion">Servicios</a><a href="#aula">Capacitación</a><a href="#organizacion">Organización</a><a href="#software">Software</a><a href="#contacto">Contacto</a>
+      <a href="#inicio" aria-current="page">Inicio</a><a href="#problema">El problema</a><a href="#solucion">Servicios</a><a href="#aula">Capacitación</a><a href="#organizacion">Organización</a><a href="#software">Software</a>
+      <details class="nav-normas">
+        <summary>Normativa</summary>
+        <div class="normas-menu">
+          <p>Normas de referencia archivística. Su aplicación depende del tipo de organización y de los documentos.</p>
+          <ul>
+            <li><a href="https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=4275" target="_blank" rel="noopener">Ley 594 de 2000</a> · Ley General de Archivos.</li>
+            <li><a href="https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=76833" target="_blank" rel="noopener">Decreto 1080 de 2015</a> · Reglamentación del sector Cultura, incluidos archivos.</li>
+            <li><a href="https://normativa.archivogeneral.gov.co/acuerdo-no-001-del-2024/" target="_blank" rel="noopener">Acuerdo 001 de 2024</a> · Acuerdo Único de la Función Archivística.</li>
+          </ul>
+        </div>
+      </details>
+      <a href="#contacto">Contacto</a>
     </nav>
     <a class="aula-btn" href="https://folio-digital---aula-virtual.web.app" target="_blank" rel="noopener"><svg class="i" style="width:18px;height:18px"><use href="#i-birrete"/></svg>Aula Virtual</a>
     <a class="btn btn-oro" href="#contacto">Pedir revisión gratis</a>
     <button class="menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-movil"><span></span><span></span><span></span></button>
   </div>
   <div class="menu-movil" id="menu-movil" hidden>
-    <a href="#problema">El problema</a><a href="#solucion">Servicios</a><a href="#aula">Capacitación</a><a href="#organizacion">Organización</a><a href="#software">Software</a><a href="#contacto">Contacto</a><a href="https://folio-digital---aula-virtual.web.app" target="_blank" rel="noopener">Aula Virtual (entrar)</a>
+    <a href="#inicio" aria-current="page">Inicio</a><a href="#problema">El problema</a><a href="#solucion">Servicios</a><a href="#aula">Capacitación</a><a href="#organizacion">Organización</a><a href="#software">Software</a>
+    <details class="menu-normas">
+      <summary>Normativa</summary>
+      <div class="normas-menu">
+        <p>Normas de referencia archivística. Su aplicación depende del tipo de organización y de los documentos.</p>
+        <ul>
+          <li><a href="https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=4275" target="_blank" rel="noopener">Ley 594 de 2000</a> · Ley General de Archivos.</li>
+          <li><a href="https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=76833" target="_blank" rel="noopener">Decreto 1080 de 2015</a> · Reglamentación del sector Cultura, incluidos archivos.</li>
+          <li><a href="https://normativa.archivogeneral.gov.co/acuerdo-no-001-del-2024/" target="_blank" rel="noopener">Acuerdo 001 de 2024</a> · Acuerdo Único de la Función Archivística.</li>
+        </ul>
+      </div>
+    </details>
+    <a href="#contacto">Contacto</a><a href="https://folio-digital---aula-virtual.web.app" target="_blank" rel="noopener">Aula Virtual (entrar)</a>
     <a class="btn btn-oro" href="#contacto" style="white-space:normal;height:auto;min-height:48px;padding:10px 18px;text-align:center">Pedir revisión gratis de los documentos de mi empresa</a>
     <a class="btn btn-wa" href="https://wa.me/573118345024?text=Hola%2C%20quiero%20agendar%20la%20revisi%C3%B3n%20gratis%20de%20los%20documentos%20de%20mi%20empresa" target="_blank" rel="noopener"><svg class="i"><use href="#i-chat"/></svg>Escribir por WhatsApp</a>
   </div>
@@ -610,8 +662,9 @@ input[type=range]{width:100%;accent-color:var(--agua)}
     <h1>¿Cuánto le cuesta a su empresa <span class="res r-oro">no encontrar</span> un documento?</h1>
     <p class="directo">Organizamos los documentos de su empresa y enseñamos a su equipo a guardarlos, encontrarlos y responder a tiempo.</p>
     <div class="cta-1"><a class="btn btn-oro" href="#contacto">Pedir revisión gratis de los documentos de mi empresa <svg class="i" style="width:18px;height:18px"><use href="#i-flecha"/></svg></a></div>
-    <p class="sub">En el video (2 min): una oficina pasa casi tres horas buscando un contrato que nunca aparece, y así lo encuentra en segundos con el archivo organizado.</p>
+    <p class="sub">En el video (2 min): una oficina de ejemplo pasa casi tres horas buscando un contrato que nunca aparece, y así lo encuentra en segundos con el archivo organizado.</p>
     <div class="pantalla"><video controls preload="metadata" poster="videos/video-gancho.jpg" src="videos/video-gancho.mp4"></video></div>
+    <p class="ilustrativo">Ejemplo ilustrativo: la empresa, las personas y los tiempos del video son ficticios.</p>
     <div class="ctas">
       <a class="btn btn-oro" href="#contacto">Pedir revisión gratis de los documentos de mi empresa <svg class="i" style="width:18px;height:18px"><use href="#i-flecha"/></svg></a>
       <a class="btn btn-linea" href="#aula"><svg class="i" style="width:19px;height:19px"><use href="#i-birrete"/></svg>Capacitar a mi equipo</a>
@@ -641,7 +694,7 @@ input[type=range]{width:100%;accent-color:var(--agua)}
     <div class="cab-sec centro">
       <span class="ceja c-coral">El problema</span>
       <h2 class="tit">¿A su empresa <span class="res r-coral">le pasa esto?</span></h2>
-      <p class="lead">Los tres problemas que más encontramos en las empresas. Si tiene uno, el desorden ya le está costando plata y tiempo.</p>
+      <p class="lead">Problemas que estos servicios ayudan a resolver. Si le pasa uno, el desorden ya le está costando tiempo y plata.</p>
     </div>
     <div class="pasa">
       <div class="ps"><span class="ck"><svg class="i"><use href="#i-check"/></svg></span><div><b>Los documentos se pierden una y otra vez</b><span>Un contrato, una factura, una hoja de vida… y nadie sabe quién la tuvo por última vez.</span></div></div>
@@ -663,7 +716,7 @@ input[type=range]{width:100%;accent-color:var(--agua)}
     <div class="solucion">
       <a class="sl" href="#organizacion"><span class="n">01</span><div class="ic c-verde"><svg class="i"><use href="#i-caja"/></svg></div><h3>Organización de archivos</h3><p class="dolor">Para cuando nadie encuentra los documentos.</p><p>Ordenamos y rotulamos cajas y carpetas, hacemos la lista de todo y lo pasamos a PDF para encontrarlo en segundos.</p><span class="mas">Conocer el servicio <svg class="i" style="width:16px;height:16px"><use href="#i-flecha"/></svg></span></a>
       <a class="sl" href="#pgd"><span class="n">02</span><div class="ic c-oro"><svg class="i"><use href="#i-libro"/></svg></div><h3>Programa de Gestión Documental</h3><p class="dolor">Para cuando cada empleado guarda «a su manera».</p><p>El manual de su empresa: cómo se recibe, dónde se guarda y cuánto tiempo se conserva cada documento.</p><span class="mas">Conocer el servicio <svg class="i" style="width:16px;height:16px"><use href="#i-flecha"/></svg></span></a>
-      <a class="sl estrella" href="#aula"><span class="eti">MÁS SOLICITADO</span><span class="n" style="color:rgba(255,255,255,.4)">03</span><div class="ic" style="background:rgba(242,193,78,.16);color:var(--oro)"><svg class="i"><use href="#i-birrete"/></svg></div><h3>Capacitación de equipos</h3><p class="dolor">Para que el orden no dependa de una sola persona.</p><p>Su personal aprende a guardar, encontrar y responder a tiempo, con Aula Virtual, evaluación y certificado.</p><span class="mas">Conocer el servicio <svg class="i" style="width:16px;height:16px"><use href="#i-flecha"/></svg></span></a>
+      <a class="sl estrella" href="#aula"><span class="eti">SERVICIO DESTACADO</span><span class="n" style="color:rgba(255,255,255,.4)">03</span><div class="ic" style="background:rgba(242,193,78,.16);color:var(--oro)"><svg class="i"><use href="#i-birrete"/></svg></div><h3>Capacitación de equipos</h3><p class="dolor">Para que el orden no dependa de una sola persona.</p><p>Su personal aprende a guardar, encontrar y responder a tiempo, con Aula Virtual, evaluación y certificado.</p><span class="mas">Conocer el servicio <svg class="i" style="width:16px;height:16px"><use href="#i-flecha"/></svg></span></a>
       <a class="sl" href="#software"><span class="n">04</span><div class="ic c-fucsia"><svg class="i"><use href="#i-pantalla"/></svg></div><h3>Software de gestión documental</h3><p class="dolor">Para cuando las cartas llegan y nadie responde.</p><p>SGDEA-NUBE registra cada carta que entra o sale con número y fecha («radicar») y avisa antes de que venza el plazo.</p><span class="mas">Conocer el servicio <svg class="i" style="width:16px;height:16px"><use href="#i-flecha"/></svg></span></a>
     </div>
   </div>
@@ -751,7 +804,7 @@ input[type=range]{width:100%;accent-color:var(--agua)}
         </div>
       </div>
       <div class="nv2 dest" style="--c:var(--fucsia);--g:linear-gradient(135deg,#FF7A59,#E6007E)">
-        <span class="eti">MÁS COMPLETO</span>
+        <span class="eti">RECOMENDADO</span>
         <div class="cab"><small>NIVEL 2 · MEDIO</small><h3>Llevar el archivo de la empresa</h3><p>Para quien tiene el archivo a cargo y debe responder por él.</p></div>
         <div class="cuerpo">
           <div class="cifras"><span><b>13</b>módulos</span><span><b>2</b>sesiones</span></div>
@@ -784,7 +837,7 @@ input[type=range]{width:100%;accent-color:var(--agua)}
       <div>
         <span class="ceja" style="background:var(--oro);color:var(--noche)">NUEVO CURSO</span>
         <h3 class="titulo-b">Fundamentos de la Unidad de Correspondencia y Ventanilla Única</h3>
-        <p class="lead" style="font-size:16.5px">Para secretarias y recepcionistas: recibir, registrar con número y fecha (radicar) y enviar las comunicaciones de la empresa con la norma vigente, reconocer un derecho de petición aunque no lo diga y no dejar vencer los plazos.</p>
+        <p class="lead" style="font-size:16.5px">Para secretarias y recepcionistas: recibir, registrar con número y fecha (radicar) y enviar las comunicaciones de la empresa con los procedimientos que recomienda la normativa, reconocer un derecho de petición aunque no lo diga y no dejar vencer los plazos.</p>
         <div class="datos" style="margin:16px 0 18px"><span><b>9</b> lecciones</span><span><b>6</b> simulaciones</span><span><b>5</b> horas</span><span>Certificado</span><span>Planillas, guía y diapositivas</span></div>
         <div class="acc">
           <a class="btn btn-noche" href="https://folio-digital---aula-virtual.web.app/correspondencia.html" target="_blank" rel="noopener">Entrar al curso <svg class="i" style="width:18px;height:18px"><use href="#i-flecha"/></svg></a>
@@ -841,37 +894,25 @@ input[type=range]{width:100%;accent-color:var(--agua)}
   <div class="cont pgd">
     <div>
       <span class="ceja c-oro">Programa de Gestión Documental</span>
-      <h2 class="tit">Las reglas claras que <span class="res r-oro">protegen</span> su empresa</h2>
-      <p class="lead">Un Programa de Gestión Documental es el manual de su empresa para manejar la información. Con él, cualquier empleado sabe qué hacer con un documento, aunque cambie el personal.</p>
+      <h2 class="tit">Las reglas claras para <span class="res r-oro">ordenar</span> sus documentos</h2>
+      <p class="lead">Un Programa de Gestión Documental es el manual de su empresa para manejar la información: ayuda a ordenar la gestión documental y a identificar qué obligaciones le aplican. Con él, cualquier empleado sabe qué hacer con un documento, aunque cambie el personal.</p>
       <div class="pgd-lista" style="margin-top:22px">
         <div class="pl"><div class="ic c-agua"><svg class="i"><use href="#i-sobre"/></svg></div><div><b>Cómo entra y sale cada documento</b><span>Recibir cada carta, registrarla con número y fecha (radicarla) y responderla a tiempo.</span></div></div>
-        <div class="pl"><div class="ic c-oro"><svg class="i"><use href="#i-reloj"/></svg></div><div><b>Cuánto tiempo se guarda cada uno</b><span>Con soporte legal: ni bota lo que debe guardar, ni guarda lo que ya puede eliminar.</span></div></div>
+        <div class="pl"><div class="ic c-oro"><svg class="i"><use href="#i-reloj"/></svg></div><div><b>Cuánto tiempo se guarda cada uno</b><span>Según las normas que apliquen a su empresa: para no botar lo que debe guardar ni acumular lo que ya puede eliminar.</span></div></div>
         <div class="pl"><div class="ic c-menta"><svg class="i"><use href="#i-nube"/></svg></div><div><b>Dónde y cómo se guarda</b><span>En papel y en digital, con nombres y carpetas que todos entienden.</span></div></div>
         <div class="pl"><div class="ic c-coral"><svg class="i"><use href="#i-escudo"/></svg></div><div><b>Qué hacer si pasa algo</b><span>Copias de respaldo y un plan para no perder la información ante un desastre.</span></div></div>
       </div>
-      <details class="normas">
-        <summary>Marco normativo de referencia · <span>Ver normas</span></summary>
-        <p>Estas son las normas de archivo que tomamos como referencia. Su obligación directa recae sobre las entidades públicas y las privadas que cumplen funciones públicas o prestan servicios públicos; para las demás empresas son una guía de buenas prácticas, junto con las normas que fijan cuánto tiempo guardar ciertos documentos (comercio, contabilidad y salud en el trabajo). En la revisión gratis le decimos cuáles aplican a su caso.</p>
-        <ul>
-          <li><a href="https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=4275" target="_blank" rel="noopener">Ley 594 de 2000</a> · Ley General de Archivos.</li>
-          <li><a href="https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=76833" target="_blank" rel="noopener">Decreto 1080 de 2015</a> · Decreto Único del Sector Cultura (incluye la reglamentación de archivos).</li>
-          <li><a href="https://normativa.archivogeneral.gov.co/acuerdo-no-001-del-2024/" target="_blank" rel="noopener">Acuerdo 001 de 2024 del Archivo General de la Nación</a> · Acuerdo Único de la Función Archivística.</li>
-        </ul>
-      </details>
     </div>
     <div class="tiempos">
-      <h3>¿Cuánto tiempo debe guardar cada documento?</h3>
-      <p>Cada documento tiene su tiempo. Estos dos los fija la ley para cualquier empresa:</p>
-      <div class="tm"><div class="top"><b>Contabilidad y sus soportes</b><span class="anios" style="color:#B57F0A">10 años</span></div>
-        <div class="barra"><i style="width:20%;background:var(--agua)"></i><i style="width:70%;background:var(--noche-2)"></i><i style="width:10%;background:var(--oro)"></i></div>
-        <small>Ley 962 de 2005, art. 28</small></div>
-      <div class="tm"><div class="top"><b>Exámenes médicos de los trabajadores</b><span class="anios" style="color:#12946C">20 años</span></div>
-        <div class="barra"><i style="width:15%;background:var(--agua)"></i><i style="width:78%;background:var(--noche-2)"></i><i style="width:7%;background:var(--oro)"></i></div>
-        <small>Desde el retiro del trabajador · Decreto 1072 de 2015</small></div>
-      <div class="tm"><div class="top"><b>Contratos, actas y demás</b><span class="anios" style="color:var(--agua-o)">Lo define su programa</span></div>
-        <div class="barra"><i style="width:18%;background:var(--agua)"></i><i style="width:42%;background:var(--noche-2)"></i><i style="width:40%;background:var(--oro)"></i></div>
-        <small>Lo dejamos escrito y aprobado para su empresa</small></div>
-      <div class="leyenda"><span><i style="background:var(--agua)"></i>En la oficina</span><span><i style="background:var(--noche-2)"></i>En el archivo</span><span><i style="background:var(--oro)"></i>Destino final</span></div>
+      <h3>¿Cuánto tiempo se guarda cada documento?</h3>
+      <p>Depende del tipo de documento y de las obligaciones de cada empresa. Dos ejemplos de plazos que fija la ley para casos concretos:</p>
+      <div class="tm"><div class="top"><b>Libros y papeles del comerciante</b><span class="anios">10 años</span></div>
+        <small>Contados desde la fecha del último asiento, documento o comprobante. Aplica a comerciantes y a quienes la ley obliga a conservar esa información · Ley 962 de 2005, art. 28.</small></div>
+      <div class="tm"><div class="top"><b>Registros del Sistema de Seguridad y Salud en el Trabajo (SG-SST)</b><span class="anios">20 años</span></div>
+        <small>Contados desde que termina la relación laboral; incluye, por ejemplo, los conceptos de los exámenes de ingreso, periódicos y de retiro · Decreto 1072 de 2015, art. 2.2.4.6.13. No es la historia clínica ocupacional: esa tiene reserva médica y el mismo artículo limita quién puede acceder a ella.</small></div>
+      <div class="tm"><div class="top"><b>Contratos, actas y demás documentos</b><span class="anios">Según su empresa</span></div>
+        <small>Se definen en el programa de su empresa, de acuerdo con las normas que le apliquen.</small></div>
+      <p class="nota-legal">Son ejemplos informativos, no una tabla de retención. En la revisión gratis identificamos qué plazos aplican a su empresa.</p>
     </div>
   </div>
 </section>
@@ -925,6 +966,7 @@ input[type=range]{width:100%;accent-color:var(--agua)}
       <div>
         <span class="ceja c-menta">Base de datos profesional</span>
         <h3 style="margin-top:14px">La «ficha» de cada documento</h3>
+        <p class="ilustrativo izq">La tabla de ejemplo usa datos inventados.</p>
         <p>Cada documento queda descrito con los datos que permiten encontrarlo: qué es, de qué fecha, cuántas hojas tiene y en qué caja está.</p>
         <ul>
           <li><svg class="i"><use href="#i-check"/></svg>Lo encuentra escribiendo una palabra</li>
@@ -963,9 +1005,9 @@ input[type=range]{width:100%;accent-color:var(--agua)}
         <div class="hc"><div class="ic c-menta"><svg class="i"><use href="#i-grafica"/></svg></div><div><b>Informes al instante</b><span>Por área y por responsable, en Excel.</span></div></div>
         <div class="hc"><div class="ic c-agua"><svg class="i"><use href="#i-ojo"/></svg></div><div><b>Todo queda registrado</b><span>Quién entró, qué hizo y desde dónde.</span></div></div>
       </div>
-      <div class="piloto"><i></i>En piloto: pida una demostración con datos de ejemplo.</div>
+      <div class="piloto"><i></i>En piloto: pida una demostración con datos de ejemplo. La pantalla de al lado usa datos ficticios.</div>
     </div>
-    <div class="consola" aria-label="Así trabaja el software: lee un oficio y lo radica">
+    <div class="consola" aria-label="Así trabaja el software: lee un oficio y lo radica (datos de ejemplo)">
       <div class="barra"><i></i><i></i><i></i><b>SGDEA-NUBE · Radicar entrada</b></div>
       <div class="cuerpo">
         <div class="hoja" aria-hidden="true">
@@ -1001,7 +1043,7 @@ input[type=range]{width:100%;accent-color:var(--agua)}
     </div>
     <div class="pasos-diag" aria-label="Cómo funciona la revisión gratis">
       <div><span class="n">1</span><b>Nos escribe</b><span>Por WhatsApp o con el formulario de abajo, y acordamos la hora.</span></div>
-      <div><span class="n">2</span><b>Videollamada de 30–45 min</b><span>Revisamos cómo guardan los documentos, dónde se pierden, qué deben conservar y qué riesgos legales tienen.</span></div>
+      <div><span class="n">2</span><b>Videollamada de 30–45 min</b><span>Revisamos cómo guardan los documentos, dónde se pierden, qué deberían conservar y qué riesgos tienen.</span></div>
       <div><span class="n">3</span><b>Recibe su resumen de hallazgos</b><span>1–2 páginas con lo encontrado, los riesgos y qué hacer primero, más una cotización con precio fijo y tiempos.</span></div>
       <div><span class="n">4</span><b>Usted decide</b><span>Sin compromiso: si no contrata, el resumen es suyo igual.</span></div>
     </div>
@@ -1082,11 +1124,49 @@ $("formu").addEventListener("submit", (e) => {
   const texto = `Hola, soy ${$("f-n").value.trim()}${$("f-e").value.trim() ? " de " + $("f-e").value.trim() : ""}. Vi la página de Folio Digital y necesito: ${$("f-q").value}.`;
   window.open("https://wa.me/573118345024?text=" + encodeURIComponent(texto), "_blank", "noopener");
 });
+// Si ya estamos en #inicio pero hemos bajado por la página, volver a subir igualmente.
+document.querySelectorAll('a[href="#inicio"]').forEach((enlace) => {
+  enlace.addEventListener("click", (e) => {
+    if (location.hash !== "#inicio") return;
+    e.preventDefault();
+    $("inicio").scrollIntoView({
+      behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+      block: "start"
+    });
+  });
+});
 // Menú compacto del celular
 (() => {
   const b = document.querySelector(".menu-btn"), m = document.getElementById("menu-movil");
-  b.addEventListener("click", () => { const abre = m.hidden; m.hidden = !abre; b.setAttribute("aria-expanded", String(abre)); });
-  m.addEventListener("click", (e) => { if (e.target.closest("a")) { m.hidden = true; b.setAttribute("aria-expanded", "false"); } });
+  b.addEventListener("click", () => {
+    const abre = m.hidden;
+    m.hidden = !abre;
+    b.setAttribute("aria-expanded", String(abre));
+    b.setAttribute("aria-label", abre ? "Cerrar menú" : "Abrir menú");
+    if (!abre) m.querySelectorAll("details").forEach((details) => { details.open = false; });
+  });
+  m.addEventListener("click", (e) => {
+    if (e.target.closest("a")) {
+      m.hidden = true;
+      b.setAttribute("aria-expanded", "false");
+      b.setAttribute("aria-label", "Abrir menú");
+      m.querySelectorAll("details").forEach((details) => { details.open = false; });
+    }
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Escape") return;
+    const normas = document.querySelector(".nav-normas[open]");
+    if (normas) {
+      normas.open = false;
+      normas.querySelector("summary").focus();
+    }
+    if (!m.hidden) {
+      m.hidden = true;
+      b.setAttribute("aria-expanded", "false");
+      b.setAttribute("aria-label", "Abrir menú");
+      b.focus();
+    }
+  });
 })();
 // Botón flotante: aparece solo cuando el botón principal ya quedó atrás (no se montan)
 (() => {
