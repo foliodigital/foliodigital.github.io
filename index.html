@@ -64,14 +64,17 @@ svg.i{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stro
 
 /* ---------- Barra (azul con el logo original) ---------- */
 .nav{position:sticky;top:0;z-index:50;background:rgba(15,42,68,.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08)}
-.nav .cont{display:flex;align-items:center;height:74px;gap:24px}
-.nav img{height:42px}
+.nav .cont{display:flex;align-items:center;height:86px;gap:24px}
+.nav img{height:58px;width:auto;display:block}
+.nav .cont > a:first-child{flex:none}
+.nav nav a,.nav .aula-btn,.nav .btn{white-space:nowrap}
+.nav nav{gap:18px!important}
 .nav nav{display:flex;gap:24px;margin-left:auto;font-size:14.5px;font-weight:600;color:rgba(255,255,255,.78)}
 .nav nav a:hover{color:#fff}
 .nav .btn{height:44px;font-size:14px;padding:0 18px}
-.nav .aula-btn{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 16px;border-radius:999px;border:1px solid rgba(242,193,78,.6);color:var(--oro);font-weight:700;font-size:14px}
+.nav .aula-btn{display:inline-flex;align-items:center;gap:8px;height:46px;padding:0 18px;border-radius:999px;border:2px solid var(--oro);background:rgba(242,193,78,.14);color:var(--oro);font-weight:800;font-size:15px}
 .nav .aula-btn:hover{background:rgba(242,193,78,.1)}
-@media(max-width:1060px){.nav nav{display:none}.nav .aula-btn{margin-left:auto}}
+@media(max-width:1240px){.nav nav{display:none}.nav .aula-btn{margin-left:auto}}
 .menu-btn{display:none;width:44px;height:44px;border-radius:12px;border:1px solid rgba(255,255,255,.25);background:transparent;cursor:pointer;flex-direction:column;justify-content:center;align-items:center;gap:5px;padding:0}
 .menu-btn span{display:block;width:20px;height:2px;background:#fff;border-radius:2px}
 .menu-movil{background:var(--noche);border-top:1px solid rgba(255,255,255,.1);padding:10px 20px 20px;display:grid;gap:4px}
@@ -83,23 +86,25 @@ svg.i{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stro
 .wa-flota .i{width:20px;height:20px}
 .wa-flota{opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity .25s,transform .25s}
 .wa-flota.visible{opacity:1;transform:none;pointer-events:auto}
-@media(max-width:1060px){.menu-btn{display:inline-flex}}
-@media(max-width:560px){.nav .cont{gap:10px}.nav img{height:34px}.nav .btn{height:40px;padding:0 14px;font-size:13px}.nav .aula-btn{padding:0 12px;font-size:0;gap:0}.nav .aula-btn .i{width:20px!important;height:20px!important}.wa-flota{display:inline-flex}}
+@media(max-width:1240px){.menu-btn{display:inline-flex}}
+@media(max-width:560px){.nav .cont{gap:10px}.nav img{height:40px}.nav .btn{height:40px;padding:0 14px;font-size:13px}.nav .aula-btn{padding:0 12px;font-size:0;gap:0}.nav .aula-btn .i{width:20px!important;height:20px!important}.wa-flota{display:inline-flex}}
+@media(max-width:440px){.nav .aula-btn{display:none}.nav .cont{gap:8px}.nav .btn{margin-left:auto;font-size:12.5px;padding:0 12px}}
 
 /* ---------- Portada: el video es el gancho ---------- */
-.hero{position:relative;overflow:hidden;color:#fff;background:radial-gradient(900px 480px at 85% 0%,rgba(0,171,199,.22),transparent 60%),radial-gradient(800px 500px at 0% 100%,rgba(242,193,78,.10),transparent 60%),linear-gradient(180deg,var(--noche-3),var(--noche))}
-.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:56px 56px;mask-image:linear-gradient(180deg,#000 30%,transparent 90%)}
+.hero{position:relative;overflow:hidden;color:var(--noche);background:radial-gradient(900px 480px at 85% 0%,rgba(0,171,199,.10),transparent 60%),radial-gradient(800px 500px at 0% 100%,rgba(242,193,78,.16),transparent 60%),linear-gradient(180deg,#FFFFFF,#F3F6FA)}
+.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(15,42,68,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(15,42,68,.045) 1px,transparent 1px);background-size:56px 56px;mask-image:linear-gradient(180deg,#000 30%,transparent 90%)}
 .hero .cont{position:relative;padding-top:56px;padding-bottom:80px;text-align:center}
-.hero .ceja{background:rgba(242,193,78,.14);color:var(--oro)}
+.hero .ceja{background:rgba(242,193,78,.22);color:#8A6200}
 .hero h1{font-family:"Bricolage Grotesque",sans-serif;font-size:clamp(36px,5vw,66px);line-height:1.02;letter-spacing:-2px;font-weight:800;margin:18px auto 14px;max-width:980px}
 .hero h1 .res{color:var(--noche)}
-.hero p.sub{font-size:18.5px;color:rgba(255,255,255,.75);max-width:720px;margin:0 auto}
-.pantalla{position:relative;max-width:980px;margin:34px auto 0;border-radius:24px;padding:10px;background:linear-gradient(140deg,rgba(0,171,199,.6),rgba(242,193,78,.5));box-shadow:0 40px 90px -20px rgba(0,0,0,.6)}
+.hero p.sub{font-size:16px;color:var(--gris);max-width:720px;margin:26px auto 0}
+.pantalla{position:relative;max-width:980px;margin:14px auto 0;border-radius:24px;padding:10px;background:linear-gradient(140deg,rgba(0,171,199,.6),rgba(242,193,78,.5));box-shadow:0 40px 90px -30px rgba(15,42,68,.45)}
 .pantalla video{display:block;width:100%;aspect-ratio:16/9;border-radius:16px;background:#000;object-fit:cover}
+.hero .ctas .btn,.hero .cta-1 .btn{white-space:normal;height:auto;min-height:52px;padding:12px 26px;text-align:center;justify-content:center}
 .hero .ctas{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:30px}
-.confianza{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;margin-top:30px;font-size:14px;color:rgba(255,255,255,.7)}
+.confianza{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;margin-top:30px;font-size:14px;color:var(--gris)}
 .confianza span{display:inline-flex;align-items:center;gap:8px}
-.confianza svg{width:18px;height:18px;color:var(--agua)}
+.confianza svg{width:18px;height:18px;color:var(--agua-o)}
 
 /* ---------- Cinta ---------- */
 .cinta{background:var(--oro);color:var(--noche);overflow:hidden;white-space:nowrap}
@@ -209,12 +214,19 @@ svg.i{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stro
 .acceso span{font-size:14.5px}
 .campus-pronto{margin-top:16px;text-align:center;font-size:14px;color:rgba(255,255,255,.7)}
 .campus-pronto b{color:var(--oro)}
+.normas{margin-top:20px;border:1px solid var(--linea);border-radius:16px;background:#fff;padding:0 18px}
+.normas summary{cursor:pointer;list-style:none;padding:14px 0;font-weight:700;color:var(--noche);font-size:15px}
+.normas summary::-webkit-details-marker{display:none}
+.normas summary span{color:var(--agua-o)}.normas summary span::after{content:" ▾"}.normas[open] summary span::after{content:" ▴"}
+.normas p{font-size:14px;color:var(--gris);margin:0 0 10px}.normas ul{margin:0 0 16px;padding-left:20px;font-size:14px}.normas li{margin:6px 0}.normas a{color:var(--agua-o);font-weight:700;text-decoration:underline}
 .sl .dolor{font-weight:700;color:var(--noche);margin:6px 0 4px}.sl.estrella .dolor{color:var(--oro)}
-.hero .directo{max-width:760px;margin:14px auto 0;font-size:clamp(17px,2vw,20px);font-weight:600;color:#fff}
+.hero .directo{max-width:760px;margin:14px auto 0;font-size:clamp(17px,2vw,20px);font-weight:600;color:var(--tinta)}
+.hero .cta-1{margin-top:22px}
+.hero .btn-linea{border-color:rgba(15,42,68,.3);color:var(--noche)}.hero .btn-linea:hover{background:rgba(15,42,68,.05)}
 .resumen{margin:28px auto 0;max-width:980px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.resumen div{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:12px 14px;text-align:left}
-.resumen b{display:block;font-family:"Bricolage Grotesque",sans-serif;font-size:16px;color:#fff}
-.resumen span{font-size:13px;color:rgba(255,255,255,.75)}
+.resumen div{background:#fff;border:1px solid var(--linea);box-shadow:var(--sombra);border-radius:16px;padding:12px 14px;text-align:left}
+.resumen b{display:block;font-family:"Bricolage Grotesque",sans-serif;font-size:16px;color:var(--noche)}
+.resumen span{font-size:13px;color:var(--gris)}
 .resumen .r-diag{background:var(--oro);border-color:var(--oro)}.resumen .r-diag b,.resumen .r-diag span{color:var(--noche)}
 @media (max-width:760px){.resumen{grid-template-columns:1fr 1fr}}
 .pasos-diag{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:0 0 34px}
@@ -584,8 +596,8 @@ input[type=range]{width:100%;accent-color:var(--agua)}
     <button class="menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-movil"><span></span><span></span><span></span></button>
   </div>
   <div class="menu-movil" id="menu-movil" hidden>
-    <a href="#problema">El problema</a><a href="#solucion">Servicios</a><a href="#aula">Capacitación</a><a href="#organizacion">Organización</a><a href="#software">Software</a><a href="#contacto">Contacto</a>
-    <a class="btn btn-oro" href="#contacto">Pedir revisión gratis</a>
+    <a href="#problema">El problema</a><a href="#solucion">Servicios</a><a href="#aula">Capacitación</a><a href="#organizacion">Organización</a><a href="#software">Software</a><a href="#contacto">Contacto</a><a href="https://folio-digital---aula-virtual.web.app" target="_blank" rel="noopener">Aula Virtual (entrar)</a>
+    <a class="btn btn-oro" href="#contacto" style="white-space:normal;height:auto;min-height:48px;padding:10px 18px;text-align:center">Pedir revisión gratis de los documentos de mi empresa</a>
     <a class="btn btn-wa" href="https://wa.me/573118345024?text=Hola%2C%20quiero%20agendar%20la%20revisi%C3%B3n%20gratis%20de%20los%20documentos%20de%20mi%20empresa" target="_blank" rel="noopener"><svg class="i"><use href="#i-chat"/></svg>Escribir por WhatsApp</a>
   </div>
 </header>
@@ -597,16 +609,17 @@ input[type=range]{width:100%;accent-color:var(--agua)}
     <span class="ceja">Gestión documental para empresas · Villavicencio, Meta</span>
     <h1>¿Cuánto le cuesta a su empresa <span class="res r-oro">no encontrar</span> un documento?</h1>
     <p class="directo">Organizamos los documentos de su empresa y enseñamos a su equipo a guardarlos, encontrarlos y responder a tiempo.</p>
-    <p class="sub">Vea en dos minutos lo que pasa en miles de oficinas todos los días… y cómo se resuelve.</p>
+    <div class="cta-1"><a class="btn btn-oro" href="#contacto">Pedir revisión gratis de los documentos de mi empresa <svg class="i" style="width:18px;height:18px"><use href="#i-flecha"/></svg></a></div>
+    <p class="sub">En el video (2 min): una oficina pasa casi tres horas buscando un contrato que nunca aparece, y así lo encuentra en segundos con el archivo organizado.</p>
     <div class="pantalla"><video controls preload="metadata" poster="videos/video-gancho.jpg" src="videos/video-gancho.mp4"></video></div>
     <div class="ctas">
-      <a class="btn btn-oro" href="#contacto">Pedir revisión gratis <svg class="i" style="width:18px;height:18px"><use href="#i-flecha"/></svg></a>
+      <a class="btn btn-oro" href="#contacto">Pedir revisión gratis de los documentos de mi empresa <svg class="i" style="width:18px;height:18px"><use href="#i-flecha"/></svg></a>
       <a class="btn btn-linea" href="#aula"><svg class="i" style="width:19px;height:19px"><use href="#i-birrete"/></svg>Capacitar a mi equipo</a>
     </div>
     <div class="confianza">
       <span><svg class="i"><use href="#i-check"/></svg>11 años organizando archivos</span>
       <span><svg class="i"><use href="#i-check"/></svg>Aula Virtual con certificado</span>
-      <span><svg class="i"><use href="#i-check"/></svg>Según la Ley 594 de 2000 y el Acuerdo 001 de 2024</span>
+      <span><svg class="i"><use href="#i-check"/></svg>Con base en la normativa archivística colombiana</span>
     </div>
     <div class="resumen" aria-label="En pocas palabras">
       <div><b>Organizamos</b><span>su archivo en papel y digital</span></div>
@@ -836,6 +849,15 @@ input[type=range]{width:100%;accent-color:var(--agua)}
         <div class="pl"><div class="ic c-menta"><svg class="i"><use href="#i-nube"/></svg></div><div><b>Dónde y cómo se guarda</b><span>En papel y en digital, con nombres y carpetas que todos entienden.</span></div></div>
         <div class="pl"><div class="ic c-coral"><svg class="i"><use href="#i-escudo"/></svg></div><div><b>Qué hacer si pasa algo</b><span>Copias de respaldo y un plan para no perder la información ante un desastre.</span></div></div>
       </div>
+      <details class="normas">
+        <summary>Marco normativo de referencia · <span>Ver normas</span></summary>
+        <p>Estas son las normas de archivo que tomamos como referencia. Su obligación directa recae sobre las entidades públicas y las privadas que cumplen funciones públicas o prestan servicios públicos; para las demás empresas son una guía de buenas prácticas, junto con las normas que fijan cuánto tiempo guardar ciertos documentos (comercio, contabilidad y salud en el trabajo). En la revisión gratis le decimos cuáles aplican a su caso.</p>
+        <ul>
+          <li><a href="https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=4275" target="_blank" rel="noopener">Ley 594 de 2000</a> · Ley General de Archivos.</li>
+          <li><a href="https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=76833" target="_blank" rel="noopener">Decreto 1080 de 2015</a> · Decreto Único del Sector Cultura (incluye la reglamentación de archivos).</li>
+          <li><a href="https://normativa.archivogeneral.gov.co/acuerdo-no-001-del-2024/" target="_blank" rel="noopener">Acuerdo 001 de 2024 del Archivo General de la Nación</a> · Acuerdo Único de la Función Archivística.</li>
+        </ul>
+      </details>
     </div>
     <div class="tiempos">
       <h3>¿Cuánto tiempo debe guardar cada documento?</h3>
@@ -994,7 +1016,7 @@ input[type=range]{width:100%;accent-color:var(--agua)}
           <option>Revisión gratis de los documentos de mi empresa</option><option>Capacitar a mi equipo (Aula Virtual)</option><option>Curso de Ventanilla Única de Correspondencia</option>
           <option>Organizar mi archivo</option><option>Programa de Gestión Documental</option><option>Digitalizar y crear la base de datos</option><option>Conocer el software SGDEA-NUBE</option>
         </select>
-        <button class="btn" type="submit"><svg class="i"><use href="#i-chat"/></svg>Pedir revisión gratis</button>
+        <button class="btn" type="submit" style="white-space:normal;height:auto;min-height:52px;padding:10px 22px"><svg class="i"><use href="#i-chat"/></svg>Pedir revisión gratis de los documentos de mi empresa</button>
         <small>Le respondemos lo antes posible.</small>
         <small class="aviso-datos">Sus datos solo se usan para responderle. <a href="politica-datos.html">Política de tratamiento de datos</a>.</small>
       </form>
